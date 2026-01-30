@@ -4,26 +4,29 @@
       "id": "sunrise-ridge",
       "title": "Sunrise Ridge",
       "location": "Cove Bay",
-      "price": 450000,
-      "priceFormatted": "$450,000",
+      "price": 425000,
+      "priceFormatted": "$425,000",
       "status": "for-sale",
       "type": "land",
       "bedrooms": 0,
       "bathrooms": 0,
       "acreage": 1.28,
-      "description": "Build your dream island estate on 1.28 acres with breathtaking views of Mount Scenery and neighboring isles. This pristine parcel offers the perfect canvas for your Caribbean sanctuary, with utilities available and road access. Wake up to stunning sunrises over the Caribbean Sea and enjoy the peaceful serenity that only Saba can offer.",
+      "description": "Build your dream island estate on 1.28 acres with breathtaking panoramic views of Mount Scenery and neighboring islands. This exceptional land parcel offers the perfect canvas for a custom home or boutique eco-lodge.",
       "features": [
         "Ocean views",
         "Mountain views",
+        "1.28 acres",
         "Buildable lot",
         "Utilities available",
-        "Road access",
         "Sunrise exposure"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/listings/sunrise-ridge/hero.jpg",
-        "https://pub-sabanreality.r2.dev/listings/sunrise-ridge/view-1.jpg",
-        "https://pub-sabanreality.r2.dev/listings/sunrise-ridge/view-2.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/Ridge%20land-Cover.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_1E3294.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_2E3305.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_3E3302.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_4E3285.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_5E3283.JPG"
       ]
     },
     {
@@ -38,229 +41,540 @@
       "bathrooms": 2,
       "squareFeet": 1200,
       "yearBuilt": 1900,
-      "description": "A historic 1900 Saban gem nestled in Windwardside with charming character and sweeping sea views. This lovingly maintained cottage features traditional Saban architecture with white wooden walls, green shutters, and a classic red roof. Enjoy morning coffee on the balcony while watching the clouds drift around Mount Scenery.",
+      "description": "A historic 1900 Saban gem nestled in Windwardside with charming character and sweeping sea views. This lovingly maintained cottage features traditional Saban architecture with white wooden walls, green shutters, and a classic red roof.",
       "features": [
         "Historic charm",
+        "Sea views",
         "Balconies",
         "Gazebo",
         "Walking distance to village",
-        "Sea views",
         "Traditional architecture"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/listings/rainbow-cottage/hero.jpg",
-        "https://pub-sabanreality.r2.dev/listings/rainbow-cottage/interior-1.jpg",
-        "https://pub-sabanreality.r2.dev/listings/rainbow-cottage/garden.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/rainbow-cottage/491890209_122203516052158753_6396531252409921332_n.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/rainbow-cottage/492031083_122203515818158753_4461196611495184299_n.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/rainbow-cottage/492136584_122203516346158753_7441951100448901183_n.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/rainbow-cottage/492197967_122203516568158753_3792299590639485085_n.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/rainbow-cottage/6IMG_0898.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/rainbow-cottage/7IMG_0909.JPG"
       ]
     },
     {
-      "id": "mount-scenery-villa",
-      "title": "Mount Scenery Villa",
+      "id": "daphne-cottage",
+      "title": "Daphne Cottage",
       "location": "Windwardside",
-      "price": 595000,
-      "priceFormatted": "$595,000",
+      "price": 450000,
+      "priceFormatted": "$450,000",
+      "status": "for-sale",
+      "type": "cottage",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "squareFeet": 750,
+      "yearBuilt": 1850,
+      "description": "Step back in time with Daphne Cottage, a lovingly preserved historic home built in 1850, located in the heart of Windwardside. This charming 2-bedroom, 2-bathroom retreat captures the essence of traditional Saban living while offering modern conveniences.",
+      "features": [
+        "Historic 1850 home",
+        "Central Windwardside",
+        "Sea views",
+        "Mountain views",
+        "Flower garden",
+        "Walking distance to shops"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/DroneDaphneBetter.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/100003774-daphne1a.jpeg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/3Daphne.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/5Daphne.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/6Daphne.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/7Daphne.jpg"
+      ]
+    },
+    {
+      "id": "hidden-treasure-villa",
+      "title": "Hidden Treasure Villa",
+      "location": "Zion's Hill",
+      "price": 0,
+      "priceFormatted": "SOLD",
+      "status": "sold",
+      "type": "villa",
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "squareFeet": 2500,
+      "description": "Discover your own hidden gem at this fully furnished villa nestled in the tranquil surroundings of Upper Zion's Hill. This well-constructed two-story home offers both comfort and privacy, situated at the end of a quiet private road.",
+      "features": [
+        "Infinity pool",
+        "Sea views",
+        "Mountain views",
+        "Two stories",
+        "Hurricane-proof",
+        "Air conditioning"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/3IMG_4175.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/1IMG_E4186.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/2IMG_E4187.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/4IMG_E4292.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/5IMG_E4294.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/6IMG_E4295.JPG"
+      ]
+    },
+    {
+      "id": "iguana-rock",
+      "title": "Iguana Rock",
+      "location": "Windwardside",
+      "price": 995000,
+      "priceFormatted": "$995,000",
+      "status": "for-sale",
+      "type": "villa",
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "squareFeet": 2800,
+      "description": "Iguana Rock is a stunning villa property offering panoramic views and luxurious island living. This exceptional home combines modern amenities with Caribbean charm.",
+      "features": [
+        "Panoramic views",
+        "Pool",
+        "Modern kitchen",
+        "Multiple terraces",
+        "Private setting",
+        "Landscaped gardens"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/iguana-rock/100003955-4IguanaRockNikon1.jpeg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/iguana-rock/100003955-4IguanaRockNikon2.jpeg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/iguana-rock/100003955-5-50IMG_E0438.jpeg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/iguana-rock/6IMG_9976.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/iguana-rock/7IMG_9982.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/iguana-rock/8IMG_9979.JPG"
+      ]
+    },
+    {
+      "id": "the-glasshouse",
+      "title": "The Glasshouse",
+      "location": "Windwardside",
+      "price": 1250000,
+      "priceFormatted": "$1,250,000",
+      "status": "for-sale",
+      "type": "villa",
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "squareFeet": 3500,
+      "description": "The Glasshouse is a stunning contemporary villa featuring floor-to-ceiling windows and breathtaking views. This architectural masterpiece offers the ultimate in modern island living.",
+      "features": [
+        "Contemporary design",
+        "Floor-to-ceiling windows",
+        "360-degree views",
+        "Pool",
+        "Smart home features",
+        "Solar panels"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/100003967-DroneGlassHouse.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/1IMG_1312.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/2IMG_1339.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/3IMG_0954.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/4IMG_E1143.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/5IMG_0984.JPG"
+      ]
+    },
+    {
+      "id": "view-villa",
+      "title": "View Villa",
+      "location": "Windwardside",
+      "price": 850000,
+      "priceFormatted": "$850,000",
       "status": "for-sale",
       "type": "villa",
       "bedrooms": 3,
       "bathrooms": 2,
       "squareFeet": 2100,
-      "yearBuilt": 2015,
-      "description": "Modern luxury meets Caribbean charm in this stunning villa with panoramic views of Mount Scenery and the Caribbean Sea. Features an open floor plan, gourmet kitchen, infinity pool, and lush tropical gardens. Perfect for those seeking a turnkey island retreat with all the modern amenities.",
+      "description": "View Villa lives up to its name with spectacular vistas of the Caribbean Sea and surrounding islands. This beautifully appointed home offers comfortable island living with modern amenities.",
       "features": [
-        "Infinity pool",
-        "Panoramic views",
-        "Modern kitchen",
-        "Tropical gardens",
+        "Spectacular views",
         "Covered terraces",
-        "Air conditioning"
+        "Updated kitchen",
+        "Tropical gardens",
+        "Privacy",
+        "Near village"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/listings/mount-scenery-villa/hero.jpg",
-        "https://pub-sabanreality.r2.dev/listings/mount-scenery-villa/pool.jpg",
-        "https://pub-sabanreality.r2.dev/listings/mount-scenery-villa/interior.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/100003862-DroneViewVilla.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/1IMG_3313.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/2IMG_3367.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/3IMG_3338.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/4IMG_3360.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/5IMG_3351.JPG"
       ]
     },
     {
-      "id": "the-bottom-cottage",
-      "title": "The Bottom Cottage",
-      "location": "The Bottom",
-      "price": 245000,
-      "priceFormatted": "$245,000",
-      "status": "sold",
+      "id": "seagrape-cottage",
+      "title": "Seagrape Cottage",
+      "location": "Windwardside",
+      "price": 375000,
+      "priceFormatted": "$375,000",
+      "status": "for-sale",
       "type": "cottage",
       "bedrooms": 2,
       "bathrooms": 1,
       "squareFeet": 950,
-      "yearBuilt": 1920,
-      "description": "Charming traditional Saban cottage in the historic capital village of The Bottom. This cozy home has been thoughtfully updated while preserving its authentic character. Walking distance to government offices, shops, and restaurants.",
+      "description": "Seagrape Cottage is a charming traditional Saban home offering comfortable living in a peaceful setting. The property includes a lovely garden and outdoor living spaces.",
       "features": [
-        "Historic village location",
-        "Updated kitchen",
-        "Private garden",
-        "Walking distance to amenities",
-        "Traditional design"
+        "Traditional Saban style",
+        "Garden",
+        "Patio",
+        "Sea views",
+        "Quiet location",
+        "Well maintained"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/listings/the-bottom-cottage/hero.jpg",
-        "https://pub-sabanreality.r2.dev/listings/the-bottom-cottage/interior.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/seagrape-cottage/1IMG_E7009.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/seagrape-cottage/2IMG_E6986.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/seagrape-cottage/3Kitchen300.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/seagrape-cottage/6Patio.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/seagrape-cottage/7IMG_E7032.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/seagrape-cottage/10IMG_E7043.JPG"
       ]
     },
     {
-      "id": "cove-bay-land",
-      "title": "Cove Bay Oceanfront Lot",
-      "location": "Cove Bay",
+      "id": "susanas-cottage",
+      "title": "Susanna Cottage",
+      "location": "Zion's Hill",
+      "price": 0,
+      "priceFormatted": "SOLD",
+      "status": "sold",
+      "type": "cottage",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "squareFeet": 1100,
+      "description": "Susanna Cottage is a historic Saba-style home offering charming island living. This cozy and fully furnished cottage features breathtaking views, comfort, and convenience in a serene neighborhood.",
+      "features": [
+        "Historic Saban style",
+        "Fully furnished",
+        "Sea views",
+        "Flower garden",
+        "Hurricane shutters",
+        "Two cisterns"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/susanas-cottage/1IMG_E3227.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/susanas-cottage/2IMG_E24741.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/susanas-cottage/3IMG_E25311.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/susanas-cottage/4IMG_E25351.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/susanas-cottage/5IMG_E25331.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/susanas-cottage/6IMG_18041.jpg"
+      ]
+    },
+    {
+      "id": "house-on-the-path",
+      "title": "House on the Path",
+      "location": "Windwardside",
       "price": 325000,
       "priceFormatted": "$325,000",
+      "status": "for-sale",
+      "type": "cottage",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "squareFeet": 900,
+      "description": "House on the Path is a cozy cottage in the heart of Windwardside, perfect as a vacation home or rental property. Walking distance to shops and restaurants.",
+      "features": [
+        "Village location",
+        "Walking paths",
+        "Garden",
+        "Traditional style",
+        "Move-in ready",
+        "Rental potential"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/house-on-the-path/1outside%20IMG_0010_E.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/house-on-the-path/2dinningroom_4971.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/house-on-the-path/3livingroom_4961.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/house-on-the-path/6master%20bdrm_4989.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/house-on-the-path/7Bath%20001.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/house-on-the-path/9outside%20IMG_0008.jpg"
+      ]
+    },
+    {
+      "id": "statia-poolhouse",
+      "title": "STATIA Poolhouse and Bungalows",
+      "location": "White Hall, St Eustatius",
+      "price": 830000,
+      "priceFormatted": "$830,000",
+      "status": "for-sale",
+      "type": "villa",
+      "bedrooms": 5,
+      "bathrooms": 9,
+      "squareFeet": 8070,
+      "acreage": 2,
+      "description": "STATIA Poolhouse and Bungalows is an eco-friendly retreat near Kay Bay on St Eustatius. This unique property offers existing tourist infrastructure with a poolhouse, swimming pool, and 9 wooden bungalows.",
+      "features": [
+        "Poolhouse",
+        "9 Bungalows",
+        "Swimming pool",
+        "Ocean views",
+        "8,070 m² land",
+        "Development potential"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/statia-poolhouse-and-bungalows/1sslodge.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/statia-poolhouse-and-bungalows/3sslodge.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/statia-poolhouse-and-bungalows/4slodge.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/statia-poolhouse-and-bungalows/6slodge.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/statia-poolhouse-and-bungalows/8slodge.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/statia-poolhouse-and-bungalows/12slodge.jpg"
+      ]
+    },
+    {
+      "id": "johnnys-ground-secret",
+      "title": "Johnny's Ground Secret",
+      "location": "The Bottom",
+      "price": 195000,
+      "priceFormatted": "$195,000",
       "status": "for-sale",
       "type": "land",
       "bedrooms": 0,
       "bathrooms": 0,
-      "acreage": 0.75,
-      "description": "Rare oceanfront building lot in desirable Cove Bay with direct views of the Caribbean Sea and the island of St. Eustatius. This 0.75-acre parcel is one of the few remaining oceanfront lots available on Saba. Perfect for a luxury villa or vacation rental investment.",
+      "acreage": 0.5,
+      "description": "A hidden gem land parcel in The Bottom area, offering privacy and beautiful views. Perfect for building your dream island home.",
       "features": [
-        "Oceanfront",
-        "Caribbean Sea views",
-        "Views of St. Eustatius",
-        "Utilities at road",
-        "Gentle slope",
-        "Rare opportunity"
+        "Private location",
+        "Mountain views",
+        "Buildable",
+        "Road access",
+        "Utilities nearby",
+        "Quiet setting"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/listings/cove-bay-land/hero.jpg",
-        "https://pub-sabanreality.r2.dev/listings/cove-bay-land/view.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/johnnys-ground-secret/1IMG_E4036.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/johnnys-ground-secret/2IMG_E4042.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/johnnys-ground-secret/3IMG_E4348.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/johnnys-ground-secret/4IMG_E4349.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/johnnys-ground-secret/5IMG_E4053.JPG"
       ]
     },
     {
-      "id": "hells-gate-estate",
-      "title": "Hell's Gate Estate",
-      "location": "Hell's Gate",
-      "price": 750000,
-      "priceFormatted": "$750,000",
+      "id": "anslyn-estate",
+      "title": "Anslyn Estate",
+      "location": "St Eustatius",
+      "price": 1500000,
+      "priceFormatted": "$1,500,000",
       "status": "for-sale",
       "type": "villa",
-      "bedrooms": 4,
-      "bathrooms": 3,
-      "squareFeet": 3200,
-      "yearBuilt": 2010,
-      "description": "Magnificent estate property in the quiet village of Hell's Gate, offering unparalleled privacy and spectacular 360-degree views. This grand home features a main residence plus a separate guest cottage, swimming pool, and over 2 acres of landscaped grounds.",
+      "bedrooms": 5,
+      "bathrooms": 4,
+      "squareFeet": 4500,
+      "description": "Anslyn Estate is a magnificent property on St Eustatius offering expansive grounds and a grand residence. This estate property represents a rare opportunity for luxury Caribbean living.",
       "features": [
-        "360-degree views",
-        "Guest cottage",
-        "Swimming pool",
-        "2+ acres",
-        "Privacy",
-        "Landscaped gardens"
+        "Estate property",
+        "Expansive grounds",
+        "Multiple buildings",
+        "Ocean views",
+        "Historic character",
+        "Development potential"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/listings/hells-gate-estate/hero.jpg",
-        "https://pub-sabanreality.r2.dev/listings/hells-gate-estate/pool.jpg",
-        "https://pub-sabanreality.r2.dev/listings/hells-gate-estate/guest-house.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/1.jpeg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/2.jpeg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/4Anslyn.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/5Anslyn.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/9Anslyn.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/11Anslyn.jpg"
       ]
     }
   ],
   "rentals": [
     {
-      "id": "oceanview-retreat",
-      "title": "Oceanview Retreat",
+      "id": "spyglass-villa",
+      "title": "Spyglass Villa",
       "location": "Windwardside",
-      "nightlyRate": 250,
-      "nightlyRateFormatted": "$250/night",
+      "nightlyRate": 295,
+      "nightlyRateFormatted": "$295/night",
       "status": "available",
       "type": "villa",
       "bedrooms": 3,
       "bathrooms": 2,
-      "squareFeet": 1800,
-      "description": "Experience the magic of Saba from this stunning vacation villa perched on the hillside in Windwardside. Floor-to-ceiling windows frame breathtaking views of the Caribbean Sea. Features a fully equipped kitchen, outdoor dining area, and private pool.",
+      "maxGuests": 6,
+      "description": "Spyglass Villa offers stunning Caribbean views and luxurious accommodations for your Saba vacation. This beautifully appointed villa features modern amenities and outdoor living spaces.",
       "features": [
-        "Private pool",
         "Ocean views",
         "Full kitchen",
-        "Outdoor dining",
+        "Outdoor terrace",
         "WiFi",
-        "Air conditioning"
+        "Air conditioning",
+        "Private setting"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/rentals/oceanview-retreat/hero.jpg",
-        "https://pub-sabanreality.r2.dev/rentals/oceanview-retreat/pool.jpg",
-        "https://pub-sabanreality.r2.dev/rentals/oceanview-retreat/bedroom.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/spyglass-villa/1spyglass.jpeg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/spyglass-villa/2spyglass.webp",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/spyglass-villa/3spyglass.jpeg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/spyglass-villa/5spyglass.jpeg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/spyglass-villa/6spyglass.jpg"
       ]
     },
     {
-      "id": "saban-cottage-escape",
-      "title": "Saban Cottage Escape",
+      "id": "effies-cottage",
+      "title": "Effie's Cottage",
       "location": "Windwardside",
+      "nightlyRate": 150,
+      "nightlyRateFormatted": "$150/night",
+      "status": "available",
+      "type": "cottage",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "maxGuests": 2,
+      "description": "Effie's Cottage is a cozy retreat perfect for couples seeking an authentic Saban experience. This charming cottage offers comfort and character in the heart of Windwardside.",
+      "features": [
+        "Village location",
+        "Kitchenette",
+        "Garden views",
+        "WiFi",
+        "Walking distance to restaurants",
+        "Peaceful setting"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/1Effie1.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/2Effie1.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/3IMG_E3644.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/4MG_3991.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/5IMG_3993.JPG"
+      ]
+    },
+    {
+      "id": "suzanna-cottage-rental",
+      "title": "Suzanna Cottage",
+      "location": "Zion's Hill",
       "nightlyRate": 175,
       "nightlyRateFormatted": "$175/night",
       "status": "available",
       "type": "cottage",
       "bedrooms": 2,
-      "bathrooms": 1,
-      "squareFeet": 900,
-      "description": "Cozy and authentic Saban cottage in the heart of Windwardside village. Walk to restaurants, shops, and hiking trails. This charming home offers the perfect base for exploring all that Saba has to offer.",
+      "bathrooms": 2,
+      "maxGuests": 4,
+      "description": "Suzanna Cottage is a charming Saban vacation rental offering authentic island living. Enjoy stunning views and traditional architecture in this fully furnished cottage.",
       "features": [
-        "Village location",
-        "Walking distance to trails",
-        "Fully equipped kitchen",
-        "Private garden",
+        "Sea views",
+        "Full kitchen",
+        "Balcony",
+        "Flower garden",
         "WiFi",
-        "Outdoor seating"
+        "Quiet neighborhood"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/rentals/saban-cottage-escape/hero.jpg",
-        "https://pub-sabanreality.r2.dev/rentals/saban-cottage-escape/living.jpg",
-        "https://pub-sabanreality.r2.dev/rentals/saban-cottage-escape/garden.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/448979639_122101960856372537_7707499399192611010_n.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/3IMG_E25311.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/4IMG_E25351.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/5IMG_E25331.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/6IMG_18041.jpg"
       ]
     },
     {
-      "id": "cloud-forest-hideaway",
-      "title": "Cloud Forest Hideaway",
-      "location": "Upper Hell's Gate",
-      "nightlyRate": 195,
-      "nightlyRateFormatted": "$195/night",
+      "id": "compass-vacation-rental",
+      "title": "Compass Cottage",
+      "location": "Windwardside",
+      "nightlyRate": 185,
+      "nightlyRateFormatted": "$185/night",
+      "status": "available",
+      "type": "cottage",
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "maxGuests": 4,
+      "description": "Compass Cottage offers comfortable accommodations in the heart of Windwardside. This well-appointed vacation rental is perfect for exploring all that Saba has to offer.",
+      "features": [
+        "Central location",
+        "Full kitchen",
+        "Outdoor seating",
+        "WiFi",
+        "Near hiking trails",
+        "Village views"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-1ACompass%20Cottage%204.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-2Compass%20Cottage%202.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-3Compass%20Cottage%208.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-5Compass%20Cottage%201.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-7Compass%20Cottage%209.jpg"
+      ]
+    },
+    {
+      "id": "flamboyant-vacation-rental",
+      "title": "Flamboyant Cottage",
+      "location": "Windwardside",
+      "nightlyRate": 165,
+      "nightlyRateFormatted": "$165/night",
       "status": "available",
       "type": "cottage",
       "bedrooms": 1,
       "bathrooms": 1,
-      "squareFeet": 650,
-      "description": "Romantic getaway nestled in Saba's famous cloud forest near the Mount Scenery trail. Wake up surrounded by lush tropical vegetation and exotic birds. Perfect for nature lovers and hikers seeking a peaceful retreat.",
+      "maxGuests": 2,
+      "description": "Flamboyant Cottage is a delightful vacation rental named after the beautiful Flamboyant tree. This cozy cottage offers a perfect retreat for couples or solo travelers.",
       "features": [
-        "Cloud forest setting",
-        "Near Mount Scenery trail",
-        "Peaceful & private",
-        "Bird watching",
+        "Garden setting",
         "Kitchenette",
-        "Outdoor shower"
+        "Private patio",
+        "WiFi",
+        "Near village center",
+        "Tropical ambiance"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/rentals/cloud-forest-hideaway/hero.jpg",
-        "https://pub-sabanreality.r2.dev/rentals/cloud-forest-hideaway/bedroom.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/flamboyant-vacation-rental/100003932-1-40e3e9ba.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/flamboyant-vacation-rental/100003932-3-WhatsApp.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/flamboyant-vacation-rental/100003932-4-picture.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/flamboyant-vacation-rental/100003932-5-Picture.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/flamboyant-vacation-rental/100003932-6-picture.jpg"
       ]
     },
     {
-      "id": "sunset-villa",
-      "title": "Sunset Villa",
-      "location": "Booby Hill",
-      "nightlyRate": 350,
-      "nightlyRateFormatted": "$350/night",
+      "id": "hibiscus-vacation-rental",
+      "title": "Hibiscus Villa",
+      "location": "Windwardside",
+      "nightlyRate": 225,
+      "nightlyRateFormatted": "$225/night",
       "status": "available",
       "type": "villa",
-      "bedrooms": 4,
-      "bathrooms": 3,
-      "squareFeet": 2500,
-      "description": "Luxury family villa with spectacular sunset views from Booby Hill. Spacious living areas, gourmet kitchen, infinity pool, and multiple terraces make this the ultimate Saba vacation experience. Perfect for families or groups of friends.",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "maxGuests": 4,
+      "description": "Hibiscus Villa offers spacious accommodations with beautiful views and modern amenities. This vacation rental is ideal for families or couples traveling together.",
       "features": [
-        "Infinity pool",
-        "Sunset views",
-        "Gourmet kitchen",
+        "Spacious layout",
+        "Full kitchen",
         "Multiple terraces",
-        "BBQ area",
-        "Air conditioning throughout"
+        "WiFi",
+        "Sea views",
+        "Parking"
       ],
       "images": [
-        "https://pub-sabanreality.r2.dev/rentals/sunset-villa/hero.jpg",
-        "https://pub-sabanreality.r2.dev/rentals/sunset-villa/pool.jpg",
-        "https://pub-sabanreality.r2.dev/rentals/sunset-villa/kitchen.jpg",
-        "https://pub-sabanreality.r2.dev/rentals/sunset-villa/bedroom.jpg"
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/hibiscus-vacation-rental/100003937-picture1.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/hibiscus-vacation-rental/100003937-picture2.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/hibiscus-vacation-rental/100003937-picture3.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/hibiscus-vacation-rental/100003937-picture4.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/hibiscus-vacation-rental/100003937-picture6.jpg"
+      ]
+    },
+    {
+      "id": "poets-painters",
+      "title": "Poets & Painters Villa",
+      "location": "Windwardside",
+      "nightlyRate": 275,
+      "nightlyRateFormatted": "$275/night",
+      "status": "available",
+      "type": "villa",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "maxGuests": 4,
+      "description": "Poets & Painters Villa is an inspiring retreat that has hosted artists and writers for decades. This beautifully appointed villa offers stunning views and creative ambiance.",
+      "features": [
+        "Inspiring views",
+        "Artist's retreat",
+        "Full kitchen",
+        "Garden",
+        "WiFi",
+        "Private setting"
+      ],
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-1covenant-103.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-2covenant-5.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-3covenant-22.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-4covenant-35.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-5covenant-163.jpg"
       ]
     }
   ]
