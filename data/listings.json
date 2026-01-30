@@ -1,0 +1,267 @@
+{
+  "properties": [
+    {
+      "id": "sunrise-ridge",
+      "title": "Sunrise Ridge",
+      "location": "Cove Bay",
+      "price": 450000,
+      "priceFormatted": "$450,000",
+      "status": "for-sale",
+      "type": "land",
+      "bedrooms": 0,
+      "bathrooms": 0,
+      "acreage": 1.28,
+      "description": "Build your dream island estate on 1.28 acres with breathtaking views of Mount Scenery and neighboring isles. This pristine parcel offers the perfect canvas for your Caribbean sanctuary, with utilities available and road access. Wake up to stunning sunrises over the Caribbean Sea and enjoy the peaceful serenity that only Saba can offer.",
+      "features": [
+        "Ocean views",
+        "Mountain views",
+        "Buildable lot",
+        "Utilities available",
+        "Road access",
+        "Sunrise exposure"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/listings/sunrise-ridge/hero.jpg",
+        "https://pub-sabanreality.r2.dev/listings/sunrise-ridge/view-1.jpg",
+        "https://pub-sabanreality.r2.dev/listings/sunrise-ridge/view-2.jpg"
+      ]
+    },
+    {
+      "id": "rainbow-cottage",
+      "title": "Rainbow Cottage",
+      "location": "Windwardside",
+      "price": 295000,
+      "priceFormatted": "$295,000",
+      "status": "for-sale",
+      "type": "cottage",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "squareFeet": 1200,
+      "yearBuilt": 1900,
+      "description": "A historic 1900 Saban gem nestled in Windwardside with charming character and sweeping sea views. This lovingly maintained cottage features traditional Saban architecture with white wooden walls, green shutters, and a classic red roof. Enjoy morning coffee on the balcony while watching the clouds drift around Mount Scenery.",
+      "features": [
+        "Historic charm",
+        "Balconies",
+        "Gazebo",
+        "Walking distance to village",
+        "Sea views",
+        "Traditional architecture"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/listings/rainbow-cottage/hero.jpg",
+        "https://pub-sabanreality.r2.dev/listings/rainbow-cottage/interior-1.jpg",
+        "https://pub-sabanreality.r2.dev/listings/rainbow-cottage/garden.jpg"
+      ]
+    },
+    {
+      "id": "mount-scenery-villa",
+      "title": "Mount Scenery Villa",
+      "location": "Windwardside",
+      "price": 595000,
+      "priceFormatted": "$595,000",
+      "status": "for-sale",
+      "type": "villa",
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "squareFeet": 2100,
+      "yearBuilt": 2015,
+      "description": "Modern luxury meets Caribbean charm in this stunning villa with panoramic views of Mount Scenery and the Caribbean Sea. Features an open floor plan, gourmet kitchen, infinity pool, and lush tropical gardens. Perfect for those seeking a turnkey island retreat with all the modern amenities.",
+      "features": [
+        "Infinity pool",
+        "Panoramic views",
+        "Modern kitchen",
+        "Tropical gardens",
+        "Covered terraces",
+        "Air conditioning"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/listings/mount-scenery-villa/hero.jpg",
+        "https://pub-sabanreality.r2.dev/listings/mount-scenery-villa/pool.jpg",
+        "https://pub-sabanreality.r2.dev/listings/mount-scenery-villa/interior.jpg"
+      ]
+    },
+    {
+      "id": "the-bottom-cottage",
+      "title": "The Bottom Cottage",
+      "location": "The Bottom",
+      "price": 245000,
+      "priceFormatted": "$245,000",
+      "status": "sold",
+      "type": "cottage",
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "squareFeet": 950,
+      "yearBuilt": 1920,
+      "description": "Charming traditional Saban cottage in the historic capital village of The Bottom. This cozy home has been thoughtfully updated while preserving its authentic character. Walking distance to government offices, shops, and restaurants.",
+      "features": [
+        "Historic village location",
+        "Updated kitchen",
+        "Private garden",
+        "Walking distance to amenities",
+        "Traditional design"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/listings/the-bottom-cottage/hero.jpg",
+        "https://pub-sabanreality.r2.dev/listings/the-bottom-cottage/interior.jpg"
+      ]
+    },
+    {
+      "id": "cove-bay-land",
+      "title": "Cove Bay Oceanfront Lot",
+      "location": "Cove Bay",
+      "price": 325000,
+      "priceFormatted": "$325,000",
+      "status": "for-sale",
+      "type": "land",
+      "bedrooms": 0,
+      "bathrooms": 0,
+      "acreage": 0.75,
+      "description": "Rare oceanfront building lot in desirable Cove Bay with direct views of the Caribbean Sea and the island of St. Eustatius. This 0.75-acre parcel is one of the few remaining oceanfront lots available on Saba. Perfect for a luxury villa or vacation rental investment.",
+      "features": [
+        "Oceanfront",
+        "Caribbean Sea views",
+        "Views of St. Eustatius",
+        "Utilities at road",
+        "Gentle slope",
+        "Rare opportunity"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/listings/cove-bay-land/hero.jpg",
+        "https://pub-sabanreality.r2.dev/listings/cove-bay-land/view.jpg"
+      ]
+    },
+    {
+      "id": "hells-gate-estate",
+      "title": "Hell's Gate Estate",
+      "location": "Hell's Gate",
+      "price": 750000,
+      "priceFormatted": "$750,000",
+      "status": "for-sale",
+      "type": "villa",
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "squareFeet": 3200,
+      "yearBuilt": 2010,
+      "description": "Magnificent estate property in the quiet village of Hell's Gate, offering unparalleled privacy and spectacular 360-degree views. This grand home features a main residence plus a separate guest cottage, swimming pool, and over 2 acres of landscaped grounds.",
+      "features": [
+        "360-degree views",
+        "Guest cottage",
+        "Swimming pool",
+        "2+ acres",
+        "Privacy",
+        "Landscaped gardens"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/listings/hells-gate-estate/hero.jpg",
+        "https://pub-sabanreality.r2.dev/listings/hells-gate-estate/pool.jpg",
+        "https://pub-sabanreality.r2.dev/listings/hells-gate-estate/guest-house.jpg"
+      ]
+    }
+  ],
+  "rentals": [
+    {
+      "id": "oceanview-retreat",
+      "title": "Oceanview Retreat",
+      "location": "Windwardside",
+      "nightlyRate": 250,
+      "nightlyRateFormatted": "$250/night",
+      "status": "available",
+      "type": "villa",
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "squareFeet": 1800,
+      "description": "Experience the magic of Saba from this stunning vacation villa perched on the hillside in Windwardside. Floor-to-ceiling windows frame breathtaking views of the Caribbean Sea. Features a fully equipped kitchen, outdoor dining area, and private pool.",
+      "features": [
+        "Private pool",
+        "Ocean views",
+        "Full kitchen",
+        "Outdoor dining",
+        "WiFi",
+        "Air conditioning"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/rentals/oceanview-retreat/hero.jpg",
+        "https://pub-sabanreality.r2.dev/rentals/oceanview-retreat/pool.jpg",
+        "https://pub-sabanreality.r2.dev/rentals/oceanview-retreat/bedroom.jpg"
+      ]
+    },
+    {
+      "id": "saban-cottage-escape",
+      "title": "Saban Cottage Escape",
+      "location": "Windwardside",
+      "nightlyRate": 175,
+      "nightlyRateFormatted": "$175/night",
+      "status": "available",
+      "type": "cottage",
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "squareFeet": 900,
+      "description": "Cozy and authentic Saban cottage in the heart of Windwardside village. Walk to restaurants, shops, and hiking trails. This charming home offers the perfect base for exploring all that Saba has to offer.",
+      "features": [
+        "Village location",
+        "Walking distance to trails",
+        "Fully equipped kitchen",
+        "Private garden",
+        "WiFi",
+        "Outdoor seating"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/rentals/saban-cottage-escape/hero.jpg",
+        "https://pub-sabanreality.r2.dev/rentals/saban-cottage-escape/living.jpg",
+        "https://pub-sabanreality.r2.dev/rentals/saban-cottage-escape/garden.jpg"
+      ]
+    },
+    {
+      "id": "cloud-forest-hideaway",
+      "title": "Cloud Forest Hideaway",
+      "location": "Upper Hell's Gate",
+      "nightlyRate": 195,
+      "nightlyRateFormatted": "$195/night",
+      "status": "available",
+      "type": "cottage",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "squareFeet": 650,
+      "description": "Romantic getaway nestled in Saba's famous cloud forest near the Mount Scenery trail. Wake up surrounded by lush tropical vegetation and exotic birds. Perfect for nature lovers and hikers seeking a peaceful retreat.",
+      "features": [
+        "Cloud forest setting",
+        "Near Mount Scenery trail",
+        "Peaceful & private",
+        "Bird watching",
+        "Kitchenette",
+        "Outdoor shower"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/rentals/cloud-forest-hideaway/hero.jpg",
+        "https://pub-sabanreality.r2.dev/rentals/cloud-forest-hideaway/bedroom.jpg"
+      ]
+    },
+    {
+      "id": "sunset-villa",
+      "title": "Sunset Villa",
+      "location": "Booby Hill",
+      "nightlyRate": 350,
+      "nightlyRateFormatted": "$350/night",
+      "status": "available",
+      "type": "villa",
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "squareFeet": 2500,
+      "description": "Luxury family villa with spectacular sunset views from Booby Hill. Spacious living areas, gourmet kitchen, infinity pool, and multiple terraces make this the ultimate Saba vacation experience. Perfect for families or groups of friends.",
+      "features": [
+        "Infinity pool",
+        "Sunset views",
+        "Gourmet kitchen",
+        "Multiple terraces",
+        "BBQ area",
+        "Air conditioning throughout"
+      ],
+      "images": [
+        "https://pub-sabanreality.r2.dev/rentals/sunset-villa/hero.jpg",
+        "https://pub-sabanreality.r2.dev/rentals/sunset-villa/pool.jpg",
+        "https://pub-sabanreality.r2.dev/rentals/sunset-villa/kitchen.jpg",
+        "https://pub-sabanreality.r2.dev/rentals/sunset-villa/bedroom.jpg"
+      ]
+    }
+  ]
+}
