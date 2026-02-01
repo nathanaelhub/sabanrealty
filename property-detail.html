@@ -260,7 +260,7 @@
   <nav class="navbar">
     <div class="container nav-container">
       <a href="index.html" class="nav-logo">
-        Saban<span>Realty</span>
+        <img src="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png" alt="Saban Realty">
       </a>
 
       <ul class="nav-menu">
@@ -392,18 +392,18 @@
       // Update page title
       document.title = `${property.title} | Saban Realty`;
 
-      // Build gallery HTML
+      // Build gallery HTML - show ALL images
       const mainImage = property.images[0];
-      const thumbImages = property.images.slice(0, 5);
+      const allImages = property.images;
 
       let galleryHTML = `
         <div class="property-gallery">
           <div class="gallery-main">
             <img src="${mainImage}" alt="${property.title}" id="mainImage">
           </div>
-          <div class="gallery-thumbs">
-            ${thumbImages.map((img, i) => `
-              <div class="gallery-thumb ${i === 0 ? 'active' : ''}" onclick="changeImage('${img}', this)">
+          <div class="gallery-thumbs" style="display: flex; flex-wrap: wrap; gap: 0.5rem; max-height: 400px; overflow-y: auto;">
+            ${allImages.map((img, i) => `
+              <div class="gallery-thumb ${i === 0 ? 'active' : ''}" onclick="changeImage('${img}', this)" style="flex: 0 0 calc(50% - 0.25rem); aspect-ratio: 4/3;">
                 <img src="${img}" alt="${property.title} - Image ${i + 1}">
               </div>
             `).join('')}

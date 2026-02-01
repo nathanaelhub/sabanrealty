@@ -278,6 +278,19 @@ p {
   gap: var(--space-lg);
 }
 
+.nav-close {
+  display: none;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.navbar.scrolled .nav-logo img {
+  height: 36px;
+}
+
 .nav-link {
   color: var(--color-white);
   font-weight: 500;
@@ -1426,4 +1439,32 @@ p {
   .amenities-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---- Page Header ---- */
+.page-header {
+  padding-top: 140px;
+  padding-bottom: var(--space-xl);
+  background: linear-gradient(135deg, var(--color-ocean-deep) 0%, var(--color-ocean-mid) 100%);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.page-header h1 {
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+.page-header p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.page-header .section-label {
+  color: var(--color-coral);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--space-sm);
 }
