@@ -146,7 +146,8 @@
             const grid = document.getElementById('propertyGrid');
             grid.innerHTML = '';
 
-            data.properties.forEach(property => {
+            let cardIndex = 0;
+          data.properties.forEach(property => {
               // Skip hidden properties
               if (property.hidden) return;
 
@@ -229,6 +230,8 @@
                 </div>
               `;
 
+              card.style.animationDelay = `${cardIndex * 0.08}s`;
+              cardIndex++;
               grid.appendChild(card);
             });
 

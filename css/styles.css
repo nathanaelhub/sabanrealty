@@ -1630,6 +1630,222 @@ p {
   }
 }
 
+/* ===================================================
+   UI ENHANCEMENTS — Luxury Caribbean Refinements
+   =================================================== */
+
+/* Hero: staggered per-element reveals */
+.hero-content { animation: none; }
+.hero-tagline { animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+.hero h1 { animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
+.hero-description { animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
+.hero-buttons { animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both; }
+.hero-stats { animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both; }
+
+/* Hero: richer, more directional overlay */
+.hero-overlay {
+  background: linear-gradient(
+    155deg,
+    rgba(10, 37, 64, 0.9) 0%,
+    rgba(10, 37, 64, 0.68) 42%,
+    rgba(26, 74, 110, 0.52) 72%,
+    rgba(45, 122, 156, 0.42) 100%
+  );
+}
+
+/* Navbar: glassmorphism when scrolled */
+.navbar.scrolled {
+  background: rgba(10, 37, 64, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Property cards: spring hover + gold border glow */
+.property-card {
+  border: 1px solid rgba(232, 224, 208, 0.9);
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-12px);
+  box-shadow:
+    0 24px 64px rgba(10, 37, 64, 0.16),
+    0 0 0 1px rgba(212, 168, 83, 0.15);
+  border-color: rgba(212, 168, 83, 0.25);
+}
+
+/* Property image: "View Property" overlay on hover */
+.property-image::after {
+  content: 'View Property';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 37, 64, 0.38);
+  color: rgba(255, 255, 255, 0.95);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.property-card:hover .property-image::after { opacity: 1; }
+
+/* Badge stays above overlay */
+.property-badge { z-index: 2; }
+
+/* Smoother, longer image zoom */
+.property-image img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.property-card:hover .property-image img { transform: scale(1.08); }
+
+/* Section headers: coral-to-gold underline accent */
+.section-header h2::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-coral) 0%, var(--color-gold) 100%);
+  margin: 0.875rem auto 0;
+  border-radius: 2px;
+}
+
+/* Value cards: bottom border accent on hover + icon bounce */
+.value-card {
+  border-bottom: 3px solid transparent;
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    border-bottom-color 0.3s ease;
+}
+
+.value-card:hover { border-bottom-color: var(--color-coral); }
+
+.value-card:hover .value-icon {
+  animation: iconBounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes iconBounce {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Buttons: spring micro-interaction */
+.btn { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(224, 122, 95, 0.35);
+}
+
+.btn-secondary:hover { transform: translateY(-3px) scale(1.02); }
+
+.btn-white:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(255, 255, 255, 0.15);
+}
+
+.btn-outline:hover { transform: translateY(-3px) scale(1.02); }
+
+/* CTA section: atmospheric radial light */
+.cta-section { position: relative; overflow: hidden; }
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  right: -8%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(224, 122, 95, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Footer: link slide hover */
+.footer-links a {
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-links a:hover { transform: translateX(4px); }
+
+/* Filter bar: focus glow ring */
+.filter-group select:focus,
+.filter-group input:focus {
+  box-shadow: 0 0 0 3px rgba(45, 122, 156, 0.12);
+}
+
+/* Scroll-to-top: rounded corners + glow */
+.scroll-top {
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(224, 122, 95, 0.3);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scroll-top:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 24px rgba(224, 122, 95, 0.45);
+}
+
+/* Featured section: subtle image scale on hover */
+.featured-image img {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.featured-card:hover .featured-image img { transform: scale(1.04); }
+
+/* Page hero inner pages: coral accent line at bottom */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(224, 122, 95, 0.55), transparent);
+}
+
+/* Nav links: snappier underline */
+.nav-link::after {
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Team cards: spring hover */
+.team-card {
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease;
+}
+
+/* Property card reveal animation (used on dynamic grids) */
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.property-grid .property-card {
+  animation: cardReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* ---- Print Styles ---- */
 @media print {
   .navbar,
