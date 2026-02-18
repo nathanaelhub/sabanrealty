@@ -381,6 +381,46 @@
     </div>
   </section>
 
+  <script>
+    // Filter logic for Browse Properties static cards
+    function applyHomeFilters() {
+      const search   = document.getElementById('searchInput').value.toLowerCase();
+      const typeVal  = document.getElementById('propertyType').value;
+      const bedVal   = document.getElementById('bedrooms').value;
+      const priceVal = document.getElementById('priceRange').value;
+
+      document.querySelectorAll('.property-grid .property-card').forEach(card => {
+        const title    = (card.querySelector('.property-title')?.textContent || '').toLowerCase();
+        const location = (card.querySelector('.property-location')?.textContent || '').toLowerCase();
+        const type     = card.getAttribute('data-type') || '';
+        const beds     = parseInt(card.getAttribute('data-bedrooms')) || 0;
+        const price    = parseInt(card.getAttribute('data-price')) || 0;
+
+        let show = true;
+
+        if (search && !title.includes(search) && !location.includes(search)) show = false;
+        if (typeVal !== 'all' && type !== typeVal) show = false;
+
+        if (bedVal !== 'all') {
+          if (bedVal === '4+' && beds < 4) show = false;
+          else if (bedVal !== '4+' && beds !== parseInt(bedVal)) show = false;
+        }
+
+        if (priceVal !== 'all') {
+          const [min, max] = priceVal.split('-').map(Number);
+          if (price < min || price > max) show = false;
+        }
+
+        card.style.display = show ? '' : 'none';
+      });
+    }
+
+    document.getElementById('searchInput').addEventListener('input', applyHomeFilters);
+    document.getElementById('propertyType').addEventListener('change', applyHomeFilters);
+    document.getElementById('bedrooms').addEventListener('change', applyHomeFilters);
+    document.getElementById('priceRange').addEventListener('change', applyHomeFilters);
+  </script>
+
   <!-- Why Choose Us Section -->
   <section class="section" style="background: var(--color-white);">
     <div class="container">
