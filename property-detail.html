@@ -137,6 +137,16 @@
       line-height: 1.8;
       white-space: pre-line;
     }
+    .description-text {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      white-space: pre-line;
+      font-size: 0.975rem;
+    }
+    .description-text strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
     .property-features {
       background: var(--white);
       padding: 2rem;
@@ -601,8 +611,7 @@
 
         <div class="property-info-grid">
           <div class="property-description">
-            <h3>Property Overview</h3>
-            <p>${property.description}</p>
+            <div class="description-text">${property.description}</div>
           </div>
           ${featuresHTML}
         </div>

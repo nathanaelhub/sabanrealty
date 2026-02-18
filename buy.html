@@ -101,10 +101,8 @@
             <label for="propertyType">Property Type</label>
             <select id="propertyType">
               <option value="all">All Types</option>
-              <option value="villa">Villa</option>
-              <option value="cottage">Cottage</option>
+              <option value="house">Houses</option>
               <option value="land">Land</option>
-              <option value="commercial">Commercial</option>
             </select>
           </div>
           <div class="filter-group">
@@ -149,11 +147,18 @@
             grid.innerHTML = '';
 
             data.properties.forEach(property => {
+              // Skip hidden properties
+              if (property.hidden) return;
+
               const isSold = property.status === 'sold';
               const isLand = property.type === 'land';
+              const isHouse = property.type === 'villa' || property.type === 'cottage';
               const badgeClass = isSold ? 'badge-sold' : 'badge-sale';
               const badgeText = isSold ? 'Sold' : 'For Sale';
               const priceStyle = isSold ? 'color: var(--color-text-light);' : '';
+              // Normalize type for filtering: villa/cottage → house
+              const filterType = isHouse ? 'house' : property.type;
+              const displayType = isHouse ? 'House' : property.type.charAt(0).toUpperCase() + property.type.slice(1);
 
               let featuresHTML = '';
               if (isLand) {
@@ -189,7 +194,7 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
                     </svg>
-                    <span>${property.type}</span>
+                    <span>${displayType}</span>
                   </div>
                 `;
               }
@@ -197,7 +202,7 @@
               const card = document.createElement('a');
               card.href = `property-detail.html?id=${property.id}&type=sale`;
               card.className = 'property-card fade-in visible';
-              card.setAttribute('data-type', property.type);
+              card.setAttribute('data-type', filterType);
               card.setAttribute('data-bedrooms', property.bedrooms);
               card.setAttribute('data-price', property.price);
               card.style.textDecoration = 'none';
@@ -256,7 +261,7 @@
               show = false;
             }
 
-            // Type filter
+            // Type filter — 'house' matches villa/cottage (already normalized to 'house' in data-type)
             if (typeFilter !== 'all' && type !== typeFilter) {
               show = false;
             }
