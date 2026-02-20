@@ -1961,9 +1961,15 @@ p {
 }
 
 .showcase-location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   color: rgba(255,255,255,0.55);
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
+}
+.showcase-location svg {
+  flex-shrink: 0;
 }
 
 .showcase-divider {
