@@ -753,6 +753,137 @@ p {
   background: var(--color-white);
 }
 
+/* Rent — diagonal clip full-bleed (image left) */
+.island-escape-section {
+  background: var(--color-white);
+  overflow: hidden;
+}
+
+.island-escape-grid {
+  display: grid;
+  grid-template-columns: 56fr 44fr;
+  min-height: 540px;
+}
+
+.island-escape-image {
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 91% 100%, 0 100%);
+}
+
+.island-escape-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.island-escape-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 4rem 4rem 3rem;
+}
+
+.island-escape-content p {
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .island-escape-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .island-escape-image {
+    height: 300px;
+    clip-path: none;
+  }
+  .island-escape-content {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* About — Discover Saba full-bleed (image right) */
+.discover-saba-section {
+  background: var(--color-sand);
+  overflow: hidden;
+}
+
+.discover-saba-grid {
+  display: grid;
+  grid-template-columns: 42fr 58fr;
+  min-height: 500px;
+}
+
+.discover-saba-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3rem 4rem 3.5rem;
+}
+
+.discover-saba-content p {
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.discover-saba-image {
+  overflow: hidden;
+}
+
+.discover-saba-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .discover-saba-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .discover-saba-image {
+    height: 300px;
+    order: -1;
+  }
+  .discover-saba-content {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* Sell — contained with coral accent offset frame */
+.sell-image-frame {
+  position: relative;
+  padding: 0 0 16px 0;
+}
+
+.sell-image-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: -12px;
+  width: 88%;
+  height: 88%;
+  border: 2px solid var(--color-coral);
+  border-radius: var(--radius-lg);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.sell-image-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 1;
+}
+
 /* Our Story — full-bleed split layout */
 .our-story-section {
   background: var(--color-white);
