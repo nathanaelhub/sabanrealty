@@ -559,90 +559,6 @@
       ]
     },
     {
-      "id": "effies-cottage",
-      "title": "Effie's Cottage",
-      "location": "Windwardside",
-      "nightlyRate": 150,
-      "nightlyRateFormatted": "$150/night",
-      "status": "available",
-      "type": "cottage",
-      "bedrooms": 1,
-      "bathrooms": 1,
-      "maxGuests": 2,
-      "description": "Effie's Cottage is a cozy retreat perfect for couples seeking an authentic Saban experience. This charming cottage offers comfort and character in the heart of Windwardside.",
-      "features": [
-        "Village location",
-        "Kitchenette",
-        "Garden views",
-        "WiFi",
-        "Walking distance to restaurants",
-        "Peaceful setting"
-      ],
-      "images": [
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/1Effie1.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/2Effie1.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/3IMG_E3644.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/4MG_3991.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/effies-cottage/5IMG_3993.JPG"
-      ]
-    },
-    {
-      "id": "suzanna-cottage-rental",
-      "title": "Suzanna Cottage",
-      "location": "Zion's Hill",
-      "nightlyRate": 175,
-      "nightlyRateFormatted": "$175/night",
-      "status": "available",
-      "type": "cottage",
-      "bedrooms": 2,
-      "bathrooms": 2,
-      "maxGuests": 4,
-      "description": "Suzanna Cottage is a charming Saban vacation rental offering authentic island living. Enjoy stunning views and traditional architecture in this fully furnished cottage.",
-      "features": [
-        "Sea views",
-        "Full kitchen",
-        "Balcony",
-        "Flower garden",
-        "WiFi",
-        "Quiet neighborhood"
-      ],
-      "images": [
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/448979639_122101960856372537_7707499399192611010_n.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/3IMG_E25311.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/4IMG_E25351.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/5IMG_E25331.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/suzanna-cottage/6IMG_18041.jpg"
-      ]
-    },
-    {
-      "id": "compass-vacation-rental",
-      "title": "Compass Cottage",
-      "location": "Windwardside",
-      "nightlyRate": 185,
-      "nightlyRateFormatted": "$185/night",
-      "status": "available",
-      "type": "cottage",
-      "bedrooms": 2,
-      "bathrooms": 1,
-      "maxGuests": 4,
-      "description": "Compass Cottage offers comfortable accommodations in the heart of Windwardside. This well-appointed vacation rental is perfect for exploring all that Saba has to offer.",
-      "features": [
-        "Central location",
-        "Full kitchen",
-        "Outdoor seating",
-        "WiFi",
-        "Near hiking trails",
-        "Village views"
-      ],
-      "images": [
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-1ACompass%20Cottage%204.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-2Compass%20Cottage%202.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-3Compass%20Cottage%208.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-5Compass%20Cottage%201.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/compass-vacation-rental/100003938-7Compass%20Cottage%209.jpg"
-      ]
-    },
-    {
       "id": "flamboyant-vacation-rental",
       "title": "Flamboyant Cottage",
       "location": "Windwardside",
@@ -696,34 +612,6 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/hibiscus-vacation-rental/100003937-picture3.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/hibiscus-vacation-rental/100003937-picture4.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/hibiscus-vacation-rental/100003937-picture6.jpg"
-      ]
-    },
-    {
-      "id": "poets-painters",
-      "title": "Poets & Painters Villa",
-      "location": "Windwardside",
-      "nightlyRate": 275,
-      "nightlyRateFormatted": "$275/night",
-      "status": "available",
-      "type": "villa",
-      "bedrooms": 2,
-      "bathrooms": 2,
-      "maxGuests": 4,
-      "description": "Poets & Painters Villa is an inspiring retreat that has hosted artists and writers for decades. This beautifully appointed villa offers stunning views and creative ambiance.",
-      "features": [
-        "Inspiring views",
-        "Artist's retreat",
-        "Full kitchen",
-        "Garden",
-        "WiFi",
-        "Private setting"
-      ],
-      "images": [
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-1covenant-103.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-2covenant-5.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-3covenant-22.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-4covenant-35.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/rentals/poets--painters-vacation-rental/100003939-5covenant-163.jpg"
       ]
     }
   ]
