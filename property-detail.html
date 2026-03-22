@@ -12,14 +12,78 @@
     gtag('config', 'G-BC1FWG505F');
   </script>
   <meta name="description" content="Property details on Saba Island - Saban Realty">
-  <!-- Open Graph / Social Media (dynamic og:image set via JS) -->
+  <!-- Open Graph / Social Media (dynamic values set via JS) -->
   <meta property="og:title" content="Property Details | Saban Realty">
   <meta property="og:description" content="Property details on Saba Island - Saban Realty">
   <meta property="og:image" content="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png">
-  <meta property="og:url" content="https://sabanrealty.com/property-detail.html">
+  <meta property="og:url" content="https://www.sabanrealty.com/property-detail.html">
   <meta property="og:type" content="website">
 
+  <!-- Twitter Card (dynamic values set via JS) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Property Details | Saban Realty">
+  <meta name="twitter:description" content="Property details on Saba Island - Saban Realty">
+  <meta name="twitter:image" content="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png">
+
   <title>Property Details | Saban Realty</title>
+
+  <!-- Structured Data: RealEstateAgent -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Saban Realty",
+    "url": "https://www.sabanrealty.com",
+    "logo": "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png",
+    "description": "Licensed real estate professional specializing in Saba Island property sales, luxury villas, vacation rentals, and Caribbean island investment.",
+    "telephone": "+599-416-5497",
+    "email": "jeffsabarealty@gmail.com",
+    "agent": {
+      "@type": "Person",
+      "name": "Jeff Johnson",
+      "jobTitle": "Licensed Real Estate Agent"
+    },
+    "affiliation": {
+      "@type": "Organization",
+      "name": "RE/MAX"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Zion's Hill",
+      "addressRegion": "Saba",
+      "addressCountry": "BQ"
+    },
+    "knowsAbout": ["Saba Island Real Estate", "Caribbean Property Investment", "Vacation Rentals", "Saba Luxury Villas", "Windwardside Properties"],
+    "sameAs": [
+      "https://www.facebook.com/SabaIslandRealEstate",
+      "https://www.youtube.com/@sabanrealty",
+      "https://www.instagram.com/sabanrealty/"
+    ]
+  }
+  </script>
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Saban Realty",
+    "url": "https://www.sabanrealty.com",
+    "logo": "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png",
+    "telephone": "+599-416-5497",
+    "email": "jeffsabarealty@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Zion's Hill",
+      "addressRegion": "Saba",
+      "addressCountry": "BQ"
+    },
+    "sameAs": [
+      "https://www.facebook.com/SabaIslandRealEstate",
+      "https://www.youtube.com/@sabanrealty",
+      "https://www.instagram.com/sabanrealty/"
+    ]
+  }
+  </script>
   <link rel="canonical" href="https://sabanrealty.com/property-detail.html">
 
   <link rel="icon" type="image/png" href="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/favicon.png">
@@ -244,6 +308,55 @@
       stroke: currentColor;
       stroke-width: 2;
     }
+    .detail-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .detail-breadcrumb a {
+      color: var(--color-ocean-mid);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .detail-breadcrumb a:hover {
+      color: var(--color-ocean-deep);
+      text-decoration: underline;
+    }
+    .detail-breadcrumb .breadcrumb-sep {
+      color: var(--color-text-light);
+      opacity: 0.5;
+    }
+    .detail-breadcrumb .breadcrumb-current {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+    .explore-more-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-sand-dark);
+    }
+    .explore-more-section h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--color-text);
+    }
+    .explore-more-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .explore-more-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
     .loading-skeleton {
       background: linear-gradient(90deg, var(--color-sand) 25%, var(--color-sand-dark) 50%, var(--color-sand) 75%);
       background-size: 200% 100%;
@@ -316,10 +429,13 @@
   <!-- Property Detail Content -->
   <section class="property-detail-section">
     <div class="container">
-      <a href="javascript:history.back()" class="back-link">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        Back to listings
-      </a>
+      <nav class="detail-breadcrumb" id="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <a href="buy.html" id="breadcrumb-parent">Properties</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span class="breadcrumb-current" id="breadcrumb-title">Loading...</span>
+      </nav>
 
       <div id="property-content">
         <!-- Loading state -->
@@ -327,6 +443,8 @@
         <div class="loading-skeleton" style="height: 60px; width: 60%; margin-bottom: 1rem;"></div>
         <div class="loading-skeleton" style="height: 200px;"></div>
       </div>
+
+      <div id="explore-more-container"></div>
     </div>
   </section>
 
@@ -406,6 +524,7 @@
 
         if (property) {
           renderProperty(property, propertyType);
+          renderExploreMore(data, property, propertyType);
         } else {
           showNotFound();
         }
@@ -422,14 +541,49 @@
 
       // Update page title and meta
       document.title = `${property.title} | Saban Realty`;
-      document.querySelector('meta[name="description"]').setAttribute('content',
-        `${property.title} - ${property.location}. ${isRental ? property.nightlyRateFormatted : property.priceFormatted}. View details, photos, and inquire about this ${property.type} on Saba Island.`
-      );
+      const metaDesc = `${property.title} - ${property.location}. ${isRental ? property.nightlyRateFormatted : property.priceFormatted}. View details, photos, and inquire about this ${property.type} on Saba Island.`;
+      document.querySelector('meta[name="description"]').setAttribute('content', metaDesc);
 
       // Update canonical URL and og:url to include query parameters
-      const canonicalUrl = `https://sabanrealty.com/property-detail.html?id=${property.id}&type=${type}`;
+      const canonicalUrl = `https://www.sabanrealty.com/property-detail.html?id=${property.id}&type=${type}`;
       document.querySelector('link[rel="canonical"]').setAttribute('href', canonicalUrl);
       document.querySelector('meta[property="og:url"]').setAttribute('content', canonicalUrl);
+
+      // Update Open Graph meta tags
+      document.querySelector('meta[property="og:title"]').setAttribute('content', `${property.title} | Saban Realty`);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', metaDesc);
+      if (property.images && property.images.length > 0) {
+        document.querySelector('meta[property="og:image"]').setAttribute('content', property.images[0]);
+      }
+
+      // Update Twitter Card meta tags
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${property.title} | Saban Realty`);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', metaDesc);
+      if (property.images && property.images.length > 0) {
+        document.querySelector('meta[name="twitter:image"]').setAttribute('content', property.images[0]);
+      }
+
+      // Update breadcrumb
+      const parentLink = isRental ? 'rent.html' : 'buy.html';
+      const parentText = isRental ? 'Vacation Rentals' : 'Properties';
+      document.getElementById('breadcrumb-parent').href = parentLink;
+      document.getElementById('breadcrumb-parent').textContent = parentText;
+      document.getElementById('breadcrumb-title').textContent = property.title;
+
+      // Add BreadcrumbList structured data
+      const breadcrumbLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sabanrealty.com/" },
+          { "@type": "ListItem", "position": 2, "name": parentText, "item": `https://www.sabanrealty.com/${parentLink}` },
+          { "@type": "ListItem", "position": 3, "name": property.title, "item": canonicalUrl }
+        ]
+      };
+      const breadcrumbScript = document.createElement('script');
+      breadcrumbScript.type = 'application/ld+json';
+      breadcrumbScript.textContent = JSON.stringify(breadcrumbLd);
+      document.head.appendChild(breadcrumbScript);
 
       // Add structured data
       const jsonLd = {
@@ -626,6 +780,53 @@
 
       // Set up interactive gallery + lightbox
       setupGallery(allImages, property.title);
+    }
+
+    function renderExploreMore(data, currentProperty, type) {
+      const container = document.getElementById('explore-more-container');
+      const isRental = type === 'rental';
+      const list = isRental ? data.rentals : data.properties;
+
+      // Get up to 3 other non-hidden properties
+      const others = list.filter(p => p.id !== currentProperty.id && !p.hidden).slice(0, 3);
+      if (others.length === 0) return;
+
+      let cardsHTML = others.map(p => {
+        const isHouse = p.type === 'villa' || p.type === 'cottage';
+        const displayType = isHouse ? 'House' : (p.type ? p.type.charAt(0).toUpperCase() + p.type.slice(1) : '');
+        const price = isRental ? (p.nightlyRateFormatted || '') : (p.priceFormatted || '');
+        const link = `property-detail.html?id=${p.id}&type=${type}`;
+
+        return `
+          <a href="${link}" class="property-card" style="text-decoration:none;color:inherit;">
+            <div class="property-image">
+              <img src="${p.images[0]}" alt="${p.title}" loading="lazy">
+            </div>
+            <div class="property-content">
+              <div class="property-price">${price}</div>
+              <h4 class="property-title">${p.title}</h4>
+              <p class="property-location">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                ${p.location}
+              </p>
+            </div>
+          </a>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="explore-more-section">
+          <h3>Explore More Properties</h3>
+          <div class="explore-more-grid">${cardsHTML}</div>
+          <div class="explore-more-links">
+            <a href="buy.html" class="btn btn-secondary">View All Properties</a>
+            <a href="contact.html" class="btn btn-primary">Schedule a Viewing</a>
+          </div>
+        </div>
+      `;
     }
 
     function showNotFound() {
