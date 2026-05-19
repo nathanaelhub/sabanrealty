@@ -62,6 +62,36 @@
       ]
     },
     {
+      "id": "cherry-tree-house-statia",
+      "title": "Cherry Tree House Statia",
+      "location": "Cherry Tree, St Eustatius",
+      "price": 0,
+      "priceFormatted": "SOLD",
+      "status": "sold",
+      "type": "villa",
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "description": "<h2>Cherry Tree House Statia - SOLD</h2>\n<p><strong>Location:</strong> Cherry Tree, St Eustatius</p>\n<p><strong>Property Size:</strong> 2,274 m² lot | 3BD | 2BT | Plantation-style villa</p>\n<p><strong>Previous Asking Price:</strong> $288,000</p>\n<h3>Property Overview:</h3>\n<p>Cherry Tree House is located at the entrance of the peaceful Cherry Parc residential area on Statia Island, offering ocean views and direct access to George Cruger Road. Set on 2,274 square meters of flat private land, this unfurnished plantation-style home combines traditional island character with practical residential features.</p>\n<p>The home includes 3 bedrooms, 2 bathrooms, a separate shower, high ceilings for natural cooling, a front porch with built-in jacuzzi, a garage, a cistern for water storage, and a basement hurricane shelter.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Spacious Land:</strong> The main house sits on a 1,700 m² lot with an additional 574 m² lot that offers room for expansion or a future rental dwelling.</li>\n<li><strong>Island Character:</strong> Original island-style details include historic tiles and locally inspired paintings that reflect the cultural heritage of the area.</li>\n<li><strong>Outdoor Living:</strong> Ocean and hillside views, a yard, patio, and front porch with built-in jacuzzi create comfortable indoor-outdoor living.</li>\n<li><strong>Practical Features:</strong> Garage, cistern, septic sewage, dirt driveway, 110V electricity, zinc roof, hurricane shutters, and basement hurricane shelter.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>Cherry Tree House offered a versatile Statia property for a family home, holiday home, or investment opportunity, with extra land to expand and a peaceful residential setting in Cherry Parc.</p>",
+      "images": [
+        "https://www.remaxislandproperties.com/images/property-images/100003982-01Cees.JPG",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-06CeesCrop.JPG",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-IMG_3714-50.JPG",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-1cherry.jpg",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-2cherry.jpg",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-12cherryC.png",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-10cherry-DSC_0280-200.JPG",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-13IMG_9716-200.jpg",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-IMG_9713-200.jpg",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-16cherry.jpg",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-14BcherryD.png",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-14cherry-Screenshot.png",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-03Cees.JPG",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-8IMG-20250803-WA0011.jpg",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-18download.png",
+        "https://www.remaxislandproperties.com/images/property-images/100003982-20cherry.jpg"
+      ]
+    },
+    {
       "id": "statia-poolhouse",
       "title": "STATIA Poolhouse and Bungalows",
       "location": "White Hall, St Eustatius",
