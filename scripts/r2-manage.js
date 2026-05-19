@@ -4,10 +4,13 @@
  *   node scripts/r2-manage.js list [prefix]
  *   node scripts/r2-manage.js delete <key>
  *   node scripts/r2-manage.js delete-folder <folder/>
+ *   node scripts/r2-manage.js upload <localDir> <prefix>
  */
 
 require('dotenv').config();
-const { S3Client, ListObjectsV2Command, DeleteObjectCommand, DeleteObjectsCommand } = require('@aws-sdk/client-s3');
+const fs = require('fs');
+const path = require('path');
+const { S3Client, ListObjectsV2Command, DeleteObjectCommand, DeleteObjectsCommand, PutObjectCommand } = require('@aws-sdk/client-s3');
 
 const client = new S3Client({
   region: 'auto',
@@ -57,6 +60,48 @@ async function deleteFolder(prefix) {
   console.log(`Deleted ${response.Deleted?.length || 0} objects from ${prefix}`);
 }
 
+const CONTENT_TYPES = {
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
+  '.webp': 'image/webp',
+  '.gif': 'image/gif',
+};
+
+function contentType(filename) {
+  return CONTENT_TYPES[path.extname(filename).toLowerCase()] || 'application/octet-stream';
+}
+
+async function uploadFolder(localDir, prefix) {
+  if (!fs.existsSync(localDir)) {
+    console.error(`Local directory not found: ${localDir}`);
+    process.exit(1);
+  }
+  const cleanPrefix = prefix.replace(/\/+$/, '');
+  const files = fs.readdirSync(localDir)
+    .filter(f => f !== '.DS_Store' && fs.statSync(path.join(localDir, f)).isFile());
+
+  if (files.length === 0) {
+    console.log(`No files to upload in ${localDir}`);
+    return;
+  }
+
+  let uploaded = 0;
+  for (const file of files) {
+    const key = `${cleanPrefix}/${file}`;
+    const body = fs.readFileSync(path.join(localDir, file));
+    await client.send(new PutObjectCommand({
+      Bucket: BUCKET,
+      Key: key,
+      Body: body,
+      ContentType: contentType(file),
+    }));
+    uploaded++;
+    console.log(`  Uploaded: ${key} (${body.length} bytes, ${contentType(file)})`);
+  }
+  console.log(`Uploaded ${uploaded} file(s) to ${cleanPrefix}/`);
+}
+
 async function main() {
   const [,, action, ...args] = process.argv;
 
@@ -88,12 +133,21 @@ async function main() {
         await deleteFolder(args[0]);
         break;
 
+      case 'upload':
+        if (!args[0] || !args[1]) {
+          console.error('Usage: node scripts/r2-manage.js upload <localDir> <prefix>');
+          process.exit(1);
+        }
+        await uploadFolder(args[0], args[1]);
+        break;
+
       default:
         console.log('R2 Management Script');
         console.log('Usage:');
-        console.log('  node scripts/r2-manage.js list [prefix]     - List objects');
-        console.log('  node scripts/r2-manage.js delete <key>      - Delete single object');
-        console.log('  node scripts/r2-manage.js delete-folder <prefix>  - Delete all objects with prefix');
+        console.log('  node scripts/r2-manage.js list [prefix]            - List objects');
+        console.log('  node scripts/r2-manage.js delete <key>             - Delete single object');
+        console.log('  node scripts/r2-manage.js delete-folder <prefix>   - Delete all objects with prefix');
+        console.log('  node scripts/r2-manage.js upload <localDir> <prefix> - Upload a folder of files');
     }
   } catch (error) {
     console.error('Error:', error.message);
