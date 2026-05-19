@@ -3149,3 +3149,88 @@ p {
     order: -1;
   }
 }
+
+
+/* ===== Island Journal (blog) ===== */
+.blog-empty {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-sand-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(2.5rem, 5vw, 4rem);
+}
+
+.blog-empty .value-icon {
+  margin: 0 auto var(--space-md);
+}
+
+.blog-empty h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.blog-empty > p {
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+.blog-empty .newsletter {
+  border: 1px solid var(--color-sand-dark);
+}
+
+/* Post grid + cards — ready for when posts are published */
+.blog-grid {
+  margin-top: 0;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: var(--space-md);
+  flex: 1;
+}
+
+.blog-card-date {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-light);
+}
+
+.blog-card h3 {
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.blog-card-body p {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
