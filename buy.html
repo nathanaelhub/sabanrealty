@@ -349,8 +349,9 @@
               else if (bedroomFilter !== '4+' && bedrooms !== parseInt(bedroomFilter)) show = false;
             }
 
-            // Price filter
-            if (priceFilter !== 'all') {
+            // Price filter — skip cards with no price (price 0: sold or
+            // under-contract listings); they shouldn't fall into a bracket.
+            if (priceFilter !== 'all' && price > 0) {
               const [min, max] = priceFilter.split('-').map(Number);
               if (price < min || price > max) show = false;
             }
