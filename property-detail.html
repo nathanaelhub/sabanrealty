@@ -152,6 +152,10 @@
     .property-price-badge.sold {
       background: var(--color-coral);
     }
+    .property-price-badge.under-contract {
+      background: var(--color-gold);
+      color: var(--color-ocean-deep);
+    }
     .property-info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -548,6 +552,7 @@
       const container = document.getElementById('property-content');
       const isRental = type === 'rental';
       const isSold = property.status === 'sold';
+      const isUnderContract = property.detailStatus === 'under-contract';
 
       // Update page title and meta
       document.title = `${property.title} | Saban Realty`;
@@ -657,7 +662,7 @@
 
       // Price display
       const priceDisplay = isRental ? property.nightlyRateFormatted : property.priceFormatted;
-      const priceClass = isSold ? 'property-price-badge sold' : 'property-price-badge';
+      const priceClass = isSold ? 'property-price-badge sold' : (isUnderContract ? 'property-price-badge under-contract' : 'property-price-badge');
 
       // Stats HTML
       let statsHTML = '<div class="property-stats">';
@@ -789,6 +794,13 @@
         <div class="contact-cta" style="background: linear-gradient(135deg, #666 0%, #888 100%);">
           <h3>This Property Has Been Sold</h3>
           <p>Interested in similar properties? Contact us to explore other options.</p>
+          <a href="buy.html" class="btn btn-primary">View Available Properties</a>
+          <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+        </div>
+      ` : isUnderContract ? `
+        <div class="contact-cta">
+          <h3>This Property Is Under Contract</h3>
+          <p>Contact us to ask about backup interest or similar properties.</p>
           <a href="buy.html" class="btn btn-primary">View Available Properties</a>
           <a href="contact.html" class="btn btn-secondary">Contact Us</a>
         </div>
