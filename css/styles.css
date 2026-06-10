@@ -3235,6 +3235,100 @@ p {
   line-height: 1.7;
 }
 
+/* Article / blog post */
+.article-hero {
+  padding-top: 140px;
+  padding-bottom: var(--space-xl);
+  background: linear-gradient(135deg, var(--color-ocean-deep) 0%, var(--color-ocean-mid) 100%);
+  color: var(--color-white);
+  text-align: center;
+}
+.article-hero .section-label {
+  color: var(--color-coral);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--space-sm);
+}
+.article-hero h1 {
+  color: var(--color-white);
+  max-width: 820px;
+  margin: 0 auto var(--space-sm);
+}
+.article-meta {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+.article-feature-img {
+  max-width: 1000px;
+  margin: -3rem auto 0;
+  padding: 0 var(--space-md);
+}
+.article-feature-img img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+.article-body p {
+  margin-bottom: 1.5rem;
+}
+.article-body h2 {
+  font-size: 1.7rem;
+  margin: 2.75rem 0 1rem;
+}
+.article-body h3 {
+  font-size: 1.25rem;
+  margin: 2rem 0 0.75rem;
+}
+.article-body a {
+  color: var(--color-coral);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.article-body ul,
+.article-body ol {
+  margin: 0 0 1.5rem 1.25rem;
+}
+.article-body li {
+  margin-bottom: 0.6rem;
+}
+.article-body strong {
+  color: var(--color-text);
+}
+.article-lead {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+.article-callout {
+  background: var(--color-sand);
+  border-left: 4px solid var(--color-coral);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+.article-callout p {
+  margin: 0;
+  font-size: 1rem;
+}
+.article-disclaimer {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  border-top: 1px solid var(--color-sand-dark);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+}
+
 /* FAQ accordion */
 .faq-section {
   background: var(--color-sand);
