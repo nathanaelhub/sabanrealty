@@ -11,21 +11,21 @@
     gtag('js', new Date());
     gtag('config', 'G-BC1FWG505F');
   </script>
-  <meta name="description" content="Property details on Saba Island - Saban Realty">
+  <meta name="description" content="View villas, cottages, and land for sale and vacation rentals on Saba Island, Caribbean Netherlands. Photos, pricing, and details from Saban Realty.">
   <!-- Open Graph / Social Media (dynamic values set via JS) -->
-  <meta property="og:title" content="Property Details | Saban Realty">
-  <meta property="og:description" content="Property details on Saba Island - Saban Realty">
+  <meta property="og:title" content="Saba Island Property for Sale & Rent | Saban Realty">
+  <meta property="og:description" content="View villas, cottages, and land for sale and vacation rentals on Saba Island, Caribbean Netherlands. Photos, pricing, and details from Saban Realty.">
   <meta property="og:image" content="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png">
-  <meta property="og:url" content="https://www.sabanrealty.com/property-detail.html">
+  <meta property="og:url" content="https://sabanrealty.com/property-detail.html">
   <meta property="og:type" content="website">
 
   <!-- Twitter Card (dynamic values set via JS) -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Property Details | Saban Realty">
-  <meta name="twitter:description" content="Property details on Saba Island - Saban Realty">
+  <meta name="twitter:title" content="Saba Island Property for Sale & Rent | Saban Realty">
+  <meta name="twitter:description" content="View villas, cottages, and land for sale and vacation rentals on Saba Island, Caribbean Netherlands. Photos, pricing, and details from Saban Realty.">
   <meta name="twitter:image" content="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png">
 
-  <title>Property Details | Saban Realty</title>
+  <title>Saba Island Property for Sale & Rent | Saban Realty</title>
 
   <!-- Structured Data: RealEstateAgent -->
   <script type="application/ld+json">
@@ -33,7 +33,7 @@
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Saban Realty",
-    "url": "https://www.sabanrealty.com",
+    "url": "https://sabanrealty.com",
     "logo": "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png",
     "description": "Licensed real estate professional specializing in Saba Island property sales, luxury villas, vacation rentals, and Caribbean island investment.",
     "telephone": "+599-416-5497",
@@ -67,7 +67,7 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Saban Realty",
-    "url": "https://www.sabanrealty.com",
+    "url": "https://sabanrealty.com",
     "logo": "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png",
     "telephone": "+599-416-5497",
     "email": "jeffsabarealty@gmail.com",
@@ -558,7 +558,7 @@
       document.querySelector('meta[name="description"]').setAttribute('content', metaDesc);
 
       // Update canonical URL and og:url to include query parameters
-      const canonicalUrl = `https://www.sabanrealty.com/property-detail.html?id=${property.id}&type=${type}`;
+      const canonicalUrl = `https://sabanrealty.com/property-detail.html?id=${property.id}&type=${type}`;
       document.querySelector('link[rel="canonical"]').setAttribute('href', canonicalUrl);
       document.querySelector('meta[property="og:url"]').setAttribute('content', canonicalUrl);
 
@@ -588,8 +588,8 @@
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sabanrealty.com/" },
-          { "@type": "ListItem", "position": 2, "name": parentText, "item": `https://www.sabanrealty.com/${parentLink}` },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sabanrealty.com/" },
+          { "@type": "ListItem", "position": 2, "name": parentText, "item": `https://sabanrealty.com/${parentLink}` },
           { "@type": "ListItem", "position": 3, "name": property.title, "item": canonicalUrl }
         ]
       };
@@ -599,15 +599,21 @@
       document.head.appendChild(breadcrumbScript);
 
       // Add structured data
+      const plainDescription = (property.description || '')
+        .replace(/<[^>]+>/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
       const jsonLd = {
         "@context": "https://schema.org",
         "@type": isRental ? "LodgingBusiness" : "RealEstateListing",
         "name": property.title,
-        "description": property.description,
+        "description": plainDescription,
+        "url": canonicalUrl,
         "image": property.images,
         "address": {
           "@type": "PostalAddress",
           "addressLocality": property.location,
+          "addressRegion": "Saba",
           "addressCountry": "BQ"
         }
       };
@@ -615,7 +621,11 @@
         jsonLd.offers = {
           "@type": "Offer",
           "price": property.price,
-          "priceCurrency": "USD"
+          "priceCurrency": "USD",
+          "url": canonicalUrl,
+          "availability": isSold
+            ? "https://schema.org/SoldOut"
+            : (isUnderContract ? "https://schema.org/LimitedAvailability" : "https://schema.org/InStock")
         };
       }
       if (isRental && property.nightlyRate) {
