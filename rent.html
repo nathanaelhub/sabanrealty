@@ -222,7 +222,7 @@
 
             data.rentals.forEach(rental => {
               const card = document.createElement('a');
-              card.href = `property-detail.html?id=${rental.id}&type=rental`;
+              card.href = `rentals/${rental.id}/`;
               card.className = 'property-card fade-in visible';
               card.setAttribute('data-type', rental.type);
               card.setAttribute('data-bedrooms', rental.bedrooms);
