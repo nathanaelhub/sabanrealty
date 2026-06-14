@@ -86,8 +86,26 @@ def build_page(p, kind):
                         "url": url, "availability": avail}
     if p.get("bedrooms", 0) > 0:
         ld["numberOfRooms"] = p["bedrooms"]
-    ld_block = '  <script type="application/ld+json">\n  ' + json.dumps(ld, ensure_ascii=False) + "\n  </script>\n</head>"
-    h = h.replace("</head>", ld_block, 1)
+    blocks = '  <script type="application/ld+json">\n  ' + json.dumps(ld, ensure_ascii=False) + "\n  </script>\n"
+
+    # VideoObject schema for property tours (eligible for video rich results).
+    # Only fields we can honestly supply — no fabricated uploadDate/duration.
+    for v in (p.get("videos") or []):
+        vid = v.get("id")
+        if not vid:
+            continue
+        vo = {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": f"{p['title']} — {v.get('label', 'Property Tour')}",
+            "description": f"Video tour of {p['title']} in {p.get('location', 'Saba')}, Caribbean Netherlands, from Saban Realty.",
+            "thumbnailUrl": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+            "embedUrl": f"https://www.youtube.com/embed/{vid}",
+            "contentUrl": f"https://www.youtube.com/watch?v={vid}",
+        }
+        blocks += '  <script type="application/ld+json">\n  ' + json.dumps(vo, ensure_ascii=False) + "\n  </script>\n"
+
+    h = h.replace("</head>", blocks + "</head>", 1)
 
     # 4. skip-link must not be hijacked by <base>
     h = h.replace('<a href="#main-content" class="skip-to-content">',
