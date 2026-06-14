@@ -750,14 +750,9 @@
         `;
       }
 
-      // Video Tour section — supports `videos: [{label, id, duration}]` array
-      // OR legacy `youtubeLink` string (used as a fallback during migration).
+      // Video Tour section — supports `videos: [{label, id, duration}]`
       let videoHTML = '';
-      let videos = property.videos;
-      if (!videos && property.youtubeLink) {
-        const legacyId = extractYouTubeId(property.youtubeLink);
-        if (legacyId) videos = [{ label: 'Video Tour', id: legacyId }];
-      }
+      const videos = property.videos;
 
       if (videos && videos.length > 0) {
         const poster = property.images[0];
@@ -1045,12 +1040,6 @@
         if (e.key === 'ArrowLeft') goTo(currentIndex - 1);
         if (e.key === 'ArrowRight') goTo(currentIndex + 1);
       });
-    }
-
-    function extractYouTubeId(url) {
-      if (!url) return null;
-      const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
-      return match ? match[1] : null;
     }
 
     function setupVideoTour() {
