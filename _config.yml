@@ -1,0 +1,10 @@
+# GitHub Pages (Jekyll) build configuration.
+# The site is plain static HTML; this file only keeps internal tooling and
+# notes out of the published site (they contain no secrets, but there's no
+# reason to serve them publicly).
+exclude:
+  - scripts/
+  - docs/
+  - ADDING-PROPERTIES.md
+  - .env
+  - .gitignore
