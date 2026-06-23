@@ -129,6 +129,35 @@
       "hidden": true
     },
     {
+      "id": "cats-eye-cottage",
+      "title": "CatsEye Cottage",
+      "location": "Windwardside, Saba",
+      "price": 425000,
+      "priceFormatted": "$425,000",
+      "status": "for-sale",
+      "type": "cottage",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "description": "<h2>CatsEye Cottage - $425,000</h2>\n<p><strong>Location:</strong> Windwardside, Saba</p>\n<p><strong>Property Size:</strong> 2BD | 2BT | Fully furnished two-story cottage</p>\n<p><strong>MLS:</strong> 100004062</p>\n<h3>Property Overview:</h3>\n<p>Nestled in the picturesque village of Windwardside, CatsEye Cottage offers views of the Caribbean Sea and the perfect blend of traditional Saban character and modern comfort. This beautifully restored historic cottage, part wood and part concrete, is just a short walk from the village center, providing convenient access to shops, restaurants, and local amenities while maintaining a peaceful and private setting.</p>\n<p>This fully furnished two-story home captures the essence of island living, featuring open community and ocean views, refreshing trade winds, and spectacular sunrises. Located on Saba, known as the Unspoiled Queen of the Caribbean, CatsEye Cottage offers year-round pleasant weather, breathtaking natural beauty, and the unique charm of the smallest yet highest Dutch island in the tropics.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Comfortable Layout:</strong> 2 bedrooms, 2 full bathrooms, a spacious living room, dining area, fully equipped kitchen, and interior laundry room.</li>\n<li><strong>Outdoor Living:</strong> Wraparound balcony, generous patio space on both levels, flower garden, yard, and ocean, hillside, and village views.</li>\n<li><strong>Practical Amenities:</strong> Outdoor storage room, cistern, septic sewage, zinc roof, hurricane shutters, fans, split air conditioning, 220V and 110V electricity, optic fiber internet, wireless internet, and parking for one vehicle.</li>\n<li><strong>Move-In Ready:</strong> The home is fully furnished and positioned within walking distance of Windwardside village amenities.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>Whether you are seeking a permanent residence, vacation retreat, or investment opportunity, CatsEye Cottage presents a rare chance to own a charming piece of Caribbean paradise in Windwardside.</p>",
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/01-100004062-3DSCN1515.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/02-100004062-2newIMG_E3257resize1100.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/03-100004062-1catseye-side.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/04-100004062-4IMG_1043resize.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/05-100004062-5IMG_1035resize.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/06-100004062-6IMG_1037resize.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/07-100004062-7IMG_1040resize.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/08-100004062-8bedroom-upstairs.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/09-100004062-9IMG_1042resize.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/10-100004062-10Screenshot1000.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/11-100004062-11IMG_1036resize.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/12-100004062-12IMG_1038resize.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/13-100004062-13Screenshot1000.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/14-100004062-14WhatsApp1000.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/15-100004062-z15DSCN1500arrow1000.JPG"
+      ]
+    },
+    {
       "id": "daphne-cottage",
       "videos": [
         { "label": "Property Tour", "id": "SIRdL9tyS10" }
