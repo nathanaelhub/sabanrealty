@@ -1,6 +1,28 @@
 {
   "properties": [
     {
+      "id": "union-estate-statia",
+      "title": "Union Estate",
+      "location": "Union Estate, St. Eustatius",
+      "price": 723680,
+      "priceFormatted": "$723,680",
+      "status": "for-sale",
+      "type": "land",
+      "bedrooms": 0,
+      "bathrooms": 0,
+      "description": "<h2>Union Estate - $723,680.00</h2>\n<p><strong>Location:</strong> Union Estate, St. Eustatius (Statia), off White Wall Road</p>\n<p><strong>Property Size:</strong> 18,092 m\u00b2 (approximately 4.5 acres)</p>\n<p><strong>MLS:</strong> 300012599063</p>\n<h3>Property Overview:</h3>\n<p>This vacant, gently sloped lot sits in the countryside of Union Estate on St. Eustatius, just off the White Wall Road. The property enjoys sweeping views of the Caribbean Sea, The Quill, and the island's famous sunsets. Positioned along the projected Angelfish Road, it is a rare development opportunity in one of the most unspoiled corners of the Caribbean Netherlands.</p>\n<p>St. Eustatius \u2014 known affectionately as Statia \u2014 is rich in history, offers excellent scuba diving, and is home to three nature parks maintained by the National Parks Foundation. While tourism plays a part in island life, Statia has deliberately avoided mass tourism, so daily life here is built around simple pleasures and natural beauty.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Generous Size:</strong> 18,092 m\u00b2 (roughly 4.5 acres) of gently sloped land \u2014 ample room to design your ideal home or development.</li>\n<li><strong>Spectacular Views:</strong> Caribbean Sea, The Quill, and sunset vistas.</li>\n<li><strong>Prime Setting:</strong> Quiet countryside off White Wall Road, along the projected Angelfish Road.</li>\n<li><strong>Island Lifestyle:</strong> History, world-class diving, and protected nature on an island that values its unspoiled character.</li>\n</ul>",
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_1.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_2.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_3.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_4.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_5.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_6.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_7_harbor_sunset.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_8.jpg"
+      ]
+    },
+    {
       "id": "hidden-treasure-villa",
       "videos": [
         { "label": "Property Tour", "id": "trpERWTJUww" }

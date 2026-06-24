@@ -81,6 +81,12 @@
   </url>
   <!-- Listings -->
   <url>
+    <loc>https://sabanrealty.com/properties/union-estate-statia/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sabanrealty.com/properties/cats-eye-cottage/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
