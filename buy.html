@@ -214,15 +214,22 @@
             grid.innerHTML = '';
 
             let cardIndex = 0;
-          data.properties.forEach(property => {
+          // Order: available first, then under contract, then sold (stable within each group)
+          const statusRank = p => p.status === 'sold' ? 2 : (p.detailStatus === 'under-contract' ? 1 : 0);
+          const orderedProperties = data.properties.slice().sort((a, b) => statusRank(a) - statusRank(b));
+          orderedProperties.forEach(property => {
               // Skip hidden properties
               if (property.hidden) return;
 
               const isSold = property.status === 'sold';
+              const isUnderContract = property.detailStatus === 'under-contract';
               const isLand = property.type === 'land';
               const isHouse = property.type === 'villa' || property.type === 'cottage';
-              const badgeClass = isSold ? 'badge-sold' : 'badge-sale';
-              const badgeText = isSold ? 'Sold' : 'For Sale';
+              const statusOverlay = isSold
+                ? '<span class="property-ribbon ribbon-sold">Sold</span>'
+                : (isUnderContract
+                    ? '<span class="property-ribbon ribbon-contract">Under Contract</span>'
+                    : '<span class="property-badge badge-sale">For Sale</span>');
               const priceStyle = isSold ? 'color: var(--color-text-light);' : '';
               // Normalize type for filtering: villa/cottage → house
               const filterType = isHouse ? 'house' : property.type;
@@ -281,7 +288,7 @@
               card.innerHTML = `
                 <div class="property-image">
                   <img src="${property.images[0]}" alt="${property.title}" loading="lazy">
-                  <span class="property-badge ${badgeClass}">${badgeText}</span>
+                  ${statusOverlay}
                   ${property.videos && property.videos.length > 0
                     ? `<span class="video-pill">${property.videos.length === 1 ? 'Video tour' : property.videos.length + ' video tours'}</span>`
                     : ''}
