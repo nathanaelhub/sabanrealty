@@ -941,7 +941,9 @@
       thumbStrip.addEventListener('mousedown', (e) => {
         isDragging = true;
         hasDragged = false;
-        thumbStrip.classList.add('dragging');
+        // NB: do NOT add the .dragging class here — it sets pointer-events:none on
+        // the thumbs, which retargets the click to the strip and breaks thumb clicks.
+        // Only enter drag mode once the pointer actually moves (see mousemove).
         startX = e.pageX - thumbStrip.offsetLeft;
         scrollLeft = thumbStrip.scrollLeft;
       });
@@ -961,7 +963,10 @@
         e.preventDefault();
         const x = e.pageX - thumbStrip.offsetLeft;
         const walk = (x - startX) * 1.5;
-        if (Math.abs(walk) > 5) hasDragged = true;
+        if (Math.abs(walk) > 5) {
+          hasDragged = true;
+          thumbStrip.classList.add('dragging'); // enter drag mode only on real movement
+        }
         thumbStrip.scrollLeft = scrollLeft - walk;
       });
 
