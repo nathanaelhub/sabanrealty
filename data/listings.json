@@ -652,6 +652,28 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lynch-beachfront-estate/7STICE8806.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lynch-beachfront-estate/8IMG_E7348-50.JPG"
       ]
+    },
+    {
+      "id": "lodi-statia-land",
+      "title": "Lodi Land Statia",
+      "location": "Lodi, St Eustatius",
+      "price": 0,
+      "priceFormatted": "Under Contract",
+      "status": "for-sale",
+      "detailStatus": "under-contract",
+      "type": "land",
+      "bedrooms": 0,
+      "bathrooms": 0,
+      "description": "<h2>Lodi Land Statia - Under Contract</h2>\n<p><strong>Location:</strong> Lodi, St. Eustatius (Statia), Caribbean Netherlands</p>\n<p><strong>Property Size:</strong> 2,561 m² vacant lot</p>\n<h3>Property Overview:</h3>\n<p>This vacant lot in Lodi, Statia, spans 2,561 m² and connects to the main road via Millard Drive for easy access. The property enjoys ocean and mountain views along with beautiful sunsets. The location is quiet, and the slightly sloped land is easy to build on, with electricity and water connections nearby.</p>\n<p>There are many reasons to choose Sint Eustatius — affectionately known as Statia — an island full of history, great scuba diving, and protected nature parks. While tourism is an important economic pillar, you won't find masses of travelers here. Life on Statia is full of simple pleasures that add to the island's enchantment while making it hard to leave.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Generous Size:</strong> 2,561 m² vacant lot — ample room to design your ideal home.</li>\n<li><strong>Easy Access:</strong> Connects to the main road via Millard Drive.</li>\n<li><strong>Spectacular Views:</strong> Ocean and mountain views with beautiful sunsets.</li>\n<li><strong>Ready to Build:</strong> Slightly sloped and easy to build on, with electricity and water connections nearby.</li>\n<li><strong>Quiet Setting:</strong> A peaceful location on an unspoiled island rich in history, diving, and nature.</li>\n</ul>",
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_1.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_2.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_3.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_4.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_5.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_6.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_7.jpg"
+      ]
     }
   ],
   "rentals": [
