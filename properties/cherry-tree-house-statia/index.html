@@ -870,8 +870,13 @@
       const isRental = type === 'rental';
       const list = isRental ? data.rentals : data.properties;
 
-      // Get up to 3 other non-hidden properties
-      const others = list.filter(p => p.id !== currentProperty.id && !p.hidden).slice(0, 3);
+      // Candidates: exclude the current property, hidden, and SOLD listings
+      const candidates = list.filter(p => p.id !== currentProperty.id && !p.hidden && p.status !== 'sold');
+      // Prefer the same property type, then others; shuffle each group for variety
+      const shuffle = arr => arr.map(v => [Math.random(), v]).sort((a, b) => a[0] - b[0]).map(v => v[1]);
+      const sameType = shuffle(candidates.filter(p => p.type === currentProperty.type));
+      const otherType = shuffle(candidates.filter(p => p.type !== currentProperty.type));
+      const others = [...sameType, ...otherType].slice(0, 3);
       if (others.length === 0) return;
 
       let cardsHTML = others.map(p => {
