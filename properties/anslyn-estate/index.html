@@ -377,6 +377,47 @@
         font-size: 1.8rem;
       }
     }
+
+    /* Share button */
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      margin-top: 0.85rem;
+      padding: 0.45rem 0.95rem;
+      background: var(--color-white);
+      border: 1px solid var(--color-sand-dark);
+      border-radius: 999px;
+      color: var(--color-text); font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .share-btn:hover { border-color: var(--color-coral); color: var(--color-coral); }
+    .share-btn svg { stroke: currentColor; }
+
+    /* Inline viewing-request form (sits on the dark contact CTA) */
+    .viewing-cta .viewing-form { max-width: 560px; margin: 1.4rem auto 0; text-align: left; }
+    .viewing-cta .viewing-form label { color: rgba(255,255,255,0.92); }
+    .viewing-cta .viewing-form .form-group { margin-bottom: 0.85rem; }
+    .viewing-cta .viewing-form textarea { min-height: 88px; }
+    .viewing-form-status { margin: 0.8rem 0 0; font-weight: 600; text-align: center; min-height: 1.2em; }
+    .viewing-form-status.ok { color: #8be0a4; }
+    .viewing-form-status.err { color: #ffc1b3; }
+
+    /* Prev / Next listing navigation */
+    .listing-nav { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2.25rem; }
+    .listing-nav-link {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      text-decoration: none; color: var(--color-text);
+      padding: 0.65rem 1.05rem; border: 1px solid var(--color-sand-dark);
+      border-radius: 12px; background: var(--color-white); max-width: 48%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .listing-nav-link.next { margin-left: auto; }
+    .listing-nav-link:hover { border-color: var(--color-coral); box-shadow: var(--shadow-sm); }
+    .listing-nav-link svg { flex-shrink: 0; color: var(--color-coral); }
+    .ln-label { display: flex; flex-direction: column; line-height: 1.25; overflow: hidden; }
+    .listing-nav-link.next .ln-label { align-items: flex-end; }
+    .ln-label span { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-light); }
+    .ln-label strong { font-weight: 600; font-size: 0.92rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 16ch; }
+    @media (max-width: 560px) { .ln-label strong { display: none; } .listing-nav-link { padding: 0.6rem 0.9rem; } }
   </style>
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "RealEstateListing", "name": "Anslyn Estate", "description": "Anslyn Estate – $600,000 Location: Windwardside, Saba, Caribbean Netherlands Property Size: 1600 m² | Expansive multi-unit estate | Lush tropical gardens | Multiple residences Property Overview: Embrace the timeless charm of Saba at Anslyn Estate, a hillside sanctuary that blends traditional island living with modern versatility. Set just steps from Windwardside village yet cocooned in privacy, this unique property features a main residence, a fully self-contained guest cottage, and an adaptable third unit currently used as a gym. Perfect for peaceful island living, remote work, or a boutique hospitality venture, Anslyn Estate offers panoramic views of Windwardside and the Caribbean Sea in a lush, garden-filled setting. Steeped in history, the estate was lovingly built by Arthur Anslyn, a renowned Saban sea captain and diver who played a pivotal role in local history. Surrounded in the past by farmland, it was once a community hub for fresh eggs and fruit — a tradition reflected today in its extraordinary collection of fruit-bearing trees. Key Features: Main House 3 bedrooms and 1 full bathroom Equipped kitchen with spacious living and dining rooms Outdoor kitchen, two storage lofts, and covered porch Large outdoor area plus separate shed with laundry facilities Guest Cottage Independent residence with bedroom, bathroom, kitchenette, and small living area Covered porch and private outdoor space Separate entrance and utility connections Ideal for guests, long-term rental, or home office use Additional Units Detached, climate-controlled building currently a gym (also suited for office or studio) Large outdoor shed for gardening tools Smaller storage shed for equipment and supplies Garden & Surroundings Immersed in a lush tropical landscape with an exceptional variety of fruit trees: Avocado, Mango, Grapefruit, Breadfruit, Soursop, Orange, Lemon, Pomegranate, Red Custard Apple, Guava, Banana, Guinip, Papaya, Coffee, and Pineapple Expansive grounds offering both beauty and functionality Architectural Details Red zinc roof, white walls, storm shutters, and traditional high-pitched ceilings Open-concept living area with classic Saban charm Unique Opportunity: Anslyn Estate is more than a property — it is a piece of Saba’s living history, enriched by the legacy of Arthur Anslyn and the vibrant gardens that surround it. With multiple residences, generous outdoor areas, and space for both private living and income potential, it represents one of the island’s most versatile offerings.", "url": "https://sabanrealty.com/properties/anslyn-estate/", "image": ["https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/1.jpeg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/2.jpeg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/4Anslyn.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/5Anslyn.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/9Anslyn.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/11Anslyn.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/100003974-001-d9574446-56ce-4344-9fa4-086b58ee2e43.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/100003974-002-4697dfb6-75c2-4dde-b227-aa78e032143a.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/100003974-003A-f8b76c88-4d8d-4595-a453-ca678b66ab4f.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/100003974-005-7d82ec7f-6b8d-4798-8764-a29be10659ca"], "address": {"@type": "PostalAddress", "addressLocality": "Windwardside, Saba", "addressRegion": "Saba", "addressCountry": "BQ"}, "offers": {"@type": "Offer", "price": 600000, "priceCurrency": "USD", "url": "https://sabanrealty.com/properties/anslyn-estate/", "availability": "https://schema.org/InStock"}, "numberOfRooms": 4}
@@ -824,11 +865,34 @@
           <a href="/contact/" class="btn btn-secondary">Contact Us</a>
         </div>
       ` : `
-        <div class="contact-cta">
-          <h3>Interested in This Property?</h3>
-          <p>Contact us today to schedule a viewing or get more information.</p>
-          <a href="tel:+599-416-5497" class="btn btn-primary">Call +599 416 5497</a>
-          <a href="/contact/" class="btn btn-secondary">Send Inquiry</a>
+        <div class="contact-cta viewing-cta">
+          <h3>Request a Viewing</h3>
+          <p>Interested in ${property.title}? Send a note and we&rsquo;ll be in touch &mdash; or call <a href="tel:+599-416-5497" style="color:#fff;text-decoration:underline;">+599 416 5497</a>.</p>
+          <form id="viewingForm" class="viewing-form" method="POST">
+            <input type="hidden" name="_subject" value="Viewing request: ${property.title.replace(/"/g, '&quot;')}">
+            <input type="hidden" name="Property" value="${property.title.replace(/"/g, '&quot;')} — ${canonicalUrl}">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="vfName">Name</label>
+                <input type="text" id="vfName" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="vfEmail">Email</label>
+                <input type="email" id="vfEmail" name="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="vfPhone">Phone <span style="font-weight:400;opacity:.75">(optional)</span></label>
+              <input type="tel" id="vfPhone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="vfMsg">Message</label>
+              <textarea id="vfMsg" name="message">I'd like to schedule a viewing of ${property.title}.</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Request Viewing</button>
+            <p class="viewing-form-status" aria-live="polite"></p>
+          </form>
         </div>
       `;
 
@@ -843,6 +907,10 @@
               <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               ${property.location}
             </div>
+            <button type="button" id="shareBtn" class="share-btn" aria-label="Share this property">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+              <span>Share</span>
+            </button>
           </div>
           <div class="${priceClass}">${priceDisplay}</div>
         </div>
@@ -866,6 +934,59 @@
 
       // Wire up the new video tour (no-op if there's no video section on the page)
       setupVideoTour();
+
+      // Share button: native share sheet where available, else copy link
+      const shareBtn = document.getElementById('shareBtn');
+      if (shareBtn) {
+        shareBtn.addEventListener('click', async () => {
+          const shareData = { title: `${property.title} | Saban Realty`, text: `${property.title} — ${property.location}`, url: canonicalUrl };
+          if (navigator.share) {
+            try { await navigator.share(shareData); } catch (e) {}
+            return;
+          }
+          try {
+            await navigator.clipboard.writeText(canonicalUrl);
+            const label = shareBtn.querySelector('span');
+            const original = label.textContent;
+            label.textContent = 'Link copied!';
+            setTimeout(() => { label.textContent = original; }, 2000);
+          } catch (e) {}
+        });
+      }
+
+      // Inline "Request a Viewing" form -> FormSubmit (same backend as contact page)
+      const viewingForm = document.getElementById('viewingForm');
+      if (viewingForm) {
+        viewingForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const status = viewingForm.querySelector('.viewing-form-status');
+          const btn = viewingForm.querySelector('button[type="submit"]');
+          status.className = 'viewing-form-status';
+          btn.disabled = true;
+          btn.textContent = 'Sending…';
+          try {
+            const res = await fetch('https://formsubmit.co/ajax/jeffsabarealty@gmail.com', {
+              method: 'POST',
+              headers: { 'Accept': 'application/json' },
+              body: new FormData(viewingForm)
+            });
+            const data = await res.json();
+            if (String(data.success) === 'true') {
+              viewingForm.reset();
+              btn.style.display = 'none';
+              status.textContent = 'Thanks! We\'ll be in touch shortly.';
+              status.classList.add('ok');
+            } else {
+              throw new Error('submit failed');
+            }
+          } catch (err) {
+            btn.disabled = false;
+            btn.textContent = 'Request Viewing';
+            status.textContent = 'Something went wrong — please call or email us directly.';
+            status.classList.add('err');
+          }
+        });
+      }
     }
 
     function renderExploreMore(data, currentProperty, type) {
@@ -881,6 +1002,28 @@
       const otherType = shuffle(candidates.filter(p => p.type !== currentProperty.type));
       const others = [...sameType, ...otherType].slice(0, 3);
       if (others.length === 0) return;
+
+      // Prev / Next navigation through the available (non-hidden, non-sold) listings
+      const browseList = list.filter(p => !p.hidden && p.status !== 'sold');
+      const bIdx = browseList.findIndex(p => p.id === currentProperty.id);
+      let navHTML = '';
+      if (bIdx >= 0 && browseList.length > 1) {
+        const pfx = type === 'rental' ? 'rentals' : 'properties';
+        const prev = browseList[(bIdx - 1 + browseList.length) % browseList.length];
+        const next = browseList[(bIdx + 1) % browseList.length];
+        navHTML = `
+          <nav class="listing-nav" aria-label="Property navigation">
+            <a href="${pfx}/${prev.id}/" class="listing-nav-link prev">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              <span class="ln-label"><span>Previous</span><strong>${prev.title}</strong></span>
+            </a>
+            <a href="${pfx}/${next.id}/" class="listing-nav-link next">
+              <span class="ln-label"><span>Next</span><strong>${next.title}</strong></span>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+          </nav>
+        `;
+      }
 
       let cardsHTML = others.map(p => {
         const isHouse = p.type === 'villa' || p.type === 'cottage';
@@ -910,6 +1053,7 @@
 
       container.innerHTML = `
         <div class="explore-more-section">
+          ${navHTML}
           <h3>Explore More Properties</h3>
           <div class="explore-more-grid">${cardsHTML}</div>
           <div class="explore-more-links">

@@ -377,6 +377,47 @@
         font-size: 1.8rem;
       }
     }
+
+    /* Share button */
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      margin-top: 0.85rem;
+      padding: 0.45rem 0.95rem;
+      background: var(--color-white);
+      border: 1px solid var(--color-sand-dark);
+      border-radius: 999px;
+      color: var(--color-text); font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .share-btn:hover { border-color: var(--color-coral); color: var(--color-coral); }
+    .share-btn svg { stroke: currentColor; }
+
+    /* Inline viewing-request form (sits on the dark contact CTA) */
+    .viewing-cta .viewing-form { max-width: 560px; margin: 1.4rem auto 0; text-align: left; }
+    .viewing-cta .viewing-form label { color: rgba(255,255,255,0.92); }
+    .viewing-cta .viewing-form .form-group { margin-bottom: 0.85rem; }
+    .viewing-cta .viewing-form textarea { min-height: 88px; }
+    .viewing-form-status { margin: 0.8rem 0 0; font-weight: 600; text-align: center; min-height: 1.2em; }
+    .viewing-form-status.ok { color: #8be0a4; }
+    .viewing-form-status.err { color: #ffc1b3; }
+
+    /* Prev / Next listing navigation */
+    .listing-nav { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2.25rem; }
+    .listing-nav-link {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      text-decoration: none; color: var(--color-text);
+      padding: 0.65rem 1.05rem; border: 1px solid var(--color-sand-dark);
+      border-radius: 12px; background: var(--color-white); max-width: 48%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .listing-nav-link.next { margin-left: auto; }
+    .listing-nav-link:hover { border-color: var(--color-coral); box-shadow: var(--shadow-sm); }
+    .listing-nav-link svg { flex-shrink: 0; color: var(--color-coral); }
+    .ln-label { display: flex; flex-direction: column; line-height: 1.25; overflow: hidden; }
+    .listing-nav-link.next .ln-label { align-items: flex-end; }
+    .ln-label span { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-light); }
+    .ln-label strong { font-weight: 600; font-size: 0.92rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 16ch; }
+    @media (max-width: 560px) { .ln-label strong { display: none; } .listing-nav-link { padding: 0.6rem 0.9rem; } }
   </style>
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "RealEstateListing", "name": "Treasured Horseshoe Property", "description": "Treasured Horseshoe Property - $150,000 Location: Zion’s Hill (Hell’s Gate), Saba, Dutch Caribbean Property Size: 1,584 m² of land Price Reduction: Reduced by $25,000! Property Overview: Seize the opportunity to own a piece of paradise with the Treasured Horseshoe Property — a stunning ocean-view lot for sale on Saba, now available at a reduced price of $150,000. Located in the highly desirable community of Zion’s Hill (Hell’s Gate), this spacious 1,584 m² parcel offers panoramic Caribbean Sea views, natural beauty, and easy access to some of Saba’s most famous attractions, including Cove Bay and the Tide Pools. This exceptional Saba real estate opportunity combines scenic tranquility with development potential — ideal for building your island home, vacation retreat, or investment property in the Dutch Caribbean. Key Features: Panoramic Ocean & Island Views Take in spectacular, unobstructed views of the deep blue Caribbean Sea and neighboring islands — including St. Maarten, St. Eustatius, St. Barts, St. Kitts, and Nevis. The elevated site also overlooks Mount Scenery and Saba’s world-famous shortest commercial runway, creating a truly one-of-a-kind perspective. Prime Location in Zion’s Hill (Hell’s Gate) Set in one of Saba’s most scenic neighborhoods, this land for sale in Zion’s Hill offers a peaceful yet convenient setting. The property connects easily to the main road and sits close to natural attractions such as Cove Bay and the Tide Pools — ideal for both residential living and vacation rentals. Neighborhood Appeal Surrounded by newly built homes, the area blends modern comfort with natural charm. Wake up each morning to breathtaking sunrises and ocean breezes in this serene hillside community. Development-Ready & Versatile With a gentle slope, excellent accessibility, and utilities nearby, this lot is ready for construction. Whether you envision a private Caribbean villa, guesthouse, or investment property, the site offers flexibility and long-term value. Unique Opportunity: Natural Beauty & Accessibility: Enjoy a rare combination of ocean and hillside views, lush greenery, and a peaceful environment that defines the island of Saba. With its reduced price, convenient location, and captivating views, the Treasured Horseshoe Property stands out as one of the island’s best land investment opportunities. Make your island dream a reality — contact us today to learn more or schedule a viewing of this exceptional Caribbean property for sale.", "url": "https://sabanrealty.com/properties/treasured-horseshoe-property/", "image": ["https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-1IMG_E4460.jpeg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-3IMG_E4466.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-5IMG_E4467.jpeg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-7IMG_E4519.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-reducedIMG_E4917.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-reducedIMG_E4922.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-reducedIMG_E4936.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-reducedIMG_E4945.jpg", "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/Treasured%20Land-Cover.jpg"], "address": {"@type": "PostalAddress", "addressLocality": "Zions Hill, Saba", "addressRegion": "Saba", "addressCountry": "BQ"}, "offers": {"@type": "Offer", "price": 150000, "priceCurrency": "USD", "url": "https://sabanrealty.com/properties/treasured-horseshoe-property/", "availability": "https://schema.org/InStock"}}
@@ -824,11 +865,34 @@
           <a href="/contact/" class="btn btn-secondary">Contact Us</a>
         </div>
       ` : `
-        <div class="contact-cta">
-          <h3>Interested in This Property?</h3>
-          <p>Contact us today to schedule a viewing or get more information.</p>
-          <a href="tel:+599-416-5497" class="btn btn-primary">Call +599 416 5497</a>
-          <a href="/contact/" class="btn btn-secondary">Send Inquiry</a>
+        <div class="contact-cta viewing-cta">
+          <h3>Request a Viewing</h3>
+          <p>Interested in ${property.title}? Send a note and we&rsquo;ll be in touch &mdash; or call <a href="tel:+599-416-5497" style="color:#fff;text-decoration:underline;">+599 416 5497</a>.</p>
+          <form id="viewingForm" class="viewing-form" method="POST">
+            <input type="hidden" name="_subject" value="Viewing request: ${property.title.replace(/"/g, '&quot;')}">
+            <input type="hidden" name="Property" value="${property.title.replace(/"/g, '&quot;')} — ${canonicalUrl}">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="vfName">Name</label>
+                <input type="text" id="vfName" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="vfEmail">Email</label>
+                <input type="email" id="vfEmail" name="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="vfPhone">Phone <span style="font-weight:400;opacity:.75">(optional)</span></label>
+              <input type="tel" id="vfPhone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="vfMsg">Message</label>
+              <textarea id="vfMsg" name="message">I'd like to schedule a viewing of ${property.title}.</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Request Viewing</button>
+            <p class="viewing-form-status" aria-live="polite"></p>
+          </form>
         </div>
       `;
 
@@ -843,6 +907,10 @@
               <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               ${property.location}
             </div>
+            <button type="button" id="shareBtn" class="share-btn" aria-label="Share this property">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+              <span>Share</span>
+            </button>
           </div>
           <div class="${priceClass}">${priceDisplay}</div>
         </div>
@@ -866,6 +934,59 @@
 
       // Wire up the new video tour (no-op if there's no video section on the page)
       setupVideoTour();
+
+      // Share button: native share sheet where available, else copy link
+      const shareBtn = document.getElementById('shareBtn');
+      if (shareBtn) {
+        shareBtn.addEventListener('click', async () => {
+          const shareData = { title: `${property.title} | Saban Realty`, text: `${property.title} — ${property.location}`, url: canonicalUrl };
+          if (navigator.share) {
+            try { await navigator.share(shareData); } catch (e) {}
+            return;
+          }
+          try {
+            await navigator.clipboard.writeText(canonicalUrl);
+            const label = shareBtn.querySelector('span');
+            const original = label.textContent;
+            label.textContent = 'Link copied!';
+            setTimeout(() => { label.textContent = original; }, 2000);
+          } catch (e) {}
+        });
+      }
+
+      // Inline "Request a Viewing" form -> FormSubmit (same backend as contact page)
+      const viewingForm = document.getElementById('viewingForm');
+      if (viewingForm) {
+        viewingForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const status = viewingForm.querySelector('.viewing-form-status');
+          const btn = viewingForm.querySelector('button[type="submit"]');
+          status.className = 'viewing-form-status';
+          btn.disabled = true;
+          btn.textContent = 'Sending…';
+          try {
+            const res = await fetch('https://formsubmit.co/ajax/jeffsabarealty@gmail.com', {
+              method: 'POST',
+              headers: { 'Accept': 'application/json' },
+              body: new FormData(viewingForm)
+            });
+            const data = await res.json();
+            if (String(data.success) === 'true') {
+              viewingForm.reset();
+              btn.style.display = 'none';
+              status.textContent = 'Thanks! We\'ll be in touch shortly.';
+              status.classList.add('ok');
+            } else {
+              throw new Error('submit failed');
+            }
+          } catch (err) {
+            btn.disabled = false;
+            btn.textContent = 'Request Viewing';
+            status.textContent = 'Something went wrong — please call or email us directly.';
+            status.classList.add('err');
+          }
+        });
+      }
     }
 
     function renderExploreMore(data, currentProperty, type) {
@@ -881,6 +1002,28 @@
       const otherType = shuffle(candidates.filter(p => p.type !== currentProperty.type));
       const others = [...sameType, ...otherType].slice(0, 3);
       if (others.length === 0) return;
+
+      // Prev / Next navigation through the available (non-hidden, non-sold) listings
+      const browseList = list.filter(p => !p.hidden && p.status !== 'sold');
+      const bIdx = browseList.findIndex(p => p.id === currentProperty.id);
+      let navHTML = '';
+      if (bIdx >= 0 && browseList.length > 1) {
+        const pfx = type === 'rental' ? 'rentals' : 'properties';
+        const prev = browseList[(bIdx - 1 + browseList.length) % browseList.length];
+        const next = browseList[(bIdx + 1) % browseList.length];
+        navHTML = `
+          <nav class="listing-nav" aria-label="Property navigation">
+            <a href="${pfx}/${prev.id}/" class="listing-nav-link prev">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              <span class="ln-label"><span>Previous</span><strong>${prev.title}</strong></span>
+            </a>
+            <a href="${pfx}/${next.id}/" class="listing-nav-link next">
+              <span class="ln-label"><span>Next</span><strong>${next.title}</strong></span>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+          </nav>
+        `;
+      }
 
       let cardsHTML = others.map(p => {
         const isHouse = p.type === 'villa' || p.type === 'cottage';
@@ -910,6 +1053,7 @@
 
       container.innerHTML = `
         <div class="explore-more-section">
+          ${navHTML}
           <h3>Explore More Properties</h3>
           <div class="explore-more-grid">${cardsHTML}</div>
           <div class="explore-more-links">
