@@ -163,6 +163,33 @@
             <input type="text" id="searchInput" placeholder="Search properties...">
           </div>
           <div class="filter-group">
+            <label for="islandFilter">Island</label>
+            <select id="islandFilter">
+              <option value="all">All Islands</option>
+              <option value="saba">Saba</option>
+              <option value="statia">St. Eustatius</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="villageFilter">Village</label>
+            <select id="villageFilter">
+              <option value="all">All Villages</option>
+              <optgroup label="Saba" class="village-saba">
+                <option value="windwardside" data-island="saba">Windwardside</option>
+                <option value="zions-hill" data-island="saba">Zion's Hill</option>
+                <option value="the-bottom" data-island="saba">The Bottom</option>
+                <option value="st-johns" data-island="saba">St. Johns</option>
+              </optgroup>
+              <optgroup label="St. Eustatius" class="village-statia">
+                <option value="oranjestad" data-island="statia">Oranjestad</option>
+                <option value="cherry-tree" data-island="statia">Cherry Tree</option>
+                <option value="white-hall" data-island="statia">White Hall</option>
+                <option value="union-estate" data-island="statia">Union Estate</option>
+                <option value="lynch" data-island="statia">Lynch</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="filter-group">
             <label for="propertyType">Property Type</label>
             <select id="propertyType">
               <option value="all">All Types</option>
@@ -274,16 +301,38 @@
                 `;
               }
 
+              // Derive island and village keys from location string
+              const locationRaw = property.location || '';
+              const isStatia = /st\.?\s*eustatius/i.test(locationRaw);
+              const islandKey = isStatia ? 'statia' : 'saba';
+
+              const locationLower = locationRaw.toLowerCase();
+              let villageKey = 'other';
+              if (!isStatia) {
+                if (locationLower.includes('windwardside')) villageKey = 'windwardside';
+                else if (locationLower.includes('zion') || locationLower.includes("hell's gate") || locationLower.includes('hells gate') || locationLower.includes('cove bay')) villageKey = 'zions-hill';
+                else if (locationLower.includes('the bottom') || locationLower.includes('wells bay') || locationLower.includes("well's bay")) villageKey = 'the-bottom';
+                else if (locationLower.includes('st. johns') || locationLower.includes('st johns')) villageKey = 'st-johns';
+              } else {
+                if (locationLower.includes('oranjestad')) villageKey = 'oranjestad';
+                else if (locationLower.includes('cherry tree')) villageKey = 'cherry-tree';
+                else if (locationLower.includes('white hall')) villageKey = 'white-hall';
+                else if (locationLower.includes('union estate')) villageKey = 'union-estate';
+                else if (locationLower.includes('lynch')) villageKey = 'lynch';
+              }
+
               const card = document.createElement('a');
               card.href = `properties/${property.id}/`;
               card.className = 'property-card fade-in visible';
               card.setAttribute('data-type', filterType);
               card.setAttribute('data-bedrooms', property.bedrooms);
               card.setAttribute('data-price', property.price);
+              card.setAttribute('data-island', islandKey);
+              card.setAttribute('data-village', villageKey);
               card.style.textDecoration = 'none';
               card.style.color = 'inherit';
 
-              const village = (property.location || '').split(',')[0].trim();
+              const village = locationRaw.split(',')[0].trim();
 
               card.innerHTML = `
                 <div class="property-image">
@@ -325,6 +374,8 @@
         // Filter functionality
         function applyFilters() {
           const searchInput = document.getElementById('searchInput').value.toLowerCase();
+          const islandFilter = document.getElementById('islandFilter').value;
+          const villageFilter = document.getElementById('villageFilter').value;
           const typeFilter = document.getElementById('propertyType').value;
           const bedroomFilter = document.getElementById('bedrooms').value;
           const priceFilter = document.getElementById('priceRange').value;
@@ -335,11 +386,23 @@
             const type = card.getAttribute('data-type');
             const bedrooms = parseInt(card.getAttribute('data-bedrooms')) || 0;
             const price = parseInt(card.getAttribute('data-price')) || 0;
+            const island = card.getAttribute('data-island');
+            const village = card.getAttribute('data-village');
 
             let show = true;
 
             // Search filter
             if (searchInput && !title.includes(searchInput) && !location.includes(searchInput)) {
+              show = false;
+            }
+
+            // Island filter
+            if (islandFilter !== 'all' && island !== islandFilter) {
+              show = false;
+            }
+
+            // Village filter
+            if (villageFilter !== 'all' && village !== villageFilter) {
               show = false;
             }
 
@@ -365,8 +428,24 @@
           });
         }
 
+        // When island changes, restrict village options to that island
+        document.getElementById('islandFilter').addEventListener('change', function () {
+          const selected = this.value;
+          const villageSelect = document.getElementById('villageFilter');
+          villageSelect.value = 'all';
+          villageSelect.querySelectorAll('optgroup').forEach(group => {
+            const isMatch = selected === 'all' ||
+              (selected === 'saba' && group.classList.contains('village-saba')) ||
+              (selected === 'statia' && group.classList.contains('village-statia'));
+            group.style.display = isMatch ? '' : 'none';
+            group.querySelectorAll('option').forEach(opt => opt.disabled = !isMatch);
+          });
+          applyFilters();
+        });
+
         // Attach filter event listeners
         document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('villageFilter').addEventListener('change', applyFilters);
         document.getElementById('propertyType').addEventListener('change', applyFilters);
         document.getElementById('bedrooms').addEventListener('change', applyFilters);
         document.getElementById('priceRange').addEventListener('change', applyFilters);
