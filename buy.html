@@ -426,6 +426,22 @@
 
             card.style.display = show ? '' : 'none';
           });
+
+          // Show a message if no cards are visible
+          const grid = document.getElementById('propertyGrid');
+          const noResults = document.getElementById('noResultsMessage');
+          const anyVisible = [...document.querySelectorAll('.property-card')].some(c => c.style.display !== 'none');
+          if (!anyVisible) {
+            if (!noResults) {
+              const msg = document.createElement('p');
+              msg.id = 'noResultsMessage';
+              msg.style.cssText = 'grid-column:1/-1;text-align:center;padding:3rem;color:var(--color-text-light);font-size:1rem;';
+              msg.textContent = 'No listings in this area yet — check back soon or contact us to learn about upcoming properties.';
+              grid.appendChild(msg);
+            }
+          } else {
+            if (noResults) noResults.remove();
+          }
         }
 
         // When island changes, restrict village options to that island
