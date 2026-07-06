@@ -266,17 +266,18 @@
     <div class="container">
       <div class="village-map-card fade-in">
         <div class="village-map-text">
-          <p class="village-map-eyebrow">Five villages</p>
+          <p class="village-map-eyebrow">Four villages</p>
           <h2>Pick a hill,<br>then a house.</h2>
-          <p>Saba is just five square miles, divided into five small villages — each
+          <p>Saba is just five square miles, divided into four small villages — each
             with its own character. The Bottom is the island capital; Windwardside
-            holds the galleries, shops and restaurants; Zion&rsquo;s Hill is the first
-            village you reach from the airport. Find the one that feels like home,
+            holds the galleries, shops and restaurants; St. John&rsquo;s is home to the
+            island&rsquo;s primary and secondary schools; and Zion&rsquo;s Hill (Hell&rsquo;s Gate) is
+            the first village you reach from the airport. Find the one that feels like home,
             then find the house.</p>
           <a href="/buy/" class="btn btn-primary">Browse every village</a>
         </div>
         <div class="village-map-svg">
-          <svg viewBox="0 0 400 280" role="img" aria-label="Illustrated map of Saba showing its five villages and Mount Scenery">
+          <svg viewBox="0 0 400 280" role="img" aria-label="Illustrated map of Saba showing its four villages and Mount Scenery">
             <defs>
               <pattern id="saba-dots" width="6" height="6" patternUnits="userSpaceOnUse">
                 <circle cx="2" cy="2" r="0.6" fill="rgba(10,37,64,0.18)"/>
@@ -289,24 +290,20 @@
             <path d="M 210 152 l 4 -10 l 4 10 z" fill="#e07a5f"/>
             <text x="225" y="148" font-size="9" fill="#0a2540" font-family="ui-monospace, Menlo, monospace" letter-spacing="0.5">MT SCENERY</text>
             <g>
-              <circle cx="200" cy="110" r="3.5" fill="#2d7a9c"/>
-              <text x="207" y="113" font-size="11" text-anchor="start" fill="#0a2540" font-family="inherit">Zion&#8217;s Hill</text>
+              <circle cx="240" cy="110" r="3.5" fill="#2d7a9c"/>
+              <text x="247" y="113" font-size="11" text-anchor="start" fill="#0a2540" font-family="inherit">Zion&#8217;s Hill (Hell&#8217;s Gate)</text>
             </g>
             <g>
-              <circle cx="270" cy="130" r="3.5" fill="#2d7a9c"/>
-              <text x="277" y="133" font-size="11" text-anchor="start" fill="#0a2540" font-family="inherit">Hell&#8217;s Gate</text>
-            </g>
-            <g>
-              <circle cx="145" cy="165" r="3.5" fill="#2d7a9c"/>
-              <text x="138" y="168" font-size="11" text-anchor="end" fill="#0a2540" font-family="inherit">St. Johns</text>
+              <circle cx="155" cy="162" r="3.5" fill="#2d7a9c"/>
+              <text x="148" y="165" font-size="11" text-anchor="end" fill="#0a2540" font-family="inherit">The Bottom</text>
             </g>
             <g>
               <circle cx="240" cy="175" r="3.5" fill="#2d7a9c"/>
               <text x="247" y="178" font-size="11" text-anchor="start" fill="#0a2540" font-family="inherit">Windwardside</text>
             </g>
             <g>
-              <circle cx="165" cy="195" r="3.5" fill="#2d7a9c"/>
-              <text x="158" y="198" font-size="11" text-anchor="end" fill="#0a2540" font-family="inherit">The Bottom</text>
+              <circle cx="185" cy="210" r="3.5" fill="#2d7a9c"/>
+              <text x="178" y="213" font-size="11" text-anchor="end" fill="#0a2540" font-family="inherit">St. Johns</text>
             </g>
           </svg>
         </div>
@@ -328,6 +325,14 @@
           <div class="filter-group">
             <label for="searchInput">Search</label>
             <input type="text" id="searchInput" placeholder="Search by location, name...">
+          </div>
+          <div class="filter-group">
+            <label for="islandFilter">Island</label>
+            <select id="islandFilter">
+              <option value="all">All Islands</option>
+              <option value="saba">Saba</option>
+              <option value="statia">St. Eustatius</option>
+            </select>
           </div>
           <div class="filter-group">
             <label for="propertyType">Property Type</label>
@@ -361,123 +366,7 @@
       </div>
       
       <!-- Property Grid -->
-      <div class="grid grid-3 property-grid">
-        
-        <!-- Property Card 1: Hidden Treasure Villa (Sold) -->
-        <a href="properties/hidden-treasure-villa/" class="property-card fade-in" data-type="house" data-bedrooms="3" data-price="0" style="text-decoration: none; color: inherit;">
-          <div class="property-image">
-            <img src="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/1IMG_E4186.JPG" alt="Hidden Treasure Villa" loading="lazy">
-            <span class="property-ribbon ribbon-sold">Sold</span>
-          </div>
-          <div class="property-content">
-            <div class="property-price">SOLD</div>
-            <h4 class="property-title">Hidden Treasure Villa</h4>
-            <p class="property-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              <span class="property-village">Zion&rsquo;s Hill</span>
-            </p>
-            <div class="property-features">
-              <div class="feature-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-                <span>3 Beds</span>
-              </div>
-              <div class="feature-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9 6l6 6-6 6"/>
-                </svg>
-                <span>3 Baths</span>
-              </div>
-              <div class="feature-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                </svg>
-                <span>House</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <!-- Property Card 2: View Villa -->
-        <a href="properties/view-villa/" class="property-card fade-in" data-type="house" data-bedrooms="3" data-price="980000" style="text-decoration: none; color: inherit;">
-          <div class="property-image">
-            <img src="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/1IMG_3313.JPG" alt="View Villa" loading="lazy">
-            <span class="property-badge badge-sale">For Sale</span>
-          </div>
-          <div class="property-content">
-            <div class="property-price">$980,000</div>
-            <h4 class="property-title">View Villa</h4>
-            <p class="property-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              <span class="property-village">Windwardside</span>
-            </p>
-            <div class="property-features">
-              <div class="feature-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-                <span>3 Beds</span>
-              </div>
-              <div class="feature-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9 6l6 6-6 6"/>
-                </svg>
-                <span>3 Baths</span>
-              </div>
-              <div class="feature-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                </svg>
-                <span>House</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <!-- Property Card 3: Treasured Horseshoe Property -->
-        <a href="properties/treasured-horseshoe-property/" class="property-card fade-in" data-type="land" data-bedrooms="0" data-price="150000" style="text-decoration: none; color: inherit;">
-          <div class="property-image">
-            <img src="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-reducedIMG_E4917.jpg" alt="Treasured Horseshoe Property" loading="lazy">
-            <span class="property-badge badge-sale">For Sale</span>
-          </div>
-          <div class="property-content">
-            <div class="property-price">$150,000</div>
-            <h4 class="property-title">Treasured Horseshoe Property</h4>
-            <p class="property-location">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              <span class="property-village">Zion&rsquo;s Hill</span>
-            </p>
-            <div class="property-features">
-              <div class="feature-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                </svg>
-                <span>1,584 m²</span>
-              </div>
-              <div class="feature-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M2 12h20"/>
-                </svg>
-                <span>Land</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-      </div>
+      <div class="grid grid-3 property-grid" id="homePropertyGrid"></div>
       
       <div class="text-center mt-xl">
         <a href="/buy/" class="btn btn-secondary">View All Properties</a>
@@ -486,40 +375,140 @@
   </section>
 
   <script>
-    // Filter logic for Browse Properties static cards
-    function applyHomeFilters() {
-      const search   = document.getElementById('searchInput').value.toLowerCase();
-      const typeVal  = document.getElementById('propertyType').value;
-      const bedVal   = document.getElementById('bedrooms').value;
-      const priceVal = document.getElementById('priceRange').value;
+    fetch('/data/listings.json')
+      .then(r => r.json())
+      .then(data => {
+        const featuredIds = ['hidden-treasure-villa', 'view-villa', 'treasured-horseshoe-property'];
+        const all = data.properties || [];
+        const listings = featuredIds.map(id => all.find(p => p.id === id)).filter(Boolean);
+        const grid = document.getElementById('homePropertyGrid');
 
-      document.querySelectorAll('.property-grid .property-card').forEach(card => {
+        listings.forEach((property, i) => {
+          const isSold = property.status === 'sold';
+          const isUnderContract = property.detailStatus === 'under-contract';
+          const isLand = property.type === 'land';
+          const isCommercial = property.type === 'commercial';
+          const isHouse = property.type === 'villa' || property.type === 'cottage';
+          const filterType = isHouse ? 'house' : property.type;
+          const displayType = isHouse ? 'House' : property.type.charAt(0).toUpperCase() + property.type.slice(1);
+
+          const statusOverlay = isSold
+            ? '<span class="property-ribbon ribbon-sold">Sold</span>'
+            : (isUnderContract
+                ? '<span class="property-ribbon ribbon-contract">Under Contract</span>'
+                : '<span class="property-badge badge-sale">For Sale</span>');
+          const priceStyle = isSold ? 'color: var(--color-text-light);' : '';
+
+          let featuresHTML = '';
+          if (isLand) {
+            featuresHTML = `
+              <div class="feature-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg><span>Land</span></div>
+              <div class="feature-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg><span>Views</span></div>`;
+          } else if (isCommercial) {
+            featuresHTML = `
+              <div class="feature-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg><span>Commercial</span></div>
+              <div class="feature-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg><span>Investment</span></div>`;
+          } else {
+            featuresHTML = `
+              <div class="feature-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>${property.bedrooms} Bed${property.bedrooms !== 1 ? 's' : ''}</span></div>
+              <div class="feature-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg><span>${property.bathrooms} Bath${property.bathrooms !== 1 ? 's' : ''}</span></div>
+              <div class="feature-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg><span>${displayType}</span></div>`;
+          }
+
+          const locationRaw = property.location || '';
+          const isStatia = /st\.?\s*eustatius/i.test(locationRaw);
+          const islandKey = isStatia ? 'statia' : 'saba';
+          const village = locationRaw.split(',')[0].trim();
+
+          const card = document.createElement('a');
+          card.href = `properties/${property.id}/`;
+          card.className = 'property-card fade-in';
+          card.setAttribute('data-type', filterType);
+          card.setAttribute('data-bedrooms', property.bedrooms);
+          card.setAttribute('data-price', property.price);
+          card.setAttribute('data-island', islandKey);
+          card.style.cssText = 'text-decoration:none;color:inherit;';
+          card.style.animationDelay = `${i * 0.05}s`;
+
+          card.innerHTML = `
+            <div class="property-image">
+              <img src="${property.images[0]}" alt="${property.title}" loading="lazy">
+              ${statusOverlay}
+            </div>
+            <div class="property-content">
+              <div class="property-price" style="${priceStyle}">${property.priceFormatted}</div>
+              <h4 class="property-title">${property.title}</h4>
+              <p class="property-location">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span class="property-village">${village}</span>
+              </p>
+              <div class="property-features">${featuresHTML}</div>
+            </div>`;
+
+          grid.appendChild(card);
+        });
+
+        applyHomeFilters();
+      })
+      .catch(() => {
+        document.getElementById('homePropertyGrid').innerHTML =
+          '<p style="grid-column:1/-1;text-align:center;padding:3rem;">Error loading properties.</p>';
+      });
+
+    function applyHomeFilters() {
+      const search    = document.getElementById('searchInput').value.toLowerCase();
+      const islandVal = document.getElementById('islandFilter').value;
+      const typeVal   = document.getElementById('propertyType').value;
+      const bedVal    = document.getElementById('bedrooms').value;
+      const priceVal  = document.getElementById('priceRange').value;
+
+      const allCards = document.querySelectorAll('#homePropertyGrid .property-card');
+      if (!allCards.length) return;
+      let anyVisible = false;
+      allCards.forEach(card => {
         const title    = (card.querySelector('.property-title')?.textContent || '').toLowerCase();
         const location = (card.querySelector('.property-location')?.textContent || '').toLowerCase();
         const type     = card.getAttribute('data-type') || '';
+        const island   = card.getAttribute('data-island') || '';
         const beds     = parseInt(card.getAttribute('data-bedrooms')) || 0;
         const price    = parseInt(card.getAttribute('data-price')) || 0;
 
         let show = true;
-
         if (search && !title.includes(search) && !location.includes(search)) show = false;
+        if (islandVal !== 'all' && island !== islandVal) show = false;
         if (typeVal !== 'all' && type !== typeVal) show = false;
-
         if (bedVal !== 'all') {
           if (bedVal === '4+' && beds < 4) show = false;
           else if (bedVal !== '4+' && beds !== parseInt(bedVal)) show = false;
         }
-
-        if (priceVal !== 'all') {
+        if (priceVal !== 'all' && price > 0) {
           const [min, max] = priceVal.split('-').map(Number);
           if (price < min || price > max) show = false;
         }
-
         card.style.display = show ? '' : 'none';
+        if (show) anyVisible = true;
       });
+
+      const grid = document.getElementById('homePropertyGrid');
+      let msg = document.getElementById('homeNoResults');
+      if (!anyVisible) {
+        if (!msg) {
+          msg = document.createElement('p');
+          msg.id = 'homeNoResults';
+          msg.style.cssText = 'grid-column:1/-1;text-align:center;padding:3rem;color:var(--color-text-light);';
+          msg.textContent = 'No listings match your filters — try broadening your search.';
+          grid.appendChild(msg);
+        }
+      } else if (msg) {
+        msg.remove();
+      }
     }
 
     document.getElementById('searchInput').addEventListener('input', applyHomeFilters);
+    document.getElementById('islandFilter').addEventListener('change', applyHomeFilters);
     document.getElementById('propertyType').addEventListener('change', applyHomeFilters);
     document.getElementById('bedrooms').addEventListener('change', applyHomeFilters);
     document.getElementById('priceRange').addEventListener('change', applyHomeFilters);
@@ -553,7 +542,7 @@
       </div>
 
       <p class="almanac-footnote fade-in">
-        No high-rises, no casinos, no chain hotels. Five villages tucked into the green hills of the Dutch Caribbean &mdash;
+        No high-rises, no casinos, no chain hotels. Four villages tucked into the green hills of the Dutch Caribbean &mdash;
         and a dozen properties for sale at any given time.
         <a href="/about/">More about the island &rarr;</a>
       </p>
@@ -594,7 +583,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/logo-horizontal.png" alt="Saban Realty" style="height: 40px; margin-bottom: 1rem;" loading="lazy">
-          <p>Your trusted partner for real estate on Saba Island, Caribbean Netherlands.</p>
+          <p>Your trusted partner for real estate on the island of Saba, Caribbean Netherlands.</p>
 
           <div class="footer-social-label">Follow us</div>
           <div class="footer-social">
