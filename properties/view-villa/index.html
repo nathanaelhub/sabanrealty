@@ -212,6 +212,7 @@
       line-height: 1.7;
     }
     .property-features {
+      display: block;
       background: var(--color-white);
       padding: 2rem;
       border-radius: var(--radius-lg);
@@ -225,6 +226,7 @@
       list-style: none;
       padding: 0;
       display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 0.75rem;
     }
     .features-list li {
@@ -928,8 +930,10 @@
           <div class="property-description">
             <div class="description-text">${property.description}</div>
           </div>
-          ${featuresHTML}
+
         </div>
+
+        ${featuresHTML}
 
         ${videoHTML}
 

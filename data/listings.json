@@ -3,7 +3,10 @@
     {
       "id": "hidden-treasure-villa",
       "videos": [
-        { "label": "Property Tour", "id": "trpERWTJUww" }
+        {
+          "label": "Property Tour",
+          "id": "trpERWTJUww"
+        }
       ],
       "title": "Hidden Treasure Villa",
       "location": "Zions Hill, Saba",
@@ -29,12 +32,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/12CZHG3972.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/13IMG_E4283.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/14IMG_E4289.JPG"
+      ],
+      "features": [
+        "Fully Furnished",
+        "Ocean View",
+        "Hillside View",
+        "Two-Story",
+        "3 Bedrooms / 3 Bathrooms",
+        "Private Road",
+        "Cistern",
+        "Hurricane Shutters"
       ]
     },
     {
       "id": "susanas-cottage",
       "videos": [
-        { "label": "Property Tour", "id": "h5mi2fq9ggo" }
+        {
+          "label": "Property Tour",
+          "id": "h5mi2fq9ggo"
+        }
       ],
       "title": "Susanna Cottage",
       "location": "Zions Hill, Saba",
@@ -59,6 +75,14 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/susanas-cottage/100003825-11IMG50_E5368.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/susanas-cottage/100003825-7IMG50_E5364.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/susanas-cottage/100003825-8IMG50_E5365.jpg"
+      ],
+      "features": [
+        "Fully Furnished",
+        "Ocean View",
+        "Hillside View",
+        "Historic Saban Architecture",
+        "Flower Garden",
+        "Veranda"
       ]
     },
     {
@@ -89,6 +113,14 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-8IMG-20250803-WA0011.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-18download.png",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-20cherry.jpg"
+      ],
+      "features": [
+        "Ocean View",
+        "Large Lot (2,274 m²)",
+        "High Ceilings",
+        "Plantation-Style Architecture",
+        "3 Bedrooms / 2 Bathrooms",
+        "Private Land"
       ]
     },
     {
@@ -126,7 +158,17 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/statia-poolhouse-and-bungalows/statia-lodge%20_26_.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/statia-poolhouse-and-bungalows/statia-lodge%20_4_.jpg"
       ],
-      "hidden": true
+      "hidden": true,
+      "features": [
+        "Swimming Pool",
+        "Ocean View",
+        "9 Bungalows",
+        "Large Lot (8,070 m²)",
+        "Eco-Friendly",
+        "Near Hiking Trails",
+        "Near Dive Sites",
+        "Tourist Infrastructure"
+      ]
     },
     {
       "id": "cats-eye-cottage",
@@ -155,12 +197,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/13-100004062-13Screenshot1000.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/14-100004062-14WhatsApp1000.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cats-eye-cottage/15-100004062-z15DSCN1500arrow1000.JPG"
+      ],
+      "features": [
+        "Fully Furnished",
+        "Ocean View",
+        "Wraparound Balcony",
+        "Cistern",
+        "Hurricane Shutters",
+        "Air Conditioning",
+        "Fiber Internet",
+        "Near Village Center"
       ]
     },
     {
       "id": "daphne-cottage",
       "videos": [
-        { "label": "Property Tour", "id": "SIRdL9tyS10" }
+        {
+          "label": "Property Tour",
+          "id": "SIRdL9tyS10"
+        }
       ],
       "title": "Daphne Cottage",
       "location": "Windwardside, Saba",
@@ -186,12 +241,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/11Daphne.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/100003774-daphne1a.jpeg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/DaphneNikon2.JPG"
+      ],
+      "features": [
+        "Fully Furnished",
+        "Ocean View",
+        "Historic (Built 1850)",
+        "Veranda",
+        "Flower Garden",
+        "Near Village Center",
+        "Classic Red Roof",
+        "Expansion Land"
       ]
     },
     {
       "id": "the-glasshouse",
       "videos": [
-        { "label": "Property Tour", "id": "nuV2wOzIo-U" }
+        {
+          "label": "Property Tour",
+          "id": "nuV2wOzIo-U"
+        }
       ],
       "title": "The Glasshouse",
       "location": "Windwardside, Saba",
@@ -231,12 +299,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/20Glasshouse%20logo.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/100003967-DroneGlassHouse.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/100003967-SmartphoneImageProperty.jpeg"
+      ],
+      "features": [
+        "Ocean View",
+        "Modern Design",
+        "Guest Apartment",
+        "Rainforest Setting",
+        "Large Lot (2,307 m²)",
+        "3 Bedrooms / 3 Bathrooms",
+        "Indoor-Outdoor Living",
+        "Luxury Finishes"
       ]
     },
     {
       "id": "iguana-rock",
       "videos": [
-        { "label": "Property Tour", "id": "pCFoDVRk5vM" }
+        {
+          "label": "Property Tour",
+          "id": "pCFoDVRk5vM"
+        }
       ],
       "title": "Iguana Rock House",
       "location": "Windwardside, Saba",
@@ -267,12 +348,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/iguana-rock/100003955-5-50IMG_E0438.jpeg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/iguana-rock/100003955-50-3IMG_E0023.jpeg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/iguana-rock/100003955-50-4IMG_E0453.jpeg"
+      ],
+      "features": [
+        "180° Ocean View",
+        "Neighboring Island Views",
+        "Two-Story",
+        "Large Lot (1,500 m²)",
+        "2 Bedrooms / 3 Bathrooms",
+        "Hillside Setting",
+        "Mount Scenery Views",
+        "Video Tour"
       ]
     },
     {
       "id": "view-villa",
       "videos": [
-        { "label": "Property Tour", "id": "N_HBAInQXz4" }
+        {
+          "label": "Property Tour",
+          "id": "N_HBAInQXz4"
+        }
       ],
       "title": "View Villa",
       "location": "Windwardside, Saba",
@@ -306,12 +400,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/22IMG_E3459.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/23IMG_3460.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/100003862-DroneViewVilla.jpg"
+      ],
+      "features": [
+        "Fully Furnished",
+        "Ocean View",
+        "4,017 sq ft Living Space",
+        "Two-Story",
+        "Tropical Gardens",
+        "Luxury Finishes",
+        "The Level Location",
+        "Video Tour"
       ]
     },
     {
       "id": "seagrape-cottage",
       "videos": [
-        { "label": "Property Tour", "id": "SoF6vef5ddk" }
+        {
+          "label": "Property Tour",
+          "id": "SoF6vef5ddk"
+        }
       ],
       "title": "Seagrape Cottage",
       "location": "Cove Bay, Zion's Hill, Saba",
@@ -342,12 +449,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/seagrape-cottage/18Layout%20Seagrape%20Cottage%20JPEG.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/seagrape-cottage/19Meetbrief%20JPEG.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/seagrape-cottage/100003901-8IMG-6620-50.jpg"
+      ],
+      "features": [
+        "Waterfront",
+        "Ocean View",
+        "Private Setting",
+        "Cistern",
+        "1 Bedroom / 1.5 Bathrooms",
+        "Expansion Potential",
+        "Cove Bay Location",
+        "Unique Waterfront Home"
       ]
     },
     {
       "id": "house-on-the-path",
       "videos": [
-        { "label": "Property Tour", "id": "pjpu8oQ5gjM" }
+        {
+          "label": "Property Tour",
+          "id": "pjpu8oQ5gjM"
+        }
       ],
       "title": "House on the Path",
       "location": "Windwardside, Saba",
@@ -371,6 +491,16 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/house-on-the-path/11IMG_E2605.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/house-on-the-path/100003857-10%20rear%209601h.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/house-on-the-path/100003857-HouseOnThePathLandImage.jpeg"
+      ],
+      "features": [
+        "Mountain Views",
+        "Total Privacy",
+        "Nature Surroundings",
+        "High Elevation (1,500 ft)",
+        "Near Mount Scenery Trail",
+        "Eco-Friendly",
+        "Secluded Retreat",
+        "Lush Rainforest"
       ]
     },
     {
@@ -399,12 +529,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/rainbow-cottage/493211005_122203516520158753_5961300492611099172_n.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/rainbow-cottage/493260717_122203515926158753_3733858819041517731_n.jpg"
       ],
-      "hidden": true
+      "hidden": true,
+      "features": [
+        "Ocean View",
+        "Historic (Built 1900)",
+        "Saban Architecture",
+        "2 Bedrooms / 2 Bathrooms",
+        "Tropical Garden",
+        "Near Village Center",
+        "Outdoor Patio",
+        "Charming Character"
+      ]
     },
     {
       "id": "anslyn-estate",
       "videos": [
-        { "label": "Property Tour", "id": "ihnfPpv-h9w" }
+        {
+          "label": "Property Tour",
+          "id": "ihnfPpv-h9w"
+        }
       ],
       "title": "Anslyn Estate",
       "location": "Windwardside, Saba",
@@ -456,12 +599,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/100003974-045-7ff9dfab-b377-41b2-818d-b39e14d77e47.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/100003974-046-3ca004e3-bf8a-4e40-abcc-d5396b115eff.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/anslyn-estate/100003974-047-e72460d4-4008-4581-ac16-8fda18c743fc.jpg"
+      ],
+      "features": [
+        "Guest Cottage",
+        "Tropical Gardens",
+        "Multiple Units",
+        "Hillside Setting",
+        "Near Village Center",
+        "1,600 m² Lot",
+        "Investment Potential",
+        "Main House + 2 Units"
       ]
     },
     {
       "id": "middle-island-property",
       "videos": [
-        { "label": "Property Tour", "id": "Tsc-uOtvKO0" }
+        {
+          "label": "Property Tour",
+          "id": "Tsc-uOtvKO0"
+        }
       ],
       "title": "Middle Island Property",
       "location": "Wells Bay Road, The Bottom, Saba",
@@ -480,12 +636,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/middle-island-property/5IMG_E5566b.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/middle-island-property/6IMG_5527.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/middle-island-property/100003972-Image%20Land%202025-05-01.jpeg"
+      ],
+      "features": [
+        "Ocean View",
+        "Diamond Rock View",
+        "Near The Bottom",
+        "683 m² Lot",
+        "Accessible Road",
+        "Development Ready",
+        "Quiet Neighborhood",
+        "Caribbean Sea Views"
       ]
     },
     {
       "id": "treasured-horseshoe-property",
       "videos": [
-        { "label": "Property Tour", "id": "22nht4vb3f0" }
+        {
+          "label": "Property Tour",
+          "id": "22nht4vb3f0"
+        }
       ],
       "title": "Treasured Horseshoe Property",
       "location": "Zions Hill, Saba",
@@ -506,12 +675,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-reducedIMG_E4936.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-reducedIMG_E4945.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/Treasured%20Land-Cover.jpg"
+      ],
+      "features": [
+        "Panoramic Ocean View",
+        "Near Cove Bay",
+        "Near Hiking Trails",
+        "1,584 m² Lot",
+        "Development Ready",
+        "Zion's Hill Location",
+        "Price Reduced",
+        "Caribbean Sea Views"
       ]
     },
     {
       "id": "first-light-property",
       "videos": [
-        { "label": "Property Tour", "id": "Xz5ga_3L0fo" }
+        {
+          "label": "Property Tour",
+          "id": "Xz5ga_3L0fo"
+        }
       ],
       "title": "First Light Property",
       "location": "Zions Hill, Saba",
@@ -530,12 +712,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/first-light-property/100003920-5IMG_E7878-50.jpeg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/first-light-property/100003920-6IMG_7871-50.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/first-light-property/100003920-7IMG_7893-50.jpg"
+      ],
+      "features": [
+        "Ocean View",
+        "Sunrise Views",
+        "Near Cove Bay",
+        "Mount Scenery Views",
+        "901 m² Lot",
+        "Buildable Lot",
+        "Quiet Setting",
+        "Affordable Entry"
       ]
     },
     {
       "id": "sunrise-ridge",
       "videos": [
-        { "label": "Property Tour", "id": "CARLCJi_edw" }
+        {
+          "label": "Property Tour",
+          "id": "CARLCJi_edw"
+        }
       ],
       "title": "Sunrise Ridge",
       "location": "Zions Hill, Saba",
@@ -556,12 +751,25 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_7E4247.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_8E4254.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/Ridge%20land-Cover.jpg"
+      ],
+      "features": [
+        "Ocean View",
+        "Large Parcel (1.28 acres)",
+        "Near Cove Bay",
+        "Panoramic Views",
+        "Price Reduced 40%",
+        "Investment Opportunity",
+        "Northeast Saba",
+        "Rare Large Lot"
       ]
     },
     {
       "id": "johnnys-ground-secret",
       "videos": [
-        { "label": "Property Tour", "id": "q3Q61V4Ud2c" }
+        {
+          "label": "Property Tour",
+          "id": "q3Q61V4Ud2c"
+        }
       ],
       "title": "Johnny's Ground Secret",
       "location": "Windwardside, Saba",
@@ -584,6 +792,16 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/johnnys-ground-secret/8IMG_E4350.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/johnnys-ground-secret/10IMG_E4054.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/johnnys-ground-secret/11IMG_4343.JPG"
+      ],
+      "features": [
+        "Caribbean Sea Views",
+        "Views of Sint Maarten & Statia",
+        "Views of St. Barts",
+        "Large Parcel (1.04 acres)",
+        "Private Setting",
+        "Near Windwardside",
+        "Booby Hill Location",
+        "Buildable Lot"
       ]
     },
     {
@@ -596,7 +814,7 @@
       "type": "land",
       "bedrooms": 0,
       "bathrooms": 0,
-      "description": "<h2>Union Estate - $723,680.00</h2>\n<p><strong>Location:</strong> Union Estate, St. Eustatius (Statia), off White Wall Road</p>\n<p><strong>Property Size:</strong> 18,092 m\u00b2 (approximately 4.5 acres)</p>\n<p><strong>MLS:</strong> 300012599063</p>\n<h3>Property Overview:</h3>\n<p>This vacant, gently sloped lot sits in the countryside of Union Estate on St. Eustatius, just off the White Wall Road. The property enjoys sweeping views of the Caribbean Sea, The Quill, and the island's famous sunsets. Positioned along the projected Angelfish Road, it is a rare development opportunity in one of the most unspoiled corners of the Caribbean Netherlands.</p>\n<p>St. Eustatius \u2014 known affectionately as Statia \u2014 is rich in history, offers excellent scuba diving, and is home to three nature parks maintained by the National Parks Foundation. While tourism plays a part in island life, Statia has deliberately avoided mass tourism, so daily life here is built around simple pleasures and natural beauty.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Generous Size:</strong> 18,092 m\u00b2 (roughly 4.5 acres) of gently sloped land \u2014 ample room to design your ideal home or development.</li>\n<li><strong>Spectacular Views:</strong> Caribbean Sea, The Quill, and sunset vistas.</li>\n<li><strong>Prime Setting:</strong> Quiet countryside off White Wall Road, along the projected Angelfish Road.</li>\n<li><strong>Island Lifestyle:</strong> History, world-class diving, and protected nature on an island that values its unspoiled character.</li>\n</ul>",
+      "description": "<h2>Union Estate - $723,680.00</h2>\n<p><strong>Location:</strong> Union Estate, St. Eustatius (Statia), off White Wall Road</p>\n<p><strong>Property Size:</strong> 18,092 m² (approximately 4.5 acres)</p>\n<p><strong>MLS:</strong> 300012599063</p>\n<h3>Property Overview:</h3>\n<p>This vacant, gently sloped lot sits in the countryside of Union Estate on St. Eustatius, just off the White Wall Road. The property enjoys sweeping views of the Caribbean Sea, The Quill, and the island's famous sunsets. Positioned along the projected Angelfish Road, it is a rare development opportunity in one of the most unspoiled corners of the Caribbean Netherlands.</p>\n<p>St. Eustatius — known affectionately as Statia — is rich in history, offers excellent scuba diving, and is home to three nature parks maintained by the National Parks Foundation. While tourism plays a part in island life, Statia has deliberately avoided mass tourism, so daily life here is built around simple pleasures and natural beauty.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Generous Size:</strong> 18,092 m² (roughly 4.5 acres) of gently sloped land — ample room to design your ideal home or development.</li>\n<li><strong>Spectacular Views:</strong> Caribbean Sea, The Quill, and sunset vistas.</li>\n<li><strong>Prime Setting:</strong> Quiet countryside off White Wall Road, along the projected Angelfish Road.</li>\n<li><strong>Island Lifestyle:</strong> History, world-class diving, and protected nature on an island that values its unspoiled character.</li>\n</ul>",
       "images": [
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_1.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_2.jpg",
@@ -606,6 +824,16 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_6.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_7_harbor_sunset.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/union-estate-statia/photo_8.jpg"
+      ],
+      "features": [
+        "Caribbean Sea Views",
+        "The Quill Views",
+        "Sunset Views",
+        "Large Parcel (4.5 acres)",
+        "Development Opportunity",
+        "Countryside Setting",
+        "Gently Sloped",
+        "Road Access"
       ]
     },
     {
@@ -637,6 +865,16 @@
         "https://www.remaxislandproperties.com/images/property-images/100004065-750-5BWhatsApp7.jpg",
         "https://www.remaxislandproperties.com/images/property-images/100004065-750-6IMG_6738.JPG",
         "https://www.remaxislandproperties.com/images/property-images/100004065-750-4IMG_6717.JPG"
+      ],
+      "features": [
+        "Established Business (20+ years)",
+        "Fully Equipped Kitchen",
+        "36 Seats (Tables & Bar)",
+        "Village Center Location",
+        "Covered Outdoor Seating",
+        "Business & Equipment Included",
+        "Lease Included",
+        "Investment Opportunity"
       ]
     },
     {
@@ -709,6 +947,16 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/quill-land/100003833-6Picture20.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/quill-land/100003833-7Picture49.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/quill-land/100003833-8Picture25.jpg"
+      ],
+      "features": [
+        "185 Acres",
+        "Development Plans Included",
+        "Ocean Views",
+        "Quill Mountain Views",
+        "Large Scale Opportunity",
+        "Near Oranjestad",
+        "Multiple Development Zones",
+        "Price Reduced $7M"
       ]
     },
     {
@@ -732,6 +980,16 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lynch-beachfront-estate/6TNHHE1409.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lynch-beachfront-estate/7STICE8806.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lynch-beachfront-estate/8IMG_E7348-50.JPG"
+      ],
+      "features": [
+        "Beachfront Access",
+        "Caribbean Sea Views",
+        "The Quill Views",
+        "1.5 Acres",
+        "Commercial Potential",
+        "Atlantic Side",
+        "Quiet Area",
+        "Rare Beachfront Lot"
       ]
     },
     {
@@ -754,6 +1012,16 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_5.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_6.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/lodi-statia-land/photo_7.jpg"
+      ],
+      "features": [
+        "Ocean Views",
+        "Mountain Views",
+        "Sunset Views",
+        "2,561 m² Lot",
+        "Electricity Nearby",
+        "Water Connection Nearby",
+        "Easy Road Access",
+        "Buildable Lot"
       ]
     }
   ],
