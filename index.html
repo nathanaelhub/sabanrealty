@@ -327,6 +327,14 @@
             <input type="text" id="searchInput" placeholder="Search by location, name...">
           </div>
           <div class="filter-group">
+            <label for="islandFilter">Island</label>
+            <select id="islandFilter">
+              <option value="all">All Islands</option>
+              <option value="saba">Saba</option>
+              <option value="statia">St. Eustatius</option>
+            </select>
+          </div>
+          <div class="filter-group">
             <label for="propertyType">Property Type</label>
             <select id="propertyType">
               <option value="all">All Types</option>
@@ -361,7 +369,7 @@
       <div class="grid grid-3 property-grid">
         
         <!-- Property Card 1: Hidden Treasure Villa (Sold) -->
-        <a href="properties/hidden-treasure-villa/" class="property-card fade-in" data-type="house" data-bedrooms="3" data-price="0" style="text-decoration: none; color: inherit;">
+        <a href="properties/hidden-treasure-villa/" class="property-card fade-in" data-type="house" data-bedrooms="3" data-price="0" data-island="saba" style="text-decoration: none; color: inherit;">
           <div class="property-image">
             <img src="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/hidden-treasure-villa/1IMG_E4186.JPG" alt="Hidden Treasure Villa" loading="lazy">
             <span class="property-ribbon ribbon-sold">Sold</span>
@@ -401,7 +409,7 @@
         </a>
 
         <!-- Property Card 2: View Villa -->
-        <a href="properties/view-villa/" class="property-card fade-in" data-type="house" data-bedrooms="3" data-price="980000" style="text-decoration: none; color: inherit;">
+        <a href="properties/view-villa/" class="property-card fade-in" data-type="house" data-bedrooms="3" data-price="980000" data-island="saba" style="text-decoration: none; color: inherit;">
           <div class="property-image">
             <img src="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/view-villa/1IMG_3313.JPG" alt="View Villa" loading="lazy">
             <span class="property-badge badge-sale">For Sale</span>
@@ -441,7 +449,7 @@
         </a>
 
         <!-- Property Card 3: Treasured Horseshoe Property -->
-        <a href="properties/treasured-horseshoe-property/" class="property-card fade-in" data-type="land" data-bedrooms="0" data-price="150000" style="text-decoration: none; color: inherit;">
+        <a href="properties/treasured-horseshoe-property/" class="property-card fade-in" data-type="land" data-bedrooms="0" data-price="150000" data-island="saba" style="text-decoration: none; color: inherit;">
           <div class="property-image">
             <img src="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/treasured-horseshoe-property/100003874-reducedIMG_E4917.jpg" alt="Treasured Horseshoe Property" loading="lazy">
             <span class="property-badge badge-sale">For Sale</span>
@@ -485,21 +493,24 @@
   <script>
     // Filter logic for Browse Properties static cards
     function applyHomeFilters() {
-      const search   = document.getElementById('searchInput').value.toLowerCase();
-      const typeVal  = document.getElementById('propertyType').value;
-      const bedVal   = document.getElementById('bedrooms').value;
-      const priceVal = document.getElementById('priceRange').value;
+      const search     = document.getElementById('searchInput').value.toLowerCase();
+      const islandVal  = document.getElementById('islandFilter').value;
+      const typeVal    = document.getElementById('propertyType').value;
+      const bedVal     = document.getElementById('bedrooms').value;
+      const priceVal   = document.getElementById('priceRange').value;
 
       document.querySelectorAll('.property-grid .property-card').forEach(card => {
         const title    = (card.querySelector('.property-title')?.textContent || '').toLowerCase();
         const location = (card.querySelector('.property-location')?.textContent || '').toLowerCase();
         const type     = card.getAttribute('data-type') || '';
+        const island   = card.getAttribute('data-island') || '';
         const beds     = parseInt(card.getAttribute('data-bedrooms')) || 0;
         const price    = parseInt(card.getAttribute('data-price')) || 0;
 
         let show = true;
 
         if (search && !title.includes(search) && !location.includes(search)) show = false;
+        if (islandVal !== 'all' && island !== islandVal) show = false;
         if (typeVal !== 'all' && type !== typeVal) show = false;
 
         if (bedVal !== 'all') {
@@ -517,6 +528,7 @@
     }
 
     document.getElementById('searchInput').addEventListener('input', applyHomeFilters);
+    document.getElementById('islandFilter').addEventListener('change', applyHomeFilters);
     document.getElementById('propertyType').addEventListener('change', applyHomeFilters);
     document.getElementById('bedrooms').addEventListener('change', applyHomeFilters);
     document.getElementById('priceRange').addEventListener('change', applyHomeFilters);
