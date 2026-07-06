@@ -378,7 +378,7 @@
     fetch('/data/listings.json')
       .then(r => r.json())
       .then(data => {
-        const listings = data.properties || [];
+        const listings = (data.properties || []).slice(0, 3);
         const grid = document.getElementById('homePropertyGrid');
 
         listings.forEach((property, i) => {
