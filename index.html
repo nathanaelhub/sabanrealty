@@ -378,7 +378,9 @@
     fetch('/data/listings.json')
       .then(r => r.json())
       .then(data => {
-        const listings = (data.properties || []).slice(0, 3);
+        const featuredIds = ['hidden-treasure-villa', 'view-villa', 'treasured-horseshoe-property'];
+        const all = data.properties || [];
+        const listings = featuredIds.map(id => all.find(p => p.id === id)).filter(Boolean);
         const grid = document.getElementById('homePropertyGrid');
 
         listings.forEach((property, i) => {
@@ -463,8 +465,10 @@
       const bedVal    = document.getElementById('bedrooms').value;
       const priceVal  = document.getElementById('priceRange').value;
 
+      const allCards = document.querySelectorAll('#homePropertyGrid .property-card');
+      if (!allCards.length) return;
       let anyVisible = false;
-      document.querySelectorAll('#homePropertyGrid .property-card').forEach(card => {
+      allCards.forEach(card => {
         const title    = (card.querySelector('.property-title')?.textContent || '').toLowerCase();
         const location = (card.querySelector('.property-location')?.textContent || '').toLowerCase();
         const type     = card.getAttribute('data-type') || '';
