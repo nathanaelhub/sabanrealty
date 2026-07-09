@@ -89,7 +89,7 @@ def build_page(p, kind):
     blocks = '  <script type="application/ld+json">\n  ' + json.dumps(ld, ensure_ascii=False) + "\n  </script>\n"
 
     # VideoObject schema for property tours (eligible for video rich results).
-    # Only fields we can honestly supply — no fabricated uploadDate/duration.
+    # uploadDate comes from each video's real YouTube publish date (in listings.json).
     for v in (p.get("videos") or []):
         vid = v.get("id")
         if not vid:
@@ -103,6 +103,8 @@ def build_page(p, kind):
             "embedUrl": f"https://www.youtube.com/embed/{vid}",
             "contentUrl": f"https://www.youtube.com/watch?v={vid}",
         }
+        if v.get("uploadDate"):
+            vo["uploadDate"] = v["uploadDate"]
         blocks += '  <script type="application/ld+json">\n  ' + json.dumps(vo, ensure_ascii=False) + "\n  </script>\n"
 
     h = h.replace("</head>", blocks + "</head>", 1)

@@ -3,7 +3,7 @@
     {
       "id": "hidden-treasure-villa",
       "videos": [
-        { "label": "Property Tour", "id": "trpERWTJUww" }
+        { "label": "Property Tour", "id": "trpERWTJUww", "uploadDate": "2024-03-27T10:42:33-07:00" }
       ],
       "title": "Hidden Treasure Villa",
       "location": "Zions Hill, Saba",
@@ -34,7 +34,7 @@
     {
       "id": "susanas-cottage",
       "videos": [
-        { "label": "Property Tour", "id": "h5mi2fq9ggo" }
+        { "label": "Property Tour", "id": "h5mi2fq9ggo", "uploadDate": "2024-06-08T14:26:49-07:00" }
       ],
       "title": "Susanna Cottage",
       "location": "Zions Hill, Saba",
@@ -160,7 +160,7 @@
     {
       "id": "daphne-cottage",
       "videos": [
-        { "label": "Property Tour", "id": "SIRdL9tyS10" }
+        { "label": "Property Tour", "id": "SIRdL9tyS10", "uploadDate": "2026-05-03T20:45:02-07:00" }
       ],
       "title": "Daphne Cottage",
       "location": "Windwardside, Saba",
@@ -191,7 +191,7 @@
     {
       "id": "the-glasshouse",
       "videos": [
-        { "label": "Property Tour", "id": "nuV2wOzIo-U" }
+        { "label": "Property Tour", "id": "nuV2wOzIo-U", "uploadDate": "2025-06-06T09:08:48-07:00" }
       ],
       "title": "The Glasshouse",
       "location": "Windwardside, Saba",
@@ -236,7 +236,7 @@
     {
       "id": "iguana-rock",
       "videos": [
-        { "label": "Property Tour", "id": "pCFoDVRk5vM" }
+        { "label": "Property Tour", "id": "pCFoDVRk5vM", "uploadDate": "2025-04-21T07:17:22-07:00" }
       ],
       "title": "Iguana Rock House",
       "location": "Windwardside, Saba",
@@ -272,7 +272,7 @@
     {
       "id": "view-villa",
       "videos": [
-        { "label": "Property Tour", "id": "N_HBAInQXz4" }
+        { "label": "Property Tour", "id": "N_HBAInQXz4", "uploadDate": "2024-06-16T18:26:54-07:00" }
       ],
       "title": "View Villa",
       "location": "Windwardside, Saba",
@@ -311,7 +311,7 @@
     {
       "id": "seagrape-cottage",
       "videos": [
-        { "label": "Property Tour", "id": "SoF6vef5ddk" }
+        { "label": "Property Tour", "id": "SoF6vef5ddk", "uploadDate": "2024-10-13T11:06:18-07:00" }
       ],
       "title": "Seagrape Cottage",
       "location": "Cove Bay, Zion's Hill, Saba",
@@ -347,7 +347,7 @@
     {
       "id": "house-on-the-path",
       "videos": [
-        { "label": "Property Tour", "id": "pjpu8oQ5gjM" }
+        { "label": "Property Tour", "id": "pjpu8oQ5gjM", "uploadDate": "2024-04-17T11:51:50-07:00" }
       ],
       "title": "House on the Path",
       "location": "Windwardside, Saba",
@@ -404,7 +404,7 @@
     {
       "id": "anslyn-estate",
       "videos": [
-        { "label": "Property Tour", "id": "ihnfPpv-h9w" }
+        { "label": "Property Tour", "id": "ihnfPpv-h9w", "uploadDate": "2026-05-01T21:00:49-07:00" }
       ],
       "title": "Anslyn Estate",
       "location": "Windwardside, Saba",
@@ -461,7 +461,7 @@
     {
       "id": "middle-island-property",
       "videos": [
-        { "label": "Property Tour", "id": "Tsc-uOtvKO0" }
+        { "label": "Property Tour", "id": "Tsc-uOtvKO0", "uploadDate": "2025-07-26T10:00:07-07:00" }
       ],
       "title": "Middle Island Property",
       "location": "Wells Bay Road, The Bottom, Saba",
@@ -485,7 +485,7 @@
     {
       "id": "treasured-horseshoe-property",
       "videos": [
-        { "label": "Property Tour", "id": "22nht4vb3f0" }
+        { "label": "Property Tour", "id": "22nht4vb3f0", "uploadDate": "2024-07-02T14:11:03-07:00" }
       ],
       "title": "Treasured Horseshoe Property",
       "location": "Zions Hill, Saba",
@@ -511,7 +511,7 @@
     {
       "id": "first-light-property",
       "videos": [
-        { "label": "Property Tour", "id": "Xz5ga_3L0fo" }
+        { "label": "Property Tour", "id": "Xz5ga_3L0fo", "uploadDate": "2025-04-21T07:10:13-07:00" }
       ],
       "title": "First Light Property",
       "location": "Zions Hill, Saba",
@@ -535,7 +535,7 @@
     {
       "id": "sunrise-ridge",
       "videos": [
-        { "label": "Property Tour", "id": "CARLCJi_edw" }
+        { "label": "Property Tour", "id": "CARLCJi_edw", "uploadDate": "2024-04-14T13:23:28-07:00" }
       ],
       "title": "Sunrise Ridge",
       "location": "Zions Hill, Saba",
@@ -561,7 +561,7 @@
     {
       "id": "johnnys-ground-secret",
       "videos": [
-        { "label": "Property Tour", "id": "q3Q61V4Ud2c" }
+        { "label": "Property Tour", "id": "q3Q61V4Ud2c", "uploadDate": "2024-04-14T13:34:21-07:00" }
       ],
       "title": "Johnny's Ground Secret",
       "location": "Windwardside, Saba",
