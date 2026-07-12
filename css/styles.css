@@ -49,15 +49,6 @@
   --radius-xl: 24px;
 }
 
-/* Dark mode */
-[data-theme="dark"] {
-  --color-sand: #1a2a3a;
-  --color-sand-dark: #0f1a25;
-  --color-text: #e8e0d0;
-  --color-text-light: #a0b0c0;
-  --color-white: #0a1520;
-}
-
 /* ---- Accessibility ---- */
 .skip-to-content {
   position: absolute;
@@ -156,9 +147,6 @@ p {
   margin-bottom: var(--space-sm);
 }
 
-.text-light {
-  color: var(--color-text-light);
-}
 
 /* ---- Layout Utilities ---- */
 .container {
@@ -188,9 +176,7 @@ p {
   gap: var(--space-lg);
 }
 
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
 
 @media (max-width: 992px) {
   .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }}
@@ -473,16 +459,7 @@ p {
   flex-wrap: wrap;
 }
 
-.stat-item {
-  text-align: center;
-}
 
-.stat-label {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  opacity: 0.8;
-}
 
 .hero-scroll {
   position: absolute;
@@ -618,10 +595,6 @@ p {
   color: var(--color-white);
 }
 
-.badge-sold {
-  background: var(--color-text-light);
-  color: var(--color-white);
-}
 
 /* Corner ribbon stamp for SOLD / UNDER CONTRACT listings */
 .property-ribbon {
@@ -1295,25 +1268,13 @@ p {
 
 /* ---- Utility Classes ---- */
 .text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
 
-.mt-sm { margin-top: var(--space-sm); }
 .mt-md { margin-top: var(--space-md); }
-.mt-lg { margin-top: var(--space-lg); }
 .mt-xl { margin-top: var(--space-xl); }
 
-.mb-sm { margin-bottom: var(--space-sm); }
-.mb-md { margin-bottom: var(--space-md); }
 .mb-lg { margin-bottom: var(--space-lg); }
-.mb-xl { margin-bottom: var(--space-xl); }
 
-.py-sm { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
-.py-md { padding-top: var(--space-md); padding-bottom: var(--space-md); }
-.py-lg { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
-.py-xl { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
 
-.hidden { display: none; }
 .visible { display: block; }
 
 /* ---- Scroll to Top Button ---- */
@@ -2229,10 +2190,8 @@ p {
   .nav-toggle,
   .skip-to-content,
   .footer,
-  .newsletter-section,
   .btn,
-  .social-links,
-  .back-to-top {
+  .social-links {
     display: none !important;
   }
 
@@ -2795,13 +2754,7 @@ p {
 /* ===== Island Journal (blog) ===== */
 
 
-.blog-empty .value-icon {
-  margin: 0 auto var(--space-md);
-}
 
-.blog-empty .newsletter {
-  border: 1px solid var(--color-sand-dark);
-}
 
 /* Post grid + cards — ready for when posts are published */
 .blog-grid {

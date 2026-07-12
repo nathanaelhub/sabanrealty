@@ -46,6 +46,14 @@ def build_page(p, kind):
 
     h = TEMPLATE
 
+    # 0. The bare engine template carries a noindex (it shouldn't be indexed itself) —
+    #    generated listing pages MUST be indexable, so strip it here.
+    noindex = ('  <!-- Bare engine template: not for indexing. '
+               'generate-listing-pages.py strips this on generated pages. -->\n'
+               '  <meta name="robots" content="noindex">\n')
+    assert noindex in h, "noindex block not found in template — check property-detail.html head"
+    h = h.replace(noindex, "", 1)
+
     # 1. <base> + window.__LISTING__ right after the viewport meta
     inject = (
         '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'

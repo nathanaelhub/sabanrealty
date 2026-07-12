@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bare engine template: not for indexing. generate-listing-pages.py strips this on generated pages. -->
+  <meta name="robots" content="noindex">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC1FWG505F"></script>
   <script>
@@ -113,7 +115,6 @@
     .property-detail-section {
       padding: 120px 0 60px;
     }
-    /* Gallery styles moved to styles.css */
     .property-header {
       display: flex;
       justify-content: space-between;
@@ -282,25 +283,6 @@
     .contact-cta .btn {
       margin: 0 0.5rem;
     }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--color-ocean-mid);
-      margin-bottom: 1.5rem;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .back-link:hover {
-      color: var(--color-ocean-deep);
-    }
-    .back-link svg {
-      width: 18px;
-      height: 18px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
     .detail-breadcrumb {
       display: flex;
       align-items: center;
@@ -379,7 +361,6 @@
     /* Share button */
     .share-btn {
       display: inline-flex; align-items: center; gap: 0.45rem;
-      margin-top: 0.85rem;
       padding: 0.45rem 0.95rem;
       background: var(--color-white);
       border: 1px solid var(--color-sand-dark);
@@ -391,7 +372,7 @@
     .share-btn svg { stroke: currentColor; }
     /* Share overlaid on the gallery, top-right */
     .gallery-share {
-      position: absolute; top: 0.85rem; right: 0.85rem; z-index: 3; margin-top: 0;
+      position: absolute; top: 0.85rem; right: 0.85rem; z-index: 3;
       background: rgba(255, 255, 255, 0.92);
       -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
@@ -747,14 +728,6 @@
           <div class="stat-item">
             <svg viewBox="0 0 24 24"><path d="M4 12h16M4 12a2 2 0 01-2-2V6a2 2 0 012-2h1a2 2 0 012 2v4a2 2 0 01-2 2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg>
             <span>${property.bathrooms} Bathroom${property.bathrooms > 1 ? 's' : ''}</span>
-          </div>
-        `;
-      }
-      if (property.squareFeet) {
-        statsHTML += `
-          <div class="stat-item">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-            <span>${property.squareFeet.toLocaleString()} sq ft</span>
           </div>
         `;
       }

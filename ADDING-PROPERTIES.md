@@ -59,17 +59,15 @@ Your Airtable/spreadsheet uses these columns. Here's how each maps to the JSON:
 
 ### Step 2: Upload Photos to Cloudflare R2
 
-Run the upload script from the project root:
+Run the upload script from the project root (reads R2 credentials from `.env`):
 
 ```bash
 cd /Users/nathanaeljohnson/GitHub/sabanrealty
-bash scripts/upload-to-r2.sh
+node scripts/r2-manage.js upload <localPhotoDir> listings/<slug>   # rentals use rentals/<slug>
+node scripts/r2-manage.js list listings/<slug>                    # verify the uploaded keys
 ```
 
-This script will:
-- Read all folders in your `Listings/` and `Rentals/` directories
-- Convert folder names to URL slugs (lowercase, hyphens, no special chars)
-- Upload each image to R2 under `listings/{slug}/` or `rentals/{slug}/`
+This uploads every file in the folder to R2 under `listings/{slug}/` (or `rentals/{slug}/`).
 
 **After uploading**, your image URLs will follow this pattern:
 ```
@@ -218,7 +216,7 @@ Delete the entire object `{ ... }` for that property from the array. Make sure t
 
 - [ ] Photos collected and numbered (1photo.jpg, 2photo.jpg, etc.)
 - [ ] Photos placed in `Desktop/R_E_V/real-estate-images/Listings/Property Name/`
-- [ ] Ran `bash scripts/upload-to-r2.sh` to upload to R2
+- [ ] Ran `node scripts/r2-manage.js upload <dir> listings/<slug>` to upload to R2
 - [ ] Created slug/ID from property name (lowercase, hyphens)
 - [ ] Added JSON entry to `data/listings.json` with all fields
 - [ ] Verified JSON is valid (`python3 -c "import json; ..."`)
@@ -232,7 +230,7 @@ Delete the entire object `{ ... }` for that property from the array. Make sure t
 | What                  | Where                                                              |
 |-----------------------|--------------------------------------------------------------------|
 | Property data         | `data/listings.json`                                               |
-| Image upload script   | `scripts/upload-to-r2.sh`                                         |
+| Image upload script   | `scripts/r2-manage.js` (`upload` / `list` / `delete`)             |
 | Local images folder   | `/Users/nathanaeljohnson/Desktop/R_E_V/real-estate-images/`       |
 | R2 base URL           | `https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/`            |
 | Buy page              | `buy.html`                                                         |
