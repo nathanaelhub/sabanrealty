@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC1FWG505F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BC1FWG505F');
+  </script>
+  <!-- Bio-link utility page: intentionally noindex, not in sitemap -->
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Saban Realty — links from our Instagram. Featured listings, buying guides, and vacation rentals on Saba and St. Eustatius.">
+  <title>Saban Realty | Links</title>
+  <link rel="icon" type="image/png" href="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ocean-deep: #0a2540; --ocean-light: #2d7a9c;
+      --sand: #f5f0e8; --coral: #e07a5f; --coral-dark: #c45d42; --gold: #d4a853;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: linear-gradient(175deg, var(--ocean-deep) 0%, #123a5c 60%, var(--ocean-light) 130%);
+      min-height: 100vh; display: flex; justify-content: center;
+      color: var(--sand); padding: 48px 20px 40px;
+    }
+    .card { width: 100%; max-width: 460px; text-align: center; }
+    .wordmark {
+      font-family: 'Playfair Display', serif; font-weight: 600;
+      font-size: 1.9rem; letter-spacing: 0.02em; color: #fff;
+    }
+    .wordmark span { color: var(--gold); }
+    .tagline { margin: 10px 0 30px; font-size: 0.98rem; color: rgba(245,240,232,0.85); }
+    .links { display: flex; flex-direction: column; gap: 14px; }
+    .btn {
+      display: block; text-decoration: none; padding: 16px 20px;
+      border-radius: 12px; font-size: 1.05rem; font-weight: 600;
+      background: rgba(245,240,232,0.10); color: #fff;
+      border: 1px solid rgba(245,240,232,0.25);
+      transition: transform .12s ease, background .12s ease;
+    }
+    .btn:hover { transform: translateY(-2px); background: rgba(245,240,232,0.18); }
+    .btn .sub { display: block; font-size: 0.85rem; font-weight: 400; color: rgba(245,240,232,0.75); margin-top: 3px; }
+    .btn.primary { background: var(--coral); border-color: var(--coral); }
+    .btn.primary:hover { background: var(--coral-dark); }
+    .foot { margin-top: 34px; font-size: 0.85rem; color: rgba(245,240,232,0.65); }
+    .foot a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="wordmark">Saban<span> Realty</span></div>
+    <p class="tagline">Homes &amp; land on Saba and St. Eustatius — the unspoiled Dutch Caribbean.</p>
+    <nav class="links">
+      <a class="btn primary" data-campaign="featured-view-villa"
+         href="properties/view-villa/?utm_source=instagram&utm_medium=social&utm_campaign=featured-view-villa">
+        🏡 Featured: View Villa — $980,000
+        <span class="sub">Panoramic ocean views · Saba</span>
+      </a>
+      <a class="btn" data-campaign="browse-listings"
+         href="buy/?utm_source=instagram&utm_medium=social&utm_campaign=browse-listings">
+        🔎 Browse all listings
+      </a>
+      <a class="btn" data-campaign="blog-how-to-buy"
+         href="blog/how-to-buy-property-in-saba/?utm_source=instagram&utm_medium=social&utm_campaign=blog-how-to-buy">
+        📖 Guide: How to buy property on Saba
+        <span class="sub">A foreigner's step-by-step guide</span>
+      </a>
+      <a class="btn" data-campaign="rentals"
+         href="rent/?utm_source=instagram&utm_medium=social&utm_campaign=rentals">
+        🌅 Book a stay — vacation rentals
+        <span class="sub">From $165/night</span>
+      </a>
+      <a class="btn" data-campaign="contact"
+         href="contact/?utm_source=instagram&utm_medium=social&utm_campaign=contact">
+        ✉️ Contact us
+      </a>
+    </nav>
+    <p class="foot"><a href="https://sabanrealty.com">sabanrealty.com</a> · @sabanrealty</p>
+  </main>
+  <script>
+    // Per-button click events so GA4 counts taps even within the same session.
+    document.querySelectorAll('.btn').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'links_click', { campaign: a.getAttribute('data-campaign') });
+      });
+    });
+  </script>
+</body>
+</html>
