@@ -743,6 +743,34 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-mill/photo_22.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-mill/photo_23.jpg"
       ]
+    },
+    {
+      "id": "troy-hill-residence",
+      "title": "Troy Hill Residence",
+      "location": "Troy Hill, The Bottom, Saba",
+      "price": 550000,
+      "priceFormatted": "$550,000",
+      "status": "for-sale",
+      "type": "villa",
+      "bedrooms": 2,
+      "bathrooms": 2.5,
+      "description": "<h2>Troy Hill Residence - $550,000.00</h2>\n<p><strong>Location:</strong> Troy Hill, The Bottom, Saba, Caribbean Netherlands</p>\n<p><strong>Property Size:</strong> 1,200 sq ft living space | 659 m² land</p>\n<p><strong>MLS:</strong> 300012599069</p>\n<h3>Property Overview:</h3>\n<p>Perched on Troy Hill above the capital village of The Bottom, Troy Hill Residence offers privacy, tranquility, and some of Saba's finest views. The expansive covered veranda overlooks lush rainforest, the village below, and the turquoise Caribbean Sea.</p>\n<p>The bright, open-plan home features natural-wood cathedral ceilings, a fully equipped kitchen with granite countertops, and spacious living and dining areas with four large sliding doors opening to the veranda. Both bedrooms have ensuite bathrooms and generous closets, and the primary suite opens directly onto the outdoor living space. Move-in ready and sold fully furnished, with a strong long-term rental history.</p>\n<h3>Highlights:</h3>\n<ul>\n<li>Panoramic mountain, rainforest, and Caribbean Sea views</li>\n<li>Spacious wraparound veranda for relaxing and dining</li>\n<li>Private hillside setting with tropical gardens</li>\n<li>Move-in ready and sold fully furnished</li>\n<li>Strong long-term rental history</li>\n</ul>\n<h3>Features:</h3>\n<ul>\n<li>Open-plan living, dining, and kitchen with cathedral ceilings</li>\n<li>Granite countertops and quality appliances</li>\n<li>Hurricane shutters, washer and dryer, air conditioning</li>\n<li>25,000-gallon rainwater cistern</li>\n<li>Parking for two vehicles, with extra land available</li>\n<li>A 10-minute walk to the capital village, The Bottom</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>Whether as a full-time residence, a vacation getaway, or an established rental investment, Troy Hill Residence offers a rare combination of privacy, comfort, and unforgettable views on Saba — the unspoiled queen of the Caribbean.</p>",
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_1.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_2.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_3.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_4.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_5.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_6.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_7.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_8.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_9.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_10.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_11.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_12.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_13.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/troy-hill-residence/photo_14.jpg"
+      ]
     }
   ],
   "rentals": [
