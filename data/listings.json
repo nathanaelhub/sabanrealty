@@ -130,6 +130,9 @@
     },
     {
       "id": "cats-eye-cottage",
+      "videos": [
+        { "label": "Property Tour", "id": "H2hvZM2YD9o", "uploadDate": "2026-07-22T04:00:04+00:00" }
+      ],
       "title": "CatsEye Cottage",
       "location": "Windwardside, Saba",
       "price": 425000,
@@ -655,6 +658,9 @@
     },
     {
       "id": "saba-snack",
+      "videos": [
+        { "label": "Property Tour", "id": "d_PJYqa2Pr4", "uploadDate": "2026-07-26T11:42:15+00:00" }
+      ],
       "title": "Saba Snack",
       "location": "Windwardside, Saba",
       "price": 320000,
@@ -696,6 +702,9 @@
     },
     {
       "id": "the-mill",
+      "videos": [
+        { "label": "Property Tour", "id": "wEfOyPZNX2c", "uploadDate": "2026-08-02T12:44:52+00:00" }
+      ],
       "title": "The Mill at Zion's Hill",
       "location": "Zion's Hill, Saba",
       "price": 775000,
