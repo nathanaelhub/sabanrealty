@@ -434,6 +434,9 @@
             <div class="property-image">
               <img src="${property.images[0]}" alt="${property.title}" loading="lazy">
               ${statusOverlay}
+              ${property.videos && property.videos.length > 0
+                ? `<span class="video-pill">${property.videos.length === 1 ? 'Video tour' : property.videos.length + ' video tours'}</span>`
+                : ''}
             </div>
             <div class="property-content">
               <div class="property-price" style="${priceStyle}">${property.priceFormatted}</div>
@@ -452,6 +455,33 @@
         });
 
         applyHomeFilters();
+
+        // Featured showcase: inline click-to-play tour if the featured property has one.
+        // Reads the property id from the showcase link, so swapping the featured
+        // listing automatically shows/hides the player with no code change.
+        const showcase = document.querySelector('.showcase-card');
+        if (showcase) {
+          const m = (showcase.getAttribute('href') || '').match(/properties\/([a-z0-9-]+)\//);
+          const featured = m && all.find(p => p.id === m[1]);
+          const vid = featured && featured.videos && featured.videos[0];
+          const wrap = showcase.querySelector('.showcase-image');
+          if (vid && wrap) {
+            const play = document.createElement('span');
+            play.className = 'showcase-play';
+            play.setAttribute('role', 'button');
+            play.setAttribute('tabindex', '0');
+            play.setAttribute('aria-label', 'Play video tour');
+            play.innerHTML = '<span class="showcase-play-circle"></span><span class="showcase-play-label">Watch Video Tour</span>';
+            const start = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              wrap.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${vid.id}?autoplay=1&rel=0" title="${(featured.title || 'Property').replace(/"/g, '&quot;')} video tour" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            };
+            play.addEventListener('click', start);
+            play.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') start(e); });
+            wrap.appendChild(play);
+          }
+        }
       })
       .catch(() => {
         document.getElementById('homePropertyGrid').innerHTML =

@@ -1704,6 +1704,62 @@ p {
   overflow: hidden;
 }
 
+/* Click-to-play video tour on the featured showcase */
+.showcase-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: rgba(5, 18, 34, 0.22);
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+.showcase-play:hover,
+.showcase-play:focus-visible {
+  background: rgba(5, 18, 34, 0.4);
+}
+.showcase-play-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease;
+}
+.showcase-play:hover .showcase-play-circle {
+  transform: scale(1.08);
+}
+.showcase-play-circle::after {
+  content: '';
+  display: block;
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent var(--color-coral);
+  margin-left: 4px;
+}
+.showcase-play-label {
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+.showcase-image iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .showcase-image img {
   width: 100%;
   height: 100%;
@@ -2374,6 +2430,7 @@ p {
 /* ===== Video Tour section (property detail page) ===== */
 .video-tour {
   margin: 2.5rem 0;
+  scroll-margin-top: 90px; /* #video-tour deep links land below the fixed navbar */
   padding: 2rem;
   background:
     linear-gradient(180deg, rgba(10,37,64,0.02), rgba(10,37,64,0.06)),
