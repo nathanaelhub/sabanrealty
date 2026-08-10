@@ -2852,66 +2852,258 @@ p {
 }
 
 
-/* ===== Village map — "Pick a hill, then a house" (homepage) =====
-   A light postcard-flavored accent: warm sand background with a subtle
-   dot texture, the island sketched as an SVG with its five villages. */
-.village-map-section {
-  background-color: var(--color-sand);
-  background-image: radial-gradient(rgba(10, 37, 64, 0.05) 1px, transparent 1px);
-  background-size: 5px 5px;
-  padding: var(--space-xxl) 0;
+/* ===== Village night-chart — "Pick a hill, then a house" (homepage) =====
+   Dark cartography in the hero's language: the island chart lights up as
+   you explore it — hovering a village parts a lens of light over its dot
+   and raises a glass card with live listing counts. */
+.village-chart {
+  position: relative;
+  background: #08171c;
+  padding: clamp(4.5rem, 8vw, 7rem) 0;
+  overflow: hidden;
+  letter-spacing: -0.02em;
 }
 
-.village-map-card {
-  background: var(--color-white);
-  border: 1px solid var(--color-sand-dark);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  padding: clamp(2rem, 4vw, 3.5rem);
+.village-chart::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(110% 80% at 50% 100%, rgba(8, 23, 28, 0) 55%, rgba(4, 12, 15, 0.6) 100%);
+  pointer-events: none;
+}
+
+.village-chart-grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1.15fr;
-  gap: clamp(2rem, 4vw, 4rem);
+  gap: clamp(2rem, 4vw, 4.5rem);
   align-items: center;
 }
 
-.village-map-eyebrow {
+.village-chart-chip {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  margin-bottom: 1.4rem;
+}
+
+.village-chart-chip span {
   font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--color-coral);
-  margin-bottom: var(--space-sm);
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.04em;
 }
 
-.village-map-text h2 {
-  line-height: 1.1;
-  margin-bottom: var(--space-sm);
+.village-chart-title {
+  line-height: 0.98;
+  margin-bottom: 1.2rem;
 }
 
-.village-map-text p {
-  color: var(--color-text-light);
-  line-height: 1.8;
-  margin-bottom: var(--space-md);
+.vc-line1 {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  letter-spacing: -0.03em;
+  color: #fff;
 }
 
-.village-map-svg svg {
+.vc-line2 {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  letter-spacing: -0.05em;
+  color: #fff;
+  margin-top: -2px;
+}
+
+.village-chart-copy {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.75;
+  font-size: 0.975rem;
+  max-width: 46ch;
+  margin-bottom: 1.8rem;
+}
+
+.village-chart-map {
+  position: relative;
+}
+
+.village-chart-map svg {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.village-map-svg text {
+.village-chart-map svg text {
   font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  fill: rgba(255, 255, 255, 0.66);
+  letter-spacing: 0.02em;
+  transition: fill 0.2s ease;
+}
+
+.vc-mono {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 8.5px !important;
+  font-weight: 500 !important;
+  fill: rgba(212, 168, 83, 0.85) !important;
+  letter-spacing: 0.12em !important;
+}
+
+.vc-lens {
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.vc-village {
+  cursor: pointer;
+  outline: none;
+}
+
+.vc-dot {
+  fill: #c4502e;
+  transition: r 0.25s ease;
+}
+
+.vc-halo {
+  fill: rgba(196, 80, 46, 0.22);
+  opacity: 0;
+  animation: vcPulse 3.2s ease-in-out infinite;
+}
+
+.vc-village:hover .vc-dot,
+.vc-village:focus-visible .vc-dot {
+  r: 5;
+}
+
+.vc-village:hover text,
+.vc-village:focus-visible text {
+  fill: #fff;
+}
+
+.vc-village:focus-visible .vc-dot {
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+@keyframes vcPulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.6; }
+}
+
+.vc-card {
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(8, 23, 28, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 0.8rem 1.1rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.vc-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vc-card-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.vc-card-desc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.vc-card-count {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #d4a853;
+  margin-top: 4px;
+}
+
+.vc-legend {
+  margin: 0.6rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: right;
+}
+
+/* Touch-device fallback: village grid with counts instead of the hover lens */
+.vc-touch-list {
+  grid-column: 1 / -1;
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+.vc-touch-list a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  text-decoration: none;
+}
+
+.vc-touch-list strong {
+  color: #fff;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
+.vc-touch-list span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #d4a853;
+}
+
+@media (hover: none) {
+  .vc-touch-list { display: grid; }
+  .vc-legend { display: none; }
+  .vc-card { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vc-halo { animation: none; }
+  .vc-lens, .vc-card { transition: none; }
+}
+
 @media (max-width: 768px) {
-  .village-map-card {
+  .village-chart-grid {
     grid-template-columns: 1fr;
   }
-  .village-map-svg {
+  .village-chart-map {
     order: -1;
-  }}
-
+  }
+}
 
 /* ===== Island Journal (blog) ===== */
 
