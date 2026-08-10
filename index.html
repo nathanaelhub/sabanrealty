@@ -36,8 +36,11 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Hero image (LCP) -->
+  <link rel="preload" as="image" href="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/website-photos/393873942_655408510058353_8601000033756108627_n.jpg">
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.min.css">
 
@@ -168,36 +171,39 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-bg">
-      <!-- Replace with your Cloudflare R2 image URL -->
-      <img src="images/website-photos/saba-island-drone.jpg" width="1600" height="900" alt="Saba Island aerial view Caribbean Netherlands">
-    </div>
-    <div class="hero-overlay"></div>
-    
-    <div class="hero-content">
-      <p class="hero-tagline">Saba · Caribbean Netherlands</p>
-      <h1>A five-square-mile paradise,<br>unspoiled queen of the Caribbean.</h1>
-      <p class="hero-description">
-        Historic cottages in <a href="/buy/" style="color: inherit; text-decoration: underline;">Windwardside</a>,
-        ridge villas above the cloud forest, and oceanview land &mdash; homes and
-        property on <a href="/about/" style="color: inherit; text-decoration: underline;">Saba</a>,
-        the smallest special municipality of the Netherlands.
-      </p>
-      <div class="hero-buttons">
-        <a href="/buy/" class="btn btn-primary">Browse the listings</a>
-        <a href="/rent/" class="hero-link">Looking for a vacation rental?</a>
-      </div>
+  <!-- Hero Section — "part the clouds" cursor reveal (Claude Design: Saban Realty Hero) -->
+  <section class="hero" id="heroSection">
+    <div class="hero-layer-base" style="background-image:url('https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/website-photos/393873942_655408510058353_8601000033756108627_n.jpg');"></div>
+    <div class="hero-layer-reveal" aria-hidden="true" style="background-image:url('https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/website-photos/393873942_655408510058353_8601000033756108627_n.jpg');"></div>
+    <div class="hero-vignette" aria-hidden="true"></div>
 
-    </div>
-    
-    <a href="#featured" class="hero-scroll">
-      <span>Scroll Down</span>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 5v14M19 12l-7 7-7-7"/>
+    <div class="hero-chip">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
       </svg>
-    </a>
+      <span>Windwardside, Saba, Dutch Caribbean</span>
+    </div>
+
+    <div class="hero-title-wrap">
+      <h1>
+        <span class="hero-title-line1">Your place on</span>
+        <span class="hero-title-line2">the Unspoiled Queen</span>
+      </h1>
+    </div>
+
+    <div class="hero-note-left">
+      <p>A handful of homes on a green peak above the sea. No crowds, no high-rises, just the quiet island the Caribbean forgot to spoil.</p>
+    </div>
+
+    <div class="hero-cta">
+      <p class="hero-hint">Move your cursor across the island to part the clouds. Then come see it for yourself.</p>
+      <a href="/buy/" class="hero-cta-btn">View Listings</a>
+    </div>
+
+    <div class="hero-stat">
+      <span class="hero-stat-num">887m</span>
+      <span class="hero-stat-label">Highest point in the Kingdom</span>
+    </div>
   </section>
 
   <!-- Featured Property Section — Luxury Showcase -->
@@ -375,6 +381,33 @@
   </section>
 
   <script>
+    // Hero "part the clouds" reveal: a full-brightness copy of the hero image is
+    // masked by a radial gradient that follows the (smoothed) cursor. CSS-mask +
+    // custom properties instead of the design's canvas-toDataURL — same visual,
+    // far cheaper. No-op on touch devices and for reduced-motion users.
+    (() => {
+      const hero = document.getElementById('heroSection');
+      const reveal = document.querySelector('.hero-layer-reveal');
+      if (!hero || !reveal) return;
+      if (window.matchMedia('(hover: none)').matches ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      let mx = -999, my = -999, sx = -999, sy = -999, raf = null;
+      const tick = () => {
+        sx += (mx - sx) * 0.08;
+        sy += (my - sy) * 0.08;
+        reveal.style.setProperty('--hero-mx', sx + 'px');
+        reveal.style.setProperty('--hero-my', sy + 'px');
+        raf = requestAnimationFrame(tick);
+      };
+      hero.addEventListener('mousemove', (e) => {
+        const r = hero.getBoundingClientRect();
+        mx = e.clientX - r.left;
+        my = e.clientY - r.top;
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+      hero.addEventListener('mouseleave', () => { mx = -999; my = -999; });
+    })();
+
     fetch('/data/listings.json')
       .then(r => r.json())
       .then(data => {
@@ -584,7 +617,7 @@
     <div class="container">
       <h2>Ready to Find Your Island Dream Home?</h2>
       <p>Whether you're looking to <a href="/buy/" style="color: inherit; text-decoration: underline;">buy</a>, <a href="/rent/" style="color: inherit; text-decoration: underline;">rent</a>, or <a href="/sell/" style="color: inherit; text-decoration: underline;">sell</a> property on Saba, our team is here to guide you every step of the way.</p>
-      <div class="hero-buttons">
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <a href="/contact/" class="btn btn-white">Get In Touch</a>
         <a href="/sell/" class="btn btn-outline" style="border-color: white; color: white;">List Your Property</a>
       </div>

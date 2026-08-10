@@ -390,106 +390,249 @@ p {
   }}
 
 /* ---- Hero Section ---- */
+/* ---- Homepage Hero — "part the clouds" reveal (Claude Design: Saban Realty Hero) ---- */
 .hero {
   position: relative;
-  min-height: 100vh;
+  width: 100%;
+  height: 100dvh;
+  min-height: 640px;
+  overflow: hidden;
+  background: #08171c;
+  letter-spacing: -0.02em;
+}
+
+.hero-layer-base,
+.hero-layer-reveal {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-layer-base {
+  z-index: 1;
+  filter: brightness(0.7) saturate(0.65) blur(1.5px);
+  animation: heroDrift 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Full-brightness copy, shown only through the cursor-following mask.
+   --hero-mx/--hero-my are driven by the inline script on index.html. */
+.hero-layer-reveal {
+  z-index: 3;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle 240px at var(--hero-mx, -999px) var(--hero-my, -999px),
+    rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 0.7) 65%,
+    rgba(255, 255, 255, 0.3) 82%, transparent 100%);
+  mask-image: radial-gradient(circle 240px at var(--hero-mx, -999px) var(--hero-my, -999px),
+    rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 0.7) 65%,
+    rgba(255, 255, 255, 0.3) 82%, transparent 100%);
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(8, 23, 28, 0) 40%, rgba(8, 23, 28, 0.55) 100%);
+  pointer-events: none;
+}
+
+.hero-chip {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  margin-top: -48px;
+  z-index: 5;
   display: flex;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  white-space: nowrap;
+  animation: heroFade 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 
-.hero-bg {
+.hero-chip span {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.04em;
+}
+
+.hero-title-wrap {
   position: absolute;
-  inset: 0;
-  z-index: -2;
-}
-
-.hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 37, 64, 0.85) 0%,
-    rgba(26, 74, 110, 0.7) 50%,
-    rgba(45, 122, 156, 0.6) 100%
-  );
-  z-index: -1;
-}
-
-.hero-content {
-  text-align: center;
-  color: var(--color-white);
-  max-width: 800px;
-  padding: var(--space-xl);
-  animation: fadeInUp 1s ease;
-}
-
-.hero-tagline {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: var(--color-coral);
-  margin-bottom: var(--space-sm);
-}
-
-.hero h1 {
-  color: var(--color-white);
-  margin-bottom: var(--space-md);
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-}
-
-.hero-description {
-  font-size: 1.25rem;
-  margin-bottom: var(--space-lg);
-  opacity: 0.9;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: var(--space-sm);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-
-
-.hero-scroll {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--color-white);
-  font-size: 0.875rem;
+  top: 15%;
+  left: 0;
+  right: 0;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
-  opacity: 0.7;
-  animation: bounce 2s infinite;
+  text-align: center;
+  padding: 0 20px;
+  pointer-events: none;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+.hero-title-wrap h1 {
+  color: #fff;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.hero-title-line1 {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 6rem);
+  letter-spacing: -0.03em;
+  animation: heroRise 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.hero-title-line2 {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(3rem, 9vw, 6rem);
+  letter-spacing: -0.06em;
+  margin-top: -4px;
+  animation: heroRise 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.hero-note-left {
+  position: absolute;
+  bottom: 56px;
+  left: 56px;
+  z-index: 5;
+  max-width: 260px;
+  animation: heroFade 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.hero-note-left p,
+.hero-cta p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hero-cta {
+  position: absolute;
+  bottom: 96px;
+  right: 56px;
+  z-index: 5;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  animation: heroFade 1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+
+.hero-cta-btn {
+  display: inline-block;
+  background: #c4502e;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-cta-btn:hover {
+  background: #aa4324;
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(196, 80, 46, 0.3);
+}
+
+.hero-cta-btn:active {
+  transform: scale(0.95);
+}
+
+.hero-stat {
+  position: absolute;
+  bottom: 56px;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  z-index: 5;
+  text-align: center;
+  animation: heroFade 1s cubic-bezier(0.16, 1, 0.3, 1) 1s both;
+}
+
+.hero-stat-num {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 2.25rem;
+  color: #fff;
+  line-height: 1;
+}
+
+.hero-stat-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 6px;
+}
+
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(22px); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroDrift {
+  from { transform: scale(1.1); }
+  to { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-layer-base, .hero-chip, .hero-title-line1, .hero-title-line2,
+  .hero-note-left, .hero-cta, .hero-stat {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(10px); }
+/* Touch devices: no cursor, so no reveal layer and no cursor instruction */
+@media (hover: none) {
+  .hero-layer-reveal { display: none; }
+  .hero-hint { display: none; }
+}
+
+@media (max-width: 860px) {
+  .hero-note-left { display: none; }
+  .hero-hint { display: none; }
+  .hero-title-line1,
+  .hero-title-line2 { font-size: clamp(2.1rem, 10vw, 6rem); }
+  .hero-cta {
+    right: 0;
+    left: 0;
+    bottom: 128px;
+    max-width: none;
+    align-items: center;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .hero-stat { bottom: 48px; }
+  .hero-chip { margin-top: -40px; }
 }
 
 /* ---- Page Hero (for inner pages) ---- */
@@ -1449,24 +1592,6 @@ p {
    UI ENHANCEMENTS — Luxury Caribbean Refinements
    =================================================== */
 
-/* Hero: staggered per-element reveals */
-.hero-content { animation: none; }
-.hero-tagline { animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
-.hero h1 { animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
-.hero-description { animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
-.hero-buttons { animation: fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both; }
-
-/* Hero: richer, more directional overlay */
-.hero-overlay {
-  background: linear-gradient(
-    155deg,
-    rgba(10, 37, 64, 0.9) 0%,
-    rgba(10, 37, 64, 0.68) 42%,
-    rgba(26, 74, 110, 0.52) 72%,
-    rgba(45, 122, 156, 0.42) 100%
-  );
-}
-
 /* Navbar: glassmorphism when scrolled */
 .navbar.scrolled {
   background: rgba(10, 37, 64, 0.88) !important;
@@ -2293,24 +2418,6 @@ p {
      wash. Keep card lift + fade-in only.
    ============================================================ */
 
-/* Hero — primary button + demoted secondary link */
-.hero-buttons {
-  align-items: center;
-}
-.hero-link {
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-  padding-bottom: 2px;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-.hero-link:hover {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
 /* Saba Almanac strip */
 .almanac-section .section-header { margin-bottom: 2.5rem; }
 
@@ -2375,7 +2482,6 @@ p {
   .almanac-item:nth-child(2) { border-bottom: 1px solid var(--color-sand-dark); }}
 
 /* Reserve coral for buttons. Pull it out of labels/accents. */
-.hero-tagline { color: rgba(255, 255, 255, 0.78); }
 .showcase-section-label { color: var(--color-gold); }
 .showcase-section-label::before,
 .showcase-section-label::after {
@@ -2411,7 +2517,6 @@ p {
 }
 .page-hero::before { background: none; }
 .page-hero::after { background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.45), transparent); }
-.hero-scroll { animation: none; opacity: 0.6; }
 
 /* Property card: surface the village name */
 .property-village {
