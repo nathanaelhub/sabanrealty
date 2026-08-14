@@ -236,7 +236,7 @@
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
               <circle cx="12" cy="10" r="3"/>
             </svg>
-            Windwardside, Saba
+            <span class="showcase-loc-text">Windwardside, Saba</span>
           </p>
 
           <div class="showcase-divider"></div>
@@ -518,6 +518,8 @@
 
         applyHomeFilters();
 
+        hydrateShowcase(all);
+
         // Featured showcase: inline click-to-play tour if the featured property has one.
         // Reads the property id from the showcase link, so swapping the featured
         // listing automatically shows/hides the player with no code change.
@@ -551,6 +553,62 @@
         document.getElementById('homePropertyGrid').innerHTML =
           '<p style="grid-column:1/-1;text-align:center;padding:3rem;">Error loading properties.</p>';
       });
+
+    // Featured showcase is data-driven: the static markup is only a no-JS
+    // fallback. The listing flagged "featured": true in listings.json wins;
+    // if it's sold/under-contract/hidden, we auto-fall back to the next
+    // available for-sale listing (preferring ones with a video tour), so the
+    // homepage can never show a stale price or a sold property as featured.
+    function hydrateShowcase(props) {
+      const card = document.querySelector('.showcase-card');
+      if (!card) return;
+      const available = p => !p.hidden && p.status === 'for-sale' && p.detailStatus !== 'under-contract';
+      let f = props.find(p => p.featured && available(p));
+      if (!f) f = props.find(p => available(p) && p.videos && p.videos.length) || props.find(available);
+      if (!f) return; // nothing for sale at all — leave the static markup be
+
+      const staticId = (card.getAttribute('href').match(/properties\/([a-z0-9-]+)\//) || [])[1];
+      const swapped = staticId !== f.id;
+      card.setAttribute('href', `properties/${f.id}/`);
+
+      const priceTag = card.querySelector('.showcase-price-tag');
+      if (priceTag) priceTag.textContent = f.priceFormatted;
+      const title = card.querySelector('.showcase-title');
+      if (title) title.textContent = f.title;
+      const loc = card.querySelector('.showcase-loc-text');
+      if (loc) loc.textContent = f.location;
+
+      if (swapped) {
+        // Fallback listing: replace the hand-written pieces with generated ones.
+        const img = card.querySelector('.showcase-image img');
+        if (img && f.images && f.images[0]) {
+          img.src = f.images[0];
+          img.alt = `${f.title} – ${f.location}`;
+        }
+        const desc = card.querySelector('.showcase-desc');
+        if (desc) {
+          let text = (f.description || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+          const m = text.match(/Property Overview:\s*(.+)/i);
+          if (m) text = m[1];
+          if (text.length > 220) text = text.slice(0, 220).replace(/\s+\S*$/, '') + '…';
+          desc.textContent = text;
+        }
+        const stats = card.querySelector('.showcase-stats');
+        if (stats) {
+          const typeCap = f.type ? f.type.charAt(0).toUpperCase() + f.type.slice(1) : '';
+          const items = f.bedrooms > 0
+            ? [[f.bedrooms, 'Bedroom' + (f.bedrooms !== 1 ? 's' : '')],
+               [f.bathrooms, 'Bathroom' + (f.bathrooms !== 1 ? 's' : '')],
+               [typeCap, 'Property']]
+            : [[typeCap, 'Property']];
+          stats.innerHTML = items.map(([num, label]) => `
+            <div class="showcase-stat">
+              <span class="stat-num">${num}</span>
+              <span class="stat-label">${label}</span>
+            </div>`).join('');
+        }
+      }
+    }
 
     // Village night-chart: hovering (or focusing) a village parts a lens of
     // light over its dot and raises a glass card with live listing counts.
