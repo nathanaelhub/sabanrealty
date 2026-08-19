@@ -570,8 +570,8 @@
       ],
       "title": "First Light Property",
       "location": "Zions Hill, Saba",
-      "price": 99000,
-      "priceFormatted": "$99,000",
+      "price": 0,
+      "priceFormatted": "Under Contract",
       "status": "for-sale",
       "type": "land",
       "bedrooms": 0,
@@ -585,7 +585,8 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/first-light-property/100003920-5IMG_E7878-50.jpeg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/first-light-property/100003920-6IMG_7871-50.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/first-light-property/100003920-7IMG_7893-50.jpg"
-      ]
+      ],
+      "detailStatus": "under-contract"
     },
     {
       "id": "sunrise-ridge",
@@ -598,8 +599,8 @@
       ],
       "title": "Sunrise Ridge",
       "location": "Zions Hill, Saba",
-      "price": 209000,
-      "priceFormatted": "$209,000",
+      "price": 0,
+      "priceFormatted": "Under Contract",
       "status": "for-sale",
       "type": "land",
       "bedrooms": 0,
@@ -615,7 +616,8 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_7E4247.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_8E4254.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/Ridge%20land-Cover.jpg"
-      ]
+      ],
+      "detailStatus": "under-contract"
     },
     {
       "id": "johnnys-ground-secret",
