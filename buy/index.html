@@ -244,9 +244,11 @@
             grid.innerHTML = '';
 
             let cardIndex = 0;
-          // Order: available first, then under contract, then sold (stable within each group)
+          // Order: available first, then under contract, then sold; within each status group,
+          // by type: houses (villa/cottage) → commercial → land (stable within each type).
           const statusRank = p => p.status === 'sold' ? 2 : (p.detailStatus === 'under-contract' ? 1 : 0);
-          const orderedProperties = data.properties.slice().sort((a, b) => statusRank(a) - statusRank(b));
+          const typeRank = p => (p.type === 'villa' || p.type === 'cottage') ? 0 : (p.type === 'commercial' ? 1 : (p.type === 'land' ? 2 : 3));
+          const orderedProperties = data.properties.slice().sort((a, b) => statusRank(a) - statusRank(b) || typeRank(a) - typeRank(b));
           orderedProperties.forEach(property => {
               // Skip hidden properties
               if (property.hidden) return;
