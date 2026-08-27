@@ -55,12 +55,14 @@ def build_page(p, kind):
     h = h.replace(noindex, "", 1)
 
     # 1. <base> + window.__LISTING__ right after the viewport meta
+    viewport_meta = '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">'
     inject = (
-        '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+        viewport_meta + '\n'
         '  <base href="/">\n'
         f'  <script>window.__LISTING__ = {{"id":"{p["id"]}","type":"{kind}"}};</script>'
     )
-    h = h.replace('<meta name="viewport" content="width=device-width, initial-scale=1.0">', inject, 1)
+    assert viewport_meta in h, "viewport meta anchor not found in template — check property-detail.html head"
+    h = h.replace(viewport_meta, inject, 1)
 
     # 2. baked head SEO
     h = re.sub(r"<title>.*?</title>", lambda m: f"<title>{html.escape(title)}</title>", h, count=1)
