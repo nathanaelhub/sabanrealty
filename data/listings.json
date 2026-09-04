@@ -71,6 +71,7 @@
     },
     {
       "id": "villa-frangipani-statia",
+      "new": true,
       "title": "Villa Frangipani",
       "location": "Knippenga Estate, Golden Rock, St. Eustatius",
       "price": 1399000,
@@ -886,6 +887,7 @@
     },
     {
       "id": "troy-hill-residence",
+      "new": true,
       "title": "Troy Hill Residence",
       "location": "Troy Hill, The Bottom, Saba",
       "price": 550000,
@@ -914,6 +916,7 @@
     },
     {
       "id": "behind-the-ridge-land",
+      "new": true,
       "title": "Behind the Ridge Land",
       "location": "Zion's Hill, Saba",
       "price": 750000,

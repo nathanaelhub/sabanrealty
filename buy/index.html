@@ -243,6 +243,12 @@
                 : (isUnderContract
                     ? '<span class="property-ribbon ribbon-contract">Under Contract</span>'
                     : '<span class="property-badge badge-sale">For Sale</span>');
+              // Marketing banners (active listings only): vertical FEATURED ribbon + NEW corner ribbon
+              const isActive = !isSold && !isUnderContract;
+              const featuredOverlay = (property.featured && isActive)
+                ? '<span class="property-ribbon-featured">★ Featured</span>' : '';
+              const newOverlay = (property.new && isActive)
+                ? '<span class="property-ribbon ribbon-new">New</span>' : '';
               const priceStyle = isSold ? 'color: var(--color-text-light);' : '';
               // Normalize type for filtering: villa/cottage → house
               const filterType = isHouse ? 'house' : property.type;
@@ -322,6 +328,8 @@
                 <div class="property-image">
                   <img src="${property.images[0]}" alt="${property.title}" loading="lazy">
                   ${statusOverlay}
+                  ${newOverlay}
+                  ${featuredOverlay}
                   ${property.videos && property.videos.length > 0
                     ? `<span class="video-pill">${property.videos.length === 1 ? 'Video tour' : property.videos.length + ' video tours'}</span>`
                     : ''}

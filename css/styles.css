@@ -776,6 +776,34 @@ p {
   font-size: 0.62rem;
   letter-spacing: 0.3px;
 }
+/* NEW LISTING — diagonal corner ribbon, top-right (mirrors the sold/contract ribbons) */
+.ribbon-new {
+  left: auto;
+  right: -50px;
+  transform: rotate(45deg);
+  background: var(--color-ocean-light);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+}
+/* FEATURED — vertical gold banner tab hanging from the top-right edge */
+.property-ribbon-featured {
+  position: absolute;
+  top: 0;
+  right: 18px;
+  z-index: 3;
+  background: var(--color-gold);
+  color: var(--color-ocean-deep);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.72rem;
+  padding: 15px 9px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
 
 .property-content {
   padding: var(--space-md);
