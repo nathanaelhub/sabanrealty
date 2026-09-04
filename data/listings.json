@@ -70,6 +70,39 @@
       ]
     },
     {
+      "id": "villa-frangipani-statia",
+      "title": "Villa Frangipani",
+      "location": "Knippenga Estate, Golden Rock, St. Eustatius",
+      "price": 1399000,
+      "priceFormatted": "$1,399,000",
+      "status": "for-sale",
+      "type": "villa",
+      "bedrooms": 5,
+      "bathrooms": 5,
+      "acreage": 0.49,
+      "description": "<h2>Luxury Villa Frangipani — Balinese-Inspired Estate with Infinity Pool & Ocean Views</h2>\n<p><strong>Location:</strong> Knippenga Estate, Golden Rock, St. Eustatius (Statia), Dutch Caribbean</p>\n<p><strong>Property Size:</strong> 2,000 m² (21,500 ft²) grounds | 440 m² (4,740 ft²) interior living space</p>\n<h3>Property Overview:</h3>\n<p>Villa Frangipani is a privately owned residence that transcends traditional island living. Nestled on the historic Caribbean island of St. Eustatius, affectionately known as Statia, this exceptional Balinese-inspired estate offers a rare combination of spacious living, sustainable luxury and tropical beauty in perfect harmony. Every arrival feels like entering a private resort — peaceful, secluded, and effortlessly elegant. Located minutes from the airport and historic town center, the property enjoys an elevated position with panoramic ocean, mountain and island views.</p>\n<p>Built 18 years ago within the exclusive Knippenga Estate and within walking distance to Whale Tails and Club Havana, the villa celebrates natural materials and open-air living. Rich teak floors, handcrafted hardwood finishes, soaring vaulted ceilings, exposed beams, and traditional thatched accents create interiors that are both luxurious and inviting.</p>\n<h3>Elegant Accommodation:</h3>\n<p>Five beautifully appointed bedrooms with ensuite bathrooms provide comfort, privacy, and refined island living. Three guest suites occupy the main level, while two additional bedrooms on the lower level offer ideal accommodation for extended family or staff. Every bedroom is air-conditioned and generously proportioned. Above the main living space, a charming loft opens onto a private balcony overlooking tropical gardens, the dramatic silhouette of The Quill, and unforgettable sunrises and sunsets.</p>\n<h3>Resort-Style Outdoor Living:</h3>\n<p>A magnificent sandstone terrace embraces the villa's spectacular 12 × 8 metre infinity swimming pool, where shimmering water appears to merge seamlessly with the surrounding landscape. The mature gardens, filled with exotic palms and flowering tropical plants, provide complete privacy while creating an atmosphere reminiscent of an exclusive boutique resort.</p>\n<h3>Sustainable Luxury:</h3>\n<p>Villa Frangipani embraces environmentally conscious island living without compromising comfort. An impressive 300,000-litre underground rainwater cistern ensures exceptional water independence, while an integrated solar energy system supports the pool and household utilities. Hurricane-resistant glass throughout provides additional security and peace of mind.</p>\n<h3>Key Features:</h3>\n<ul>\n<li>5 spacious bedrooms, 5 ensuite bathrooms + spare bedroom</li>\n<li>Balinese-inspired architecture with premium teak and hardwood finishes</li>\n<li>Infinity swimming pool (12 × 8 m) and expansive sandstone terraces</li>\n<li>Panoramic ocean, mountain and island views (St. Kitts, The Quill)</li>\n<li>Gourmet kitchen with handcrafted breakfast bar and separate prep kitchen</li>\n<li>Vaulted ceilings with exposed beams and loft lounge with private balcony</li>\n<li>Hurricane-resistant glass, solar energy system and 300,000-litre rainwater cistern</li>\n<li>Air-conditioned bedrooms, tropical gardens, private parking, utility room & garage</li>\n<li>Established income-producing property (USD $10,000/month)</li>\n<li>Minutes from Roosevelt Airport and historic Oranjestad</li>\n</ul>\n<h3>Investment Opportunity:</h3>\n<p>This established villa currently generates a consistent monthly income of USD $10,000, making it not only a beautiful Caribbean retreat but also a strong investment. Statia is a 20-minute flight from Sint Maarten, known for its rich history, world-class scuba diving, protected nature parks, and authentic Caribbean charm.</p>",
+      "features": [
+        "5 bedrooms, 5 ensuite bathrooms + spare bedroom",
+        "Balinese-inspired architecture with teak & hardwood finishes",
+        "Infinity pool (12 × 8 m) with sandstone terraces",
+        "Panoramic ocean & island views (St. Kitts, The Quill volcano)",
+        "Gourmet kitchen with handcrafted breakfast bar",
+        "Vaulted ceilings, exposed beams, loft with private balcony",
+        "Solar energy system & 300,000L rainwater cistern",
+        "Hurricane-resistant glass throughout",
+        "2,000 m² grounds | 440 m² interior living space",
+        "Generates USD $10,000/month rental income",
+        "Minutes from Roosevelt Airport & Oranjestad"
+      ],
+      "images": [
+        "https://remaxcaribbeanandcentralamerica.azureedge.net/images/300012599071/v3/HDPhotos/1a0993_f935fef6b6e2465697173d03c4f7eba1.jpg",
+        "https://remaxcaribbeanandcentralamerica.azureedge.net/images/300012599071/v3/HDPhotos/1luxuryB.jpg",
+        "https://remaxcaribbeanandcentralamerica.azureedge.net/images/300012599071/v3/HDPhotos/09image9.jpg",
+        "https://remaxcaribbeanandcentralamerica.azureedge.net/images/300012599071/v3/HDPhotos/11.jpg",
+        "https://remaxcaribbeanandcentralamerica.azureedge.net/images/300012599071/v3/HDPhotos/3zDSC09346_320335807c1c4174ac894b355bcbb48c.jpg"
+      ]
+    },
+    {
       "id": "cherry-tree-house-statia",
       "title": "Cherry Tree House Statia",
       "location": "Cherry Tree, St Eustatius",
