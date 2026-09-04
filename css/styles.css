@@ -782,8 +782,8 @@ p {
   right: -50px;
   transform: rotate(45deg);
   background: var(--color-ocean-light);
-  font-size: 0.72rem;
-  letter-spacing: 2px;
+  font-size: 0.92rem;
+  letter-spacing: 1.5px;
 }
 /* FEATURED — vertical gold banner tab hanging from the top-right edge */
 .property-ribbon-featured {
