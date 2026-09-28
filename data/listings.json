@@ -1,6 +1,84 @@
 {
   "properties": [
     {
+      "id": "the-glasshouse",
+      "videos": [
+        {
+          "label": "Property Tour",
+          "id": "nuV2wOzIo-U",
+          "uploadDate": "2025-06-06T09:08:48-07:00"
+        }
+      ],
+      "title": "The Glasshouse",
+      "location": "Windwardside, Saba",
+      "price": 0,
+      "priceFormatted": "SOLD",
+      "status": "sold",
+      "type": "villa",
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "description": "<h2>The Glasshouse - SOLD</h2>\n<p><strong>Location:</strong> The Level - Windwardside, Saba, Caribbean Netherlands</p>\n<p><strong>Property Size:</strong> 2295 m² land | 2100 ft² main house | 750 ft² guest apartment</p>\n<h3>Property Overview:</h3>\n<p>The Glasshouse is a striking modern retreat tucked into the lush rainforest of Saba’s exclusive neighborhood, The Level. Overlooking the charming village of Windwardside and the Caribbean Sea, this 3-bedroom, 3-bathroom property offers unmatched privacy, luxury, and tranquility. Designed for seamless indoor-outdoor living, the home is bathed in natural light through expansive glass windows and doors, making each space feel open, bright, and deeply connected to nature.</p>\n<p>Whether enjoying a peaceful nap in the hammock, entertaining guests on the balcony, or soaking up the mountain views from the plunge pool, The Glasshouse is an elevated island sanctuary.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Lush Location & Spectacular Views:</strong> Perched on a private driveway and surrounded by Saba’s rainforest, this property boasts panoramic views of the Caribbean Sea, Mount Scenery, and Windwardside village. Enjoy total seclusion with the convenience of being just minutes from the island’s restaurants, shops, and hiking trails.</li>\n<li><strong>Spacious Modern Living:</strong> The main house includes two large bedrooms—each with beautifully renovated en-suite bathrooms—and an expansive open-concept living area. Highlights include high ceilings, a state-of-the-art kitchen with a massive island, dedicated office space, and seamless flow to outdoor living areas. The lower-level guest apartment offers a private entrance, outdoor lounge, and full amenities, perfect for visitors or rental income.</li>\n<li><strong>Impeccably Renovated & Maintained:</strong> Over the past five years, the home has undergone extensive upgrades, making it one of Saba’s most well-maintained residences. Features include a 35,000-gallon cistern, UV-filtered drinking water, two laundry rooms, storm shutters, roll-down patio door protection, and high-end fixtures throughout.</li>\n<li><strong>Outdoor Oasis:</strong> The exterior is just as impressive: a cozy plunge pool, solar-heated outdoor shower, both covered and open-air dining areas, a flower-filled garden with fruit trees, and a wrap-around balcony designed for endless Caribbean sunsets. Ample parking, an attached garage, and additional land for future development complete the property.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>The Glasshouse is more than a home—it’s a private Caribbean haven. Offering modern luxury, serene surroundings, and income potential, it stands as one of Saba’s standout properties. Ideal for full-time residence, a vacation home, or a high-end rental.</p>",
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/1IMG_1312.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/2IMG_1339.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/3IMG_0954.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/4IMG_E1143.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/5IMG_0984.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/6AIMG_1358.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/6BIMG_0950.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/6CIMG_0948.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/7AIMG_0949.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/7BIMG_1341.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/8IMG_0944.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/9BIMG_0957.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/10IMG_0956.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/11IMG_1337.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/12AIMG_0966.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/12BIMG_E1352.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/12CIMG_E0976.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/12DIMG_0974.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/13AIMG_0939.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/14IMG_0952.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/15IMG_1022.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/16IMG_1317.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/18IMG_1307.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/19IMG_1365.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/20Glasshouse%20logo.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/100003967-DroneGlassHouse.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/100003967-SmartphoneImageProperty.jpeg"
+      ]
+    },
+    {
+      "id": "cherry-tree-house-statia",
+      "title": "Cherry Tree House Statia",
+      "location": "Cherry Tree, St Eustatius",
+      "price": 0,
+      "priceFormatted": "SOLD",
+      "status": "sold",
+      "type": "villa",
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "description": "<h2>Cherry Tree House Statia - SOLD</h2>\n<p><strong>Location:</strong> Cherry Tree, St Eustatius</p>\n<p><strong>Property Size:</strong> 2,274 m² lot | 3BD | 2BT | Plantation-style villa</p>\n<h3>Property Overview:</h3>\n<p>Cherry Tree House is located at the entrance of the peaceful Cherry Parc residential area on Statia Island, offering ocean views and direct access to George Cruger Road. Set on 2,274 square meters of flat private land, this unfurnished plantation-style home combines traditional island character with practical residential features.</p>\n<p>The home includes 3 bedrooms, 2 bathrooms, a separate shower, high ceilings for natural cooling, a front porch with built-in jacuzzi, a garage, a cistern for water storage, and a basement hurricane shelter.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Spacious Land:</strong> The main house sits on a 1,700 m² lot with an additional 574 m² lot that offers room for expansion or a future rental dwelling.</li>\n<li><strong>Island Character:</strong> Original island-style details include historic tiles and locally inspired paintings that reflect the cultural heritage of the area.</li>\n<li><strong>Outdoor Living:</strong> Ocean and hillside views, a yard, patio, and front porch with built-in jacuzzi create comfortable indoor-outdoor living.</li>\n<li><strong>Practical Features:</strong> Garage, cistern, septic sewage, dirt driveway, 110V electricity, zinc roof, hurricane shutters, and basement hurricane shelter.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>Cherry Tree House offered a versatile Statia property for a family home, holiday home, or investment opportunity, with extra land to expand and a peaceful residential setting in Cherry Parc.</p>",
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-01Cees.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-06CeesCrop.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-IMG_3714-50.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-1cherry.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-2cherry.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-12cherryC.png",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-10cherry-DSC_0280-200.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-13IMG_9716-200.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-IMG_9713-200.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-16cherry.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-14BcherryD.png",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-14cherry-Screenshot.png",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-03Cees.JPG",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-8IMG-20250803-WA0011.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-18download.png",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-20cherry.jpg"
+      ]
+    },
+    {
       "id": "hidden-treasure-villa",
       "videos": [
         {
@@ -132,36 +210,6 @@
       ]
     },
     {
-      "id": "cherry-tree-house-statia",
-      "title": "Cherry Tree House Statia",
-      "location": "Cherry Tree, St Eustatius",
-      "price": 0,
-      "priceFormatted": "SOLD",
-      "status": "sold",
-      "type": "villa",
-      "bedrooms": 3,
-      "bathrooms": 2,
-      "description": "<h2>Cherry Tree House Statia - SOLD</h2>\n<p><strong>Location:</strong> Cherry Tree, St Eustatius</p>\n<p><strong>Property Size:</strong> 2,274 m² lot | 3BD | 2BT | Plantation-style villa</p>\n<p><strong>Previous Asking Price:</strong> $288,000</p>\n<h3>Property Overview:</h3>\n<p>Cherry Tree House is located at the entrance of the peaceful Cherry Parc residential area on Statia Island, offering ocean views and direct access to George Cruger Road. Set on 2,274 square meters of flat private land, this unfurnished plantation-style home combines traditional island character with practical residential features.</p>\n<p>The home includes 3 bedrooms, 2 bathrooms, a separate shower, high ceilings for natural cooling, a front porch with built-in jacuzzi, a garage, a cistern for water storage, and a basement hurricane shelter.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Spacious Land:</strong> The main house sits on a 1,700 m² lot with an additional 574 m² lot that offers room for expansion or a future rental dwelling.</li>\n<li><strong>Island Character:</strong> Original island-style details include historic tiles and locally inspired paintings that reflect the cultural heritage of the area.</li>\n<li><strong>Outdoor Living:</strong> Ocean and hillside views, a yard, patio, and front porch with built-in jacuzzi create comfortable indoor-outdoor living.</li>\n<li><strong>Practical Features:</strong> Garage, cistern, septic sewage, dirt driveway, 110V electricity, zinc roof, hurricane shutters, and basement hurricane shelter.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>Cherry Tree House offered a versatile Statia property for a family home, holiday home, or investment opportunity, with extra land to expand and a peaceful residential setting in Cherry Parc.</p>",
-      "images": [
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-01Cees.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-06CeesCrop.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-IMG_3714-50.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-1cherry.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-2cherry.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-12cherryC.png",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-10cherry-DSC_0280-200.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-13IMG_9716-200.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-IMG_9713-200.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-16cherry.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-14BcherryD.png",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-14cherry-Screenshot.png",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-03Cees.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-8IMG-20250803-WA0011.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-18download.png",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/cherry-tree-house-statia/100003982-20cherry.jpg"
-      ]
-    },
-    {
       "id": "statia-poolhouse",
       "title": "STATIA Poolhouse and Bungalows",
       "location": "White Hall, St Eustatius",
@@ -268,54 +316,6 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/11Daphne.jpg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/100003774-daphne1a.jpeg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/daphne-cottage/DaphneNikon2.JPG"
-      ]
-    },
-    {
-      "id": "the-glasshouse",
-      "videos": [
-        {
-          "label": "Property Tour",
-          "id": "nuV2wOzIo-U",
-          "uploadDate": "2025-06-06T09:08:48-07:00"
-        }
-      ],
-      "title": "The Glasshouse",
-      "location": "Windwardside, Saba",
-      "price": 0,
-      "priceFormatted": "SOLD",
-      "status": "sold",
-      "type": "villa",
-      "bedrooms": 3,
-      "bathrooms": 3,
-      "description": "<h2>The Glasshouse - SOLD</h2>\n<p><strong>Location:</strong> The Level - Windwardside, Saba, Caribbean Netherlands</p>\n<p><strong>Property Size:</strong> 2295 m² land | 2100 ft² main house | 750 ft² guest apartment</p>\n<h3>Property Overview:</h3>\n<p>The Glasshouse is a striking modern retreat tucked into the lush rainforest of Saba’s exclusive neighborhood, The Level. Overlooking the charming village of Windwardside and the Caribbean Sea, this 3-bedroom, 3-bathroom property offers unmatched privacy, luxury, and tranquility. Designed for seamless indoor-outdoor living, the home is bathed in natural light through expansive glass windows and doors, making each space feel open, bright, and deeply connected to nature.</p>\n<p>Whether enjoying a peaceful nap in the hammock, entertaining guests on the balcony, or soaking up the mountain views from the plunge pool, The Glasshouse is an elevated island sanctuary.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>Lush Location & Spectacular Views:</strong> Perched on a private driveway and surrounded by Saba’s rainforest, this property boasts panoramic views of the Caribbean Sea, Mount Scenery, and Windwardside village. Enjoy total seclusion with the convenience of being just minutes from the island’s restaurants, shops, and hiking trails.</li>\n<li><strong>Spacious Modern Living:</strong> The main house includes two large bedrooms—each with beautifully renovated en-suite bathrooms—and an expansive open-concept living area. Highlights include high ceilings, a state-of-the-art kitchen with a massive island, dedicated office space, and seamless flow to outdoor living areas. The lower-level guest apartment offers a private entrance, outdoor lounge, and full amenities, perfect for visitors or rental income.</li>\n<li><strong>Impeccably Renovated & Maintained:</strong> Over the past five years, the home has undergone extensive upgrades, making it one of Saba’s most well-maintained residences. Features include a 35,000-gallon cistern, UV-filtered drinking water, two laundry rooms, storm shutters, roll-down patio door protection, and high-end fixtures throughout.</li>\n<li><strong>Outdoor Oasis:</strong> The exterior is just as impressive: a cozy plunge pool, solar-heated outdoor shower, both covered and open-air dining areas, a flower-filled garden with fruit trees, and a wrap-around balcony designed for endless Caribbean sunsets. Ample parking, an attached garage, and additional land for future development complete the property.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>The Glasshouse is more than a home—it’s a private Caribbean haven. Offering modern luxury, serene surroundings, and income potential, it stands as one of Saba’s standout properties. Ideal for full-time residence, a vacation home, or a high-end rental.</p>",
-      "images": [
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/1IMG_1312.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/2IMG_1339.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/3IMG_0954.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/4IMG_E1143.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/5IMG_0984.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/6AIMG_1358.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/6BIMG_0950.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/6CIMG_0948.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/7AIMG_0949.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/7BIMG_1341.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/8IMG_0944.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/9BIMG_0957.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/10IMG_0956.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/11IMG_1337.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/12AIMG_0966.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/12BIMG_E1352.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/12CIMG_E0976.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/12DIMG_0974.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/13AIMG_0939.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/14IMG_0952.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/15IMG_1022.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/16IMG_1317.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/18IMG_1307.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/19IMG_1365.JPG",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/20Glasshouse%20logo.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/100003967-DroneGlassHouse.jpg",
-        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/the-glasshouse/100003967-SmartphoneImageProperty.jpeg"
       ]
     },
     {
@@ -638,7 +638,7 @@
       "type": "land",
       "bedrooms": 0,
       "bathrooms": 0,
-      "description": "<h2>First Light Property - $99,000.00</h2>\n<p><strong>Location:</strong> Lower Zion’s Hill, Saba Island, Caribbean Netherlands</p>\n<p><strong>Property Size:</strong> 901 m²</p>\n<h3>Property Overview:</h3>\n<p>Welcome to the First Light Property — a stunning and affordable piece of land for sale on Saba Island, featuring panoramic Caribbean Sea views and a peaceful hillside setting. This 901 m² lot sits in Lower Zion’s Hill, just a short walk from Cove Bay and moments from the island’s main road.</p>\n<p>Wake up each morning to brilliant sunrises over the ocean and enjoy views of nearby islands and Mount Scenery, the tallest peak in the Dutch Kingdom. This property offers an incredible opportunity to build your dream home or invest in Saba real estate at a great value.</p>\n<h3>Key Features:</h3>\n<ul>\n<li>Prime Location Situated in the tranquil community of Lower Zion’s Hill, this Saba land for sale provides privacy, ocean breezes, and easy access to local amenities — ideal for future development or a peaceful retreat.</li>\n<li>Panoramic Ocean & Mountain Views Enjoy wide, unobstructed views of the Caribbean Sea, nearby islands, and Saba’s iconic Mount Scenery. The elevated position makes it perfect for a home, villa, or eco-lodge.</li>\n<li>Affordable Investment Opportunity This is one of the most competitively priced lots on the island — a rare chance to own property in the Caribbean Netherlands. With Saba’s growing reputation for sustainable tourism, this lot is an excellent long-term investment.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>The First Light Property offers unmatched potential for anyone seeking affordable ocean-view land in Saba. Whether you want to create a private getaway or secure a smart real estate investment in the Caribbean, this property combines value, beauty, and accessibility.</p>",
+      "description": "<h2>First Light Property</h2>\n<p><strong>Location:</strong> Lower Zion’s Hill, Saba Island, Caribbean Netherlands</p>\n<p><strong>Property Size:</strong> 901 m²</p>\n<h3>Property Overview:</h3>\n<p>Welcome to the First Light Property — a stunning and affordable piece of land for sale on Saba Island, featuring panoramic Caribbean Sea views and a peaceful hillside setting. This 901 m² lot sits in Lower Zion’s Hill, just a short walk from Cove Bay and moments from the island’s main road.</p>\n<p>Wake up each morning to brilliant sunrises over the ocean and enjoy views of nearby islands and Mount Scenery, the tallest peak in the Dutch Kingdom. This property offers an incredible opportunity to build your dream home or invest in Saba real estate at a great value.</p>\n<h3>Key Features:</h3>\n<ul>\n<li>Prime Location Situated in the tranquil community of Lower Zion’s Hill, this Saba land for sale provides privacy, ocean breezes, and easy access to local amenities — ideal for future development or a peaceful retreat.</li>\n<li>Panoramic Ocean & Mountain Views Enjoy wide, unobstructed views of the Caribbean Sea, nearby islands, and Saba’s iconic Mount Scenery. The elevated position makes it perfect for a home, villa, or eco-lodge.</li>\n<li>Affordable Investment Opportunity This is one of the most competitively priced lots on the island — a rare chance to own property in the Caribbean Netherlands. With Saba’s growing reputation for sustainable tourism, this lot is an excellent long-term investment.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>The First Light Property offers unmatched potential for anyone seeking affordable ocean-view land in Saba. Whether you want to create a private getaway or secure a smart real estate investment in the Caribbean, this property combines value, beauty, and accessibility.</p>",
       "images": [
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/first-light-property/100003920-1IMG_E7899-50.jpeg",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/first-light-property/100003920-2IMG_E7953-50.jpeg",
@@ -662,12 +662,12 @@
       "title": "Sunrise Ridge",
       "location": "Zions Hill, Saba",
       "price": 0,
-      "priceFormatted": "Under Contract",
-      "status": "for-sale",
+      "priceFormatted": "SOLD",
+      "status": "sold",
       "type": "land",
       "bedrooms": 0,
       "bathrooms": 0,
-      "description": "<h2>Sunrise Ridge Land Opportunity - $209,000 (Reduced Price)</h2>\n<p><strong>Location:</strong> Near Cove Bay, Saba, Dutch Caribbean</p>\n<p><strong>Property Size:</strong> 1.28 acres (5,169 m²)</p>\n<p><strong>Price Reduction:</strong> Reduced from $336,000 to $209,000</p>\n<h3>Property Overview:</h3>\n<p><strong>Don’t miss this extraordinary opportunity to own a large ocean-view property on Saba Island at an exceptional value. The Sunrise Ridge Land Opportunity is now available at a 40% discount, priced at just $40 per m² — a rare find in the Caribbean Netherlands.</strong></p>\n<p>This 1.28-acre (5,169 m²) parcel of land sits on Saba’s picturesque northeast side, overlooking Cove Bay, the airport, and the lush peak of Mount Scenery. With expansive views of St. Maarten, St. Barts, and St. Eustatius, this property offers unmatched natural beauty and the perfect foundation for your dream home or family estate.</p>\n<h3>Key Features:</h3>\n<ul>\n<li>Panoramic Caribbean Views Enjoy wide, unobstructed vistas of the Caribbean Sea, Mount Scenery, and nearby islands. The property’s elevated position captures both ocean and hillside views — and as its name suggests, offers spectacular sunrises every morning.</li>\n<li>Prime Location Near Cove Bay Situated on the tranquil yet accessible north side of Saba, this land for sale in the Caribbean Netherlands provides the ideal balance of privacy and convenience. Just minutes from Cove Bay and local amenities, the area is peaceful, safe, and naturally beautiful — perfect for a custom home or small development.</li>\n<li>Exceptional Value & Investment Potential At a reduced price of $209,000, this property offers incredible value compared to similar lots on Saba. Whether you’re looking to build a Caribbean retreat, establish a family estate, or invest in land with long-term appreciation, this is a rare and smart opportunity.</li>\n<li>Natural Beauty & Privacy Surrounded by Saba’s lush landscape and stunning hillside scenery, this property delivers privacy and tranquility in one of the Caribbean’s most unspoiled environments. Owned by local neighbors for decades, it’s now available for new ownership — ready for you to create your own piece of paradise.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>The Sunrise Ridge Land Opportunity stands out as one of the most attractive real estate deals on Saba Island — combining generous size, breathtaking views, and a significant price reduction.</p>\n<p>Whether your vision is a private villa, eco-lodge, or multi-home estate, this Saba property for sale offers limitless potential.</p>\n<p>Contact us today to learn more or schedule a private viewing of this exceptional Caribbean land investment.</p>",
+      "description": "<h2>Sunrise Ridge Land</h2>\n<p><strong>Location:</strong> Near Cove Bay, Saba, Dutch Caribbean</p>\n<p><strong>Property Size:</strong> 1.28 acres (5,169 m²)</p>\n<h3>Property Overview:</h3>\n<p><strong>Don’t miss this extraordinary opportunity to own a large ocean-view property on Saba Island at an exceptional value. The Sunrise Ridge Land Opportunity is now available </strong></p>\n<p>This 1.28-acre (5,169 m²) parcel of land sits on Saba’s picturesque northeast side, overlooking Cove Bay, the airport, and the lush peak of Mount Scenery. With expansive views of St. Maarten, St. Barts, and St. Eustatius, this property offers unmatched natural beauty and the perfect foundation for your dream home or family estate.</p>\n<h3>Key Features:</h3>\n<ul>\n<li>Panoramic Caribbean Views Enjoy wide, unobstructed vistas of the Caribbean Sea, Mount Scenery, and nearby islands. The property’s elevated position captures both ocean and hillside views — and as its name suggests, offers spectacular sunrises every morning.</li>\n<li>Prime Location Near Cove Bay Situated on the tranquil yet accessible north side of Saba, this land for sale in the Caribbean Netherlands provides the ideal balance of privacy and convenience. Just minutes from Cove Bay and local amenities, the area is peaceful, safe, and naturally beautiful — perfect for a custom home or small development.</li>\n<li>Exceptional Value & Investment Potential This property offers excellent value and long-term appreciation potential on one of the Caribbean's most unspoiled islands. Whether you’re looking to build a Caribbean retreat, establish a family estate, or invest in land with long-term appreciation, this is a rare and smart opportunity.</li>\n<li>Natural Beauty & Privacy Surrounded by Saba’s lush landscape and stunning hillside scenery, this property delivers privacy and tranquility in one of the Caribbean’s most unspoiled environments. Owned by local neighbors for decades, it’s now available for new ownership — ready for you to create your own piece of paradise.</li>\n</ul>\n<h3>Unique Opportunity:</h3>\n<p>Sunrise Ridge stands out as one of the most attractive land opportunities on Saba Island — combining generous size and breathtaking views.</p>\n<p>Whether your vision is a private villa, eco-lodge, or multi-home estate, this Saba property for sale offers limitless potential.</p>\n<p>Contact us today to learn more or schedule a private viewing of this exceptional Caribbean land investment.</p>",
       "images": [
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_1E3294.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_2E3305.JPG",
@@ -678,8 +678,7 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_7E4247.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/IMG_8E4254.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/sunrise-ridge/Ridge%20land-Cover.jpg"
-      ],
-      "detailStatus": "under-contract"
+      ]
     },
     {
       "id": "johnnys-ground-secret",
