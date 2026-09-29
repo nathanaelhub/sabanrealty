@@ -113,7 +113,8 @@
     }
 
     .property-detail-section {
-      padding: 120px 0 60px;
+      /* clear the fixed navbar, which grows by the notch / Dynamic Island inset */
+      padding: calc(120px + env(safe-area-inset-top, 0px)) 0 calc(60px + env(safe-area-inset-bottom, 0px));
     }
     .property-header {
       display: flex;
@@ -688,7 +689,7 @@
 
       let galleryHTML = `
         <div class="gallery-wrapper">
-          <div class="gallery-main-wrap" id="galleryMainWrap">
+          <div class="gallery-main-wrap" id="galleryMainWrap" style="--gallery-bg:url('${mainImage}')">
             <img src="${mainImage}" alt="${property.title}" id="mainImage" loading="eager">
             <button type="button" id="shareBtn" class="share-btn gallery-share" aria-label="Share this property">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
@@ -1123,6 +1124,7 @@
       function goTo(idx) {
         currentIndex = ((idx % images.length) + images.length) % images.length;
         mainImg.src = images[currentIndex];
+        mainWrap.style.setProperty('--gallery-bg', `url("${images[currentIndex]}")`);
         if (counter) counter.textContent = `${currentIndex + 1} / ${images.length}`;
         thumbs.forEach(t => t.classList.toggle('active', parseInt(t.dataset.index) === currentIndex));
         const active = document.querySelector('.gallery-thumb-item.active');
@@ -1174,6 +1176,35 @@
       lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
       document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); goTo(currentIndex - 1); });
       document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); goTo(currentIndex + 1); });
+
+      // Swipe (phones/tablets): left/right on the main photo — or inside the lightbox — changes the photo.
+      // A plain tap still opens/closes the lightbox; only a mostly-horizontal drag of 40px+ counts,
+      // and multi-finger gestures (pinch-zoom) are ignored.
+      function addSwipe(el) {
+        let sx = 0, sy = 0, tracking = false, swiped = false;
+        el.addEventListener('touchstart', e => {
+          if (e.touches.length !== 1) { tracking = false; return; }
+          sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+          tracking = true; swiped = false;
+        }, { passive: true });
+        el.addEventListener('touchend', e => {
+          if (!tracking) return;
+          tracking = false;
+          const t = e.changedTouches[0];
+          const dx = t.clientX - sx, dy = t.clientY - sy;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+            swiped = true;
+            setTimeout(() => { swiped = false; }, 400);
+            goTo(currentIndex + (dx < 0 ? 1 : -1));
+          }
+        }, { passive: true });
+        // Some browsers still fire a click after a swipe — swallow it so the lightbox doesn't toggle.
+        el.addEventListener('click', e => {
+          if (swiped) { swiped = false; e.stopImmediatePropagation(); e.preventDefault(); }
+        }, true);
+      }
+      addSwipe(mainWrap);
+      addSwipe(lb);
 
       document.addEventListener('keydown', e => {
         if (!lb.classList.contains('open')) return;

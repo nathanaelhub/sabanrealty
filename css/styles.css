@@ -449,7 +449,8 @@ p {
 
 .hero-chip {
   position: absolute;
-  top: 15%;
+  /* never tuck under the fixed navbar, which grows by the notch / Dynamic Island inset */
+  top: max(15%, calc(128px + env(safe-area-inset-top, 0px)));
   left: 0;
   right: 0;
   margin-inline: auto;
@@ -477,7 +478,8 @@ p {
 
 .hero-title-wrap {
   position: absolute;
-  top: 15%;
+  /* never tuck under the fixed navbar, which grows by the notch / Dynamic Island inset */
+  top: max(15%, calc(128px + env(safe-area-inset-top, 0px)));
   left: 0;
   right: 0;
   z-index: 5;
@@ -2130,14 +2132,30 @@ p {
 .gallery-main-wrap {
   position: relative;
   overflow: hidden;
-  background: #000;
+  background: var(--color-ocean-deep);
   cursor: zoom-in;
+  touch-action: pan-y pinch-zoom; /* horizontal swipes change the photo; vertical still scrolls */
+}
+
+/* Blurred copy of the current photo fills the frame (set via --gallery-bg), so the
+   photo itself can be shown whole (contain) — no cropped edges, no hard black bars. */
+.gallery-main-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -24px;
+  z-index: 0;
+  background-image: var(--gallery-bg, none);
+  background-size: cover;
+  background-position: center;
+  filter: blur(22px) brightness(0.62);
+  transform: scale(1.08);
 }
 
 .gallery-main-wrap img {
+  position: relative;
   width: 100%;
   aspect-ratio: 16/9;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -2309,6 +2327,7 @@ p {
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   backdrop-filter: blur(8px);
+  touch-action: pan-y pinch-zoom; /* swipe left/right between photos */
 }
 
 .lightbox.open {
@@ -2336,8 +2355,8 @@ p {
 
 .lightbox-close {
   position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
+  top: calc(1.25rem + env(safe-area-inset-top, 0px));
+  right: calc(1.25rem + env(safe-area-inset-right, 0px));
   width: 44px;
   height: 44px;
   background: rgba(255,255,255,0.1);
@@ -2393,7 +2412,7 @@ p {
 
 .lightbox-counter {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%);
   color: rgba(255,255,255,0.6);
@@ -2404,6 +2423,7 @@ p {
 
 @media (max-width: 600px) {
   .gallery-thumb-item { flex: 0 0 72px; height: 52px; }
+  .gallery-main-wrap img { aspect-ratio: 4/3; } /* taller frame on phones — more of each photo */
   .lightbox-prev { left: 0.5rem; }
   .lightbox-next { right: 0.5rem; }}
 
@@ -2577,7 +2597,7 @@ p {
 /* ===== Video Tour section (property detail page) ===== */
 .video-tour {
   margin: 2.5rem 0;
-  scroll-margin-top: 90px; /* #video-tour deep links land below the fixed navbar */
+  scroll-margin-top: calc(90px + env(safe-area-inset-top, 0px)); /* #video-tour deep links land below the fixed navbar */
   padding: 2rem;
   background:
     linear-gradient(180deg, rgba(10,37,64,0.02), rgba(10,37,64,0.06)),
