@@ -948,6 +948,35 @@
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/behind-the-ridge-land/100004071-16IMG_7479.JPG",
         "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/behind-the-ridge-land/behind-the-ridge-survey-map.png"
       ]
+    },
+    {
+      "id": "scenery-trail-land",
+      "new": true,
+      "title": "Scenery Trail Land",
+      "location": "Windwardside, Saba",
+      "price": 275000,
+      "priceFormatted": "$275,000",
+      "status": "for-sale",
+      "type": "land",
+      "bedrooms": 0,
+      "bathrooms": 0,
+      "description": "<h2>Scenery Trail Land — Windwardside, Saba</h2>\n<p><strong>Location:</strong> Windwardside, Saba, Dutch Caribbean</p>\n<p><strong>Property Size:</strong> 2,687 m² (0.7 acres)</p>\n<h3>Property Overview:</h3>\n<p>This green and lush property — with an existing parking lot and mature fruit trees — sits in Windwardside, the tourist capital of Saba, right next to the Trail Shop, restaurants, grocery stores, and the heart of the village. A historic pathway crosses the land on its way up to Mount Scenery, the tallest peak in the Kingdom of the Netherlands. Bordering the main road for easy access and measuring 2,687 m² (0.7 acres), it is a rare in-village development opportunity — a slice of paradise.</p>\n<h3>Key Features:</h3>\n<ul>\n<li><strong>In the heart of Windwardside:</strong> Steps from the Trail Shop, restaurants, grocery stores, and the village center, in Saba's tourist capital.</li>\n<li><strong>On the path to Mount Scenery:</strong> A historic pathway runs across the property toward Mount Scenery, the tallest Dutch mountain — an unusually special setting for a building plot.</li>\n<li><strong>Ready to build:</strong> Green and lush with an existing parking lot and mature fruit trees, bordering the main road for easy access.</li>\n<li><strong>A rare, generous parcel:</strong> 2,687 m² (0.7 acres) of in-village land — a genuine development opportunity on a five-square-mile island.</li>\n</ul>\n<h3>Why Saba:</h3>\n<p>Saba offers year-round hiking, world-class scuba diving, and yearly triathlons that run from sea to forest to town. With a small, friendly population, it is one of the safest places in the world — home to the highest Dutch peak, the famous short runway, and three ecosystems: coastal tide pools, dry forest, and elfin rain forest. Tourism matters here, but you won't find the crowds.</p>",
+      "images": [
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-01.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-02.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-03.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-04.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-05.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-06.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-07.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-08.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-09.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-10.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-11.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-12.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-13.jpg",
+        "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/listings/scenery-trail-land/scenery-trail-14.jpg"
+      ]
     }
   ],
   "rentals": [

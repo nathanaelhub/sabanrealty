@@ -440,7 +440,7 @@
     fetch('/data/listings.json')
       .then(r => r.json())
       .then(data => {
-        const featuredIds = ['villa-frangipani-statia', 'view-villa', 'treasured-horseshoe-property'];
+        const featuredIds = ['scenery-trail-land', 'villa-frangipani-statia', 'view-villa'];
         const all = data.properties || [];
         const listings = featuredIds.map(id => all.find(p => p.id === id)).filter(Boolean);
         const grid = document.getElementById('homePropertyGrid');
