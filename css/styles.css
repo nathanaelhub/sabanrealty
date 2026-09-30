@@ -271,25 +271,25 @@ p {
   padding-right: env(safe-area-inset-right, 0px);
 }
 
-/* Solid strip under the iPhone status bar. iOS 26 Safari ignores theme-color and tints the
-   status-bar area from a fixed element at the top edge (else the sand body colour), so give it
-   one. Zero height on devices without a top safe-area inset. */
-body::before {
-  content: '';
+/* Solid strip under the iPhone status bar (element injected by main.min.js). iOS 26 Safari
+   ignores theme-color and tints the status-bar area from a real position:fixed element with a
+   background-color at the top edge -- pseudo-elements are skipped -- else the body's sand.
+   Zero height on devices without a top safe-area inset. */
+.status-tint {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: env(safe-area-inset-top, 0px);
   z-index: 1001;
-  background: var(--color-ocean-deep);
+  background-color: var(--color-ocean-deep);
   pointer-events: none;
   transition: background-color var(--transition-medium);
 }
 
 /* homepage: blend into the hero sky until the navbar turns solid */
-body:has(.hero):not(:has(.navbar.scrolled))::before {
-  background: #5b7882;
+body:has(.hero):not(:has(.navbar.scrolled)) .status-tint {
+  background-color: #5b7882;
 }
 
 .navbar.scrolled .nav-logo,
