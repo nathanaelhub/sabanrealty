@@ -107,8 +107,14 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--color-text);
-  background-color: var(--color-sand);
+  /* navy, not sand: iOS 26 Safari tints the status-bar area from body's background-color.
+     Every page wraps its content in <main>, which paints the sand instead. */
+  background-color: var(--color-ocean-deep);
   overflow-x: hidden;
+}
+
+main {
+  background-color: var(--color-sand);
 }
 
 img {
@@ -285,11 +291,6 @@ p {
   background-color: var(--color-ocean-deep);
   pointer-events: none;
   transition: background-color var(--transition-medium);
-}
-
-/* homepage: blend into the hero sky until the navbar turns solid */
-body:has(.hero):not(:has(.navbar.scrolled)) .status-tint {
-  background-color: #5b7882;
 }
 
 .navbar.scrolled .nav-logo,
@@ -2450,7 +2451,10 @@ body:has(.hero):not(:has(.navbar.scrolled)) .status-tint {
   .gallery-thumb-item { flex: 0 0 72px; height: 52px; }
   .gallery-main-wrap img { aspect-ratio: 4/3; } /* taller frame on phones — more of each photo */
   .lightbox-prev { left: 0.5rem; }
-  .lightbox-next { right: 0.5rem; }}
+  .lightbox-next { right: 0.5rem; }
+  /* every photo scales into the same full-width box (small/low-res ones no longer shrink) */
+  .lightbox-img-wrap { max-width: 100vw; max-height: none; }
+  .lightbox-img { width: 100vw; height: 76dvh; max-width: none; max-height: none; border-radius: 0; }}
 
 /* ---- Print Styles ---- */
 @media print {
