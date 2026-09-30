@@ -96,6 +96,10 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  /* iOS 26 Safari tints the status-bar area (and overscroll) with the root canvas colour.
+     Giving html its own background stops body's sand from propagating to the canvas;
+     body still paints sand behind all page content. */
+  background-color: var(--color-ocean-deep);
 }
 
 body {
