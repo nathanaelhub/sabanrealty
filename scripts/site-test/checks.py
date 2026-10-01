@@ -98,6 +98,8 @@ stubs += glob.glob("blog/*.html")
 stubs = [s for s in stubs if s != "blog/index.html"]
 unstubbed = [s for s in stubs if 'content="noindex"' not in open(s).read()]
 check("redirect stubs are noindex", not unstubbed, str(unstubbed))
+check("admin page is noindex and not in sitemap",
+      'content="noindex"' in open("admin/index.html").read() and "/admin/" not in sm_urls)
 
 # ---------- 5. CSS ----------
 css = open("css/styles.css").read()

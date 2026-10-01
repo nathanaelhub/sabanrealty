@@ -1,0 +1,5 @@
+# Copy to .dev.vars for `npx wrangler dev` (local only; .dev.vars is gitignored).
+ADMIN_PASSPHRASE=local-test-passphrase-only
+ALLOWED_ORIGINS=http://localhost:8899
+# With DRY_RUN=1, /change echoes the request instead of calling GitHub.
+DRY_RUN=1

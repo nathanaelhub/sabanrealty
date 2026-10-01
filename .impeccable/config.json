@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "admin/index.html"
+        ],
+        "createdAt": "2026-10-01T23:27:16.712Z",
+        "reason": "Model triage: #f5f0e8 is the site's existing brand token --color-sand (css/styles.css:12), also used by links/index.html; the admin page deliberately matches the site palette"
+      }
+    ]
+  }
+}

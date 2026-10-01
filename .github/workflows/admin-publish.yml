@@ -1,0 +1,88 @@
+# Publishes a change sent from the admin page (admin/index.html).
+# admin page -> Cloudflare Worker (scripts/admin-worker) -> repository_dispatch -> this workflow.
+# Manual runs (workflow_dispatch) default to a dry run that only prints the diff.
+name: Admin publish
+run-name: admin ${{ github.event.client_payload.change.request_id || 'manual' }}
+
+on:
+  repository_dispatch:
+    types: [admin-change]
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: 'Change as JSON, e.g. {"action":"set-price","id":"view-villa","price":500000}'
+        required: true
+      dry_run:
+        description: Print the diff without committing
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pages: write
+
+# One change at a time; never cancel a publish that is half way through.
+concurrency:
+  group: admin-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      NOTIFY: nathanaelhub
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      # The payload is untrusted data: hand it over as an env var, never inline it in a script.
+      - name: Apply change
+        id: apply
+        env:
+          ADMIN_CHANGE: ${{ github.event_name == 'repository_dispatch' && toJson(github.event.client_payload.change) || inputs.payload }}
+        run: python3 scripts/admin/apply_change.py
+
+      - name: Static site checks
+        run: bash scripts/site-test/run.sh static
+
+      - name: Show diff (dry run)
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        run: |
+          git status --short
+          git diff -- data/listings.json sitemap.xml index.html
+
+      - name: Commit and push
+        id: push
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
+        env:
+          MSG: ${{ steps.apply.outputs.commit_message }}
+        run: |
+          git config user.name "Saban Realty Admin"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/listings.json sitemap.xml index.html properties
+          if git diff --staged --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git commit -m "$MSG"
+          git push || { git pull --rebase origin main && git push; }
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # Pushes made with the workflow token may not start the Pages build on their own.
+      - name: Request Pages build
+        if: steps.push.outputs.sha
+        continue-on-error: true
+        run: gh api -X POST "repos/$GITHUB_REPOSITORY/pages/builds"
+
+      # The mention is what emails Nathanael that something was published.
+      - name: Notify
+        if: steps.push.outputs.sha
+        continue-on-error: true
+        env:
+          MSG: ${{ steps.apply.outputs.commit_message }}
+          URL: ${{ steps.apply.outputs.url }}
+          SHA: ${{ steps.push.outputs.sha }}
+        run: gh api "repos/$GITHUB_REPOSITORY/commits/$SHA/comments" -f body="@$NOTIFY $MSG — $URL"

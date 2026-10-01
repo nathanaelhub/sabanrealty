@@ -1,0 +1,18 @@
+# Backend for the admin page (admin/index.html). See ADDING-PROPERTIES.md → "Admin page".
+#   npx wrangler deploy                      (from this directory)
+#   npx wrangler secret put ADMIN_PASSPHRASE
+#   npx wrangler secret put GITHUB_TOKEN     (fine-grained PAT, this repo only: Contents read/write, Actions read)
+name = "sabanrealty-admin"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "sabanreality"
+
+[vars]
+ALLOWED_ORIGINS = "https://sabanrealty.com,https://www.sabanrealty.com"
+REPO = "nathanaelhub/sabanrealty"
+WORKFLOW = "admin-publish.yml"
+PUBLIC_BASE = "https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev"

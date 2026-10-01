@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <base href="/">
+  <!-- Admin page: intentionally noindex, not in sitemap, not linked from the site.
+       The passphrase is checked by the Worker (scripts/admin-worker), never here. -->
+  <meta name="robots" content="noindex">
+  <title>Saban Realty | Manage listings</title>
+  <link rel="icon" type="image/png" href="https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev/assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ocean-deep: #0a2540; --ocean-mid: #1a4a6e; --ocean-light: #2d7a9c;
+      --sand: #f5f0e8; --sand-dark: #e8e0d0; --coral: #e07a5f; --coral-dark: #c45d42;
+      --coral-deep: #b24e35; --gold: #d4a853; --ink: #2c3e50; --ink-light: #5a6c7d; --ok: #1e7f4a; --bad: #a8321d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 18px; line-height: 1.5; color: var(--ink); background: var(--sand);
+      min-height: 100vh;
+    }
+    [hidden] { display: none !important; }
+
+    .bar {
+      background: var(--ocean-deep); color: #fff;
+      padding: calc(14px + env(safe-area-inset-top)) 20px 14px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .wordmark { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.25rem; }
+    .wordmark span { color: var(--gold); }
+    .bar button {
+      background: none; border: 1px solid rgba(255,255,255,.4); color: #fff; font: inherit;
+      font-size: .95rem; padding: 6px 14px; border-radius: 999px; cursor: pointer;
+    }
+
+    main { max-width: 640px; margin: 0 auto; padding: 28px 20px calc(72px + env(safe-area-inset-bottom)); }
+    h1 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.9rem; line-height: 1.2; color: var(--ocean-deep); margin-bottom: 8px; }
+    h2 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.3rem; color: var(--ocean-deep); margin: 36px 0 4px; padding-top: 24px; border-top: 1px solid var(--sand-dark); }
+    .lede { color: var(--ink-light); margin-bottom: 24px; }
+    .hint { color: var(--ink-light); font-size: .92rem; margin-top: 4px; }
+    .back { background: none; border: 0; font: inherit; color: var(--ocean-mid); cursor: pointer; padding: 6px 0; margin-bottom: 12px; text-decoration: underline; }
+
+    label, legend { display: block; font-weight: 600; color: var(--ocean-deep); margin: 20px 0 6px; }
+    input[type=text], input[type=password], input[type=url], input[type=number], select, textarea {
+      width: 100%; font: inherit; color: var(--ink); background: #fff;
+      border: 1.5px solid #c9c0ae; border-radius: 8px; padding: 13px 14px; min-height: 52px;
+    }
+    textarea { min-height: 150px; resize: vertical; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--ocean-light); outline-offset: 2px;
+    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .check { display: flex; align-items: flex-start; gap: 12px; font-weight: 400; color: var(--ink); margin-top: 16px; cursor: pointer; }
+    .check input { width: 24px; height: 24px; margin-top: 2px; flex: none; accent-color: var(--ocean-mid); }
+    fieldset { border: 0; }
+
+    .btn {
+      display: block; width: 100%; font: inherit; font-weight: 600; font-size: 1.1rem;
+      min-height: 56px; padding: 14px 20px; border-radius: 10px; border: 0; cursor: pointer;
+      background: var(--coral-deep); color: #fff; text-align: center; text-decoration: none; margin-top: 24px;
+    }
+    .btn:disabled { opacity: .55; cursor: default; }
+    .btn.quiet { background: #fff; color: var(--ocean-deep); border: 1.5px solid var(--ocean-deep); }
+    .btn.small { min-height: 46px; font-size: 1rem; padding: 10px 14px; margin-top: 10px; }
+
+    .choice {
+      display: block; width: 100%; text-align: left; font: inherit; cursor: pointer;
+      background: #fff; border: 1.5px solid #c9c0ae; border-radius: 12px; padding: 22px 20px; margin-top: 16px; color: var(--ink);
+    }
+    .choice strong { display: block; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.35rem; color: var(--ocean-deep); }
+
+    .problems { background: #fbe9e4; border-left: 5px solid var(--bad); color: #6e1f10; padding: 14px 16px; border-radius: 6px; margin: 20px 0 0; }
+    .problems ul { margin: 6px 0 0 20px; }
+    .note { background: #fff; border-left: 5px solid var(--gold); padding: 14px 16px; border-radius: 6px; margin-top: 20px; }
+
+    /* Photos: the first one is the cover and is shown large. */
+    .drop {
+      display: block; border: 2px dashed var(--ocean-light); border-radius: 12px; background: #fff;
+      padding: 26px 18px; text-align: center; cursor: pointer; margin-top: 8px; font-weight: 600; color: var(--ocean-mid);
+    }
+    .drop.over { background: #e3f0f5; }
+    .drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    .drop span { display: block; font-weight: 400; color: var(--ink-light); font-size: .92rem; margin-top: 4px; }
+    .photos { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 14px; }
+    .photos li { position: relative; background: var(--ocean-deep); border-radius: 8px; overflow: hidden; }
+    .photos li:first-child { grid-column: 1 / -1; }
+    .photos img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+    .photos li:first-child img { aspect-ratio: 16 / 10; }
+    .cover-tag { position: absolute; top: 8px; left: 8px; background: var(--gold); color: var(--ocean-deep); font-weight: 600; font-size: .85rem; padding: 3px 10px; border-radius: 999px; }
+    .photo-tools { display: grid; grid-template-columns: 1fr 1fr; background: var(--ocean-deep); }
+    .photos li:first-child .photo-tools { grid-template-columns: repeat(4, 1fr); }
+    .photo-tools button { background: none; border: 0; border-top: 1px solid rgba(255,255,255,.2); color: #fff; font: inherit; font-size: .9rem; min-height: 44px; cursor: pointer; padding: 4px 2px; }
+    .photo-tools button:disabled { opacity: .35; }
+
+    .video-check { display: flex; gap: 12px; align-items: center; margin-top: 10px; }
+    .video-check img { width: 120px; border-radius: 6px; }
+
+    iframe.preview { width: 100%; border: 1.5px solid #c9c0ae; border-radius: 12px; background: #fff; margin-top: 12px; }
+
+    .steps { list-style: none; margin-top: 20px; }
+    .steps li { padding: 14px 0 14px 40px; position: relative; border-bottom: 1px solid var(--sand-dark); color: var(--ink-light); }
+    .steps li::before { content: ''; position: absolute; left: 6px; top: 19px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid #c9c0ae; }
+    .steps li.doing { color: var(--ocean-deep); font-weight: 600; }
+    .steps li.doing::before { border-color: var(--ocean-light); border-top-color: transparent; animation: spin 1s linear infinite; }
+    .steps li.done { color: var(--ink); }
+    .steps li.done::before { background: var(--ok); border-color: var(--ok); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .steps li.doing::before { animation: none; border-top-color: var(--ocean-light); } }
+    progress { width: 100%; height: 12px; margin-top: 8px; accent-color: var(--ocean-light); }
+
+    .listing { background: #fff; border: 1.5px solid #c9c0ae; border-radius: 12px; margin-top: 12px; overflow: hidden; }
+    .listing > button { display: flex; width: 100%; gap: 14px; align-items: center; text-align: left; background: none; border: 0; font: inherit; color: var(--ink); padding: 10px; cursor: pointer; }
+    .listing img { width: 84px; height: 64px; object-fit: cover; border-radius: 6px; flex: none; background: var(--sand-dark); }
+    .listing .name { font-weight: 600; color: var(--ocean-deep); display: block; }
+    .listing .state { font-size: .95rem; color: var(--ink-light); }
+    .listing.is-hidden { opacity: .7; }
+    .listing .actions { padding: 0 12px 14px; }
+
+    dialog { border: 0; border-radius: 14px; padding: 24px 22px; width: min(92vw, 440px); margin: auto; color: var(--ink); }
+    dialog::backdrop { background: rgba(10,37,64,.6); }
+    dialog h2 { margin: 0 0 8px; padding-top: 0; border-top: 0; }
+
+    @media (max-width: 420px) { .row { grid-template-columns: 1fr; gap: 0; } }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <div class="wordmark">Saban <span>Realty</span></div>
+    <button type="button" id="signOut" hidden>Lock</button>
+  </header>
+
+  <main>
+    <!-- 1. Passphrase -->
+    <section id="view-gate" hidden>
+      <h1>Manage listings</h1>
+      <p class="lede">Enter the passphrase to add or update properties on sabanrealty.com.</p>
+      <form id="gateForm">
+        <label for="pass">Passphrase</label>
+        <input type="password" id="pass" autocomplete="current-password" required>
+        <div class="problems" id="gateError" role="alert" hidden></div>
+        <button class="btn" type="submit">Unlock</button>
+      </form>
+    </section>
+
+    <!-- 2. Home -->
+    <section id="view-home" hidden>
+      <h1>What would you like to do?</h1>
+      <button class="choice" type="button" data-go="add"><strong>Add a property</strong>Put a new for-sale listing on the website.</button>
+      <button class="choice" type="button" data-go="update"><strong>Update a property</strong>Change a price, mark it under contract or sold, or hide it.</button>
+      <p class="hint" style="margin-top:24px">Vacation rentals and changes to photos or descriptions still go through Nathanael.</p>
+    </section>
+
+    <!-- 3. Add -->
+    <section id="view-add" hidden>
+      <button class="back" type="button" data-go="home">Back</button>
+      <h1>Add a property</h1>
+      <p class="lede">Your typing is saved on this device as you go. Photos are not, so add those last.</p>
+      <form id="addForm" novalidate>
+        <label for="f-title">Name of the property</label>
+        <input type="text" id="f-title" maxlength="80" placeholder="Hilltop Cottage">
+
+        <div class="row">
+          <div>
+            <label for="f-village">Village or area</label>
+            <input type="text" id="f-village" maxlength="60" list="villages" placeholder="Windwardside">
+            <datalist id="villages">
+              <option value="Windwardside"><option value="Zion's Hill"><option value="The Bottom"><option value="St. Johns">
+              <option value="Booby Hill"><option value="Troy Hill"><option value="The Level"><option value="Oranjestad">
+            </datalist>
+          </div>
+          <div>
+            <label for="f-island">Island</label>
+            <select id="f-island"><option value="saba">Saba</option><option value="statia">St. Eustatius</option></select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="f-type">Type</label>
+            <select id="f-type">
+              <option value="villa">Villa</option><option value="cottage">Cottage</option>
+              <option value="land">Land</option><option value="commercial">Commercial</option>
+            </select>
+          </div>
+          <div>
+            <label for="f-price">Price in US dollars</label>
+            <input type="text" id="f-price" inputmode="numeric" placeholder="425,000">
+          </div>
+        </div>
+
+        <div class="row" id="roomsRow">
+          <div>
+            <label for="f-beds">Bedrooms</label>
+            <input type="number" id="f-beds" min="0" max="30" step="1" inputmode="numeric">
+          </div>
+          <div>
+            <label for="f-baths">Bathrooms</label>
+            <input type="number" id="f-baths" min="0" max="30" step="0.5" inputmode="decimal">
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="f-size">Size (optional)</label>
+            <input type="text" id="f-size" maxlength="120" placeholder="2,687 m² (0.7 acres)">
+          </div>
+          <div>
+            <label for="f-acreage">Acres (optional)</label>
+            <input type="text" id="f-acreage" inputmode="decimal" placeholder="0.7">
+          </div>
+        </div>
+
+        <label for="f-mls">MLS number (optional)</label>
+        <input type="text" id="f-mls" maxlength="30" inputmode="numeric">
+
+        <h2>Description</h2>
+        <label for="f-overview">About the property</label>
+        <textarea id="f-overview" rows="7" placeholder="Describe the property the way you would to a buyer."></textarea>
+        <p class="hint">Leave an empty line between paragraphs.</p>
+
+        <label for="f-features">Key features (optional)</label>
+        <textarea id="f-features" rows="5" placeholder="Ocean views: Looks out over the Caribbean Sea&#10;Cistern: 20,000 gallons&#10;Fully furnished"></textarea>
+        <p class="hint">One per line. Text before a colon is shown in bold.</p>
+
+        <h2>Video</h2>
+        <label for="f-video">YouTube link (optional)</label>
+        <input type="url" id="f-video" placeholder="https://youtu.be/…">
+        <p class="hint">Upload the video to YouTube first, then paste its link here.</p>
+        <div class="video-check" id="videoCheck" hidden><span>Is this the right video?</span></div>
+
+        <h2>Photos</h2>
+        <label class="drop" id="drop">
+          Choose photos
+          <span>or drag them here. The first photo is the cover.</span>
+          <input type="file" id="f-photos" accept="image/*" multiple>
+        </label>
+        <p class="hint" id="photoStatus" role="status"></p>
+        <ul class="photos" id="photoList"></ul>
+
+        <h2>On the website</h2>
+        <label class="check"><input type="checkbox" id="f-new" checked><span>Show a “New” ribbon on this listing</span></label>
+        <label class="check"><input type="checkbox" id="f-home"><span>Show it on the homepage. It takes the first of the three places there and the last one drops off.</span></label>
+
+        <div class="problems" id="addProblems" role="alert" hidden></div>
+        <button class="btn" type="submit">Preview</button>
+        <button class="btn quiet small" type="button" id="clearDraft">Start over with an empty form</button>
+      </form>
+    </section>
+
+    <!-- 4. Preview -->
+    <section id="view-preview" hidden>
+      <button class="back" type="button" data-go="add">Back to editing</button>
+      <h1>Check it over</h1>
+      <p class="lede">This is how the listing will look. Nothing is on the website yet.</p>
+      <iframe class="preview" id="previewFrame" title="Listing preview" scrolling="no"></iframe>
+      <button class="btn" type="button" id="publishBtn">Publish to website</button>
+      <button class="btn quiet" type="button" data-go="add">Keep editing</button>
+    </section>
+
+    <!-- 5. Progress (publish and updates) -->
+    <section id="view-progress" hidden>
+      <h1 id="progressTitle">Publishing</h1>
+      <p class="lede" id="progressLede">Keep this page open until it finishes.</p>
+      <ol class="steps" id="steps" aria-live="polite"></ol>
+      <div id="progressOutcome"></div>
+    </section>
+
+    <!-- 6. Update -->
+    <section id="view-update" hidden>
+      <button class="back" type="button" data-go="home">Back</button>
+      <h1>Update a property</h1>
+      <p class="lede">Choose a property to see what you can change.</p>
+      <label for="search" style="margin-top:0">Find by name</label>
+      <input type="text" id="search" autocomplete="off">
+      <div id="listings" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <dialog id="confirm">
+    <form method="dialog" id="confirmForm">
+      <h2 id="confirmTitle"></h2>
+      <p id="confirmText"></p>
+      <div id="confirmPriceWrap" hidden>
+        <label for="confirmPrice">Price in US dollars</label>
+        <input type="text" id="confirmPrice" inputmode="numeric">
+        <p class="problems" id="confirmError" role="alert" hidden>Enter the price as a number, for example 425,000.</p>
+      </div>
+      <button class="btn" type="submit" value="ok" id="confirmOk"></button>
+      <button class="btn quiet small" type="submit" value="cancel" formnovalidate>Cancel</button>
+    </form>
+  </dialog>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // Address of the Cloudflare Worker (scripts/admin-worker). Printed by `npx wrangler deploy`.
+    var WORKER_URL = 'https://sabanrealty-admin.REPLACE-ME.workers.dev';
+    var LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    var API = LOCAL ? 'http://localhost:8787' : WORKER_URL;
+    var PUBLIC_BASE = 'https://pub-78b56158b83942189fa28a4d5939bb79.r2.dev';
+    var ISLANDS = { saba: 'Saba', statia: 'St. Eustatius' };
+    var MAX_PHOTOS = 60, MAX_EDGE = 1600, JPEG_QUALITY = 0.82;
+    var PASS_KEY = 'sr-admin-pass', DRAFT_KEY = 'sr-admin-draft';
+    var DRAFT_FIELDS = ['title', 'village', 'island', 'type', 'price', 'beds', 'baths', 'size', 'acreage', 'mls', 'overview', 'features', 'video', 'new', 'home'];
+
+    var $ = function (id) { return document.getElementById(id); };
+    var photos = [];          // { uid, blob, src, url, uploadedFor }
+    var listings = null;      // live data/listings.json
+    var pending = null;       // listing being previewed
+
+    // ---------- helpers ----------
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+    }
+    function store(key, value) {
+      try { value === null ? localStorage.removeItem(key) : localStorage.setItem(key, value); } catch (e) {}
+    }
+    function stored(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+    function money(n) { return '$' + Number(n).toLocaleString('en-US'); }
+    function parseMoney(text) {
+      var digits = String(text).replace(/[$,\s]/g, '');
+      return /^\d+$/.test(digits) && Number(digits) > 0 ? Number(digits) : null;
+    }
+    function slugify(title) {
+      return title.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase()
+        .replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50).replace(/-+$/, '');
+    }
+    function videoId(text) {
+      text = text.trim();
+      if (!text) return '';
+      var m = /(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([A-Za-z0-9_-]{11})/.exec(text) || /^([A-Za-z0-9_-]{11})$/.exec(text);
+      return m ? m[1] : null;
+    }
+    function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+    function show(name) {
+      ['gate', 'home', 'add', 'preview', 'progress', 'update'].forEach(function (v) { $('view-' + v).hidden = v !== name; });
+      $('signOut').hidden = name === 'gate';
+      window.scrollTo(0, 0);
+      if (name === 'update') loadListings().then(renderListings);
+    }
+
+    function api(path, options) {
+      options = options || {};
+      options.headers = Object.assign({ Authorization: 'Bearer ' + encodeURIComponent(stored(PASS_KEY) || '') }, options.headers || {});
+      return fetch(API + path, options).then(function (res) {
+        if (res.status === 401) { store(PASS_KEY, null); show('gate'); throw new Error('The passphrase is no longer accepted. Enter it again.'); }
+        return res;
+      });
+    }
+
+    function loadListings() {
+      return fetch('/data/listings.json?t=' + Date.now(), { cache: 'no-store' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { listings = data; return data; });
+    }
+
+    // ---------- gate ----------
+    $('gateForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var err = $('gateError');
+      err.hidden = true;
+      store(PASS_KEY, $('pass').value);
+      fetch(API + '/auth', { headers: { Authorization: 'Bearer ' + encodeURIComponent($('pass').value) } })
+        .then(function (res) {
+          if (res.status === 204) { $('pass').value = ''; show('home'); return; }
+          store(PASS_KEY, null);
+          err.textContent = res.status === 401 ? 'That passphrase is not right. Check it and try again.' : 'The website did not answer. Try again in a minute.';
+          err.hidden = false;
+        })
+        .catch(function () {
+          store(PASS_KEY, null);
+          err.textContent = 'Could not connect. Check your internet connection and try again.';
+          err.hidden = false;
+        });
+    });
+    $('signOut').addEventListener('click', function () { store(PASS_KEY, null); show('gate'); });
+    document.addEventListener('click', function (e) {
+      var go = e.target.closest('[data-go]');
+      if (go) show(go.getAttribute('data-go'));
+    });
+
+    // ---------- draft ----------
+    function field(name) { return $('f-' + name); }
+    function saveDraft() {
+      var d = {};
+      DRAFT_FIELDS.forEach(function (n) { var el = field(n); d[n] = el.type === 'checkbox' ? el.checked : el.value; });
+      store(DRAFT_KEY, JSON.stringify(d));
+    }
+    function restoreDraft() {
+      var d;
+      try { d = JSON.parse(stored(DRAFT_KEY) || 'null'); } catch (e) { d = null; }
+      if (!d) return;
+      DRAFT_FIELDS.forEach(function (n) {
+        if (!(n in d)) return;
+        var el = field(n);
+        if (el.type === 'checkbox') el.checked = !!d[n]; else el.value = d[n];
+      });
+    }
+    function resetForm() {
+      $('addForm').reset();
+      store(DRAFT_KEY, null);
+      photos.forEach(function (p) { URL.revokeObjectURL(p.src); });
+      photos = [];
+      renderPhotos(); syncType(); syncVideo();
+      $('addProblems').hidden = true;
+    }
+    $('addForm').addEventListener('input', function () { saveDraft(); $('addProblems').hidden = true; });
+    $('addForm').addEventListener('change', saveDraft);
+    $('clearDraft').addEventListener('click', function () {
+      if (confirm('Clear everything you have typed and all photos?')) { resetForm(); window.scrollTo(0, 0); }
+    });
+
+    function syncType() {
+      $('roomsRow').hidden = field('type').value === 'land';
+    }
+    field('type').addEventListener('change', syncType);
+
+    function syncVideo() {
+      var id = videoId(field('video').value), box = $('videoCheck');
+      var img = box.querySelector('img');
+      box.hidden = !id;
+      if (!id) return;
+      if (!img) { img = document.createElement('img'); img.alt = 'Video thumbnail'; box.insertBefore(img, box.firstChild); }
+      img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    }
+    field('video').addEventListener('input', syncVideo);
+
+    // ---------- photos ----------
+    function shrink(file) {
+      var decode = window.createImageBitmap
+        ? createImageBitmap(file, { imageOrientation: 'from-image' }).catch(function () { return viaImg(file); })
+        : viaImg(file);
+      return decode.then(function (img) {
+        var scale = Math.min(1, MAX_EDGE / Math.max(img.width, img.height));
+        var canvas = document.createElement('canvas');
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        if (img.close) img.close();
+        return new Promise(function (resolve, reject) {
+          canvas.toBlob(function (b) { b ? resolve(b) : reject(new Error('encode')); }, 'image/jpeg', JPEG_QUALITY);
+        });
+      });
+    }
+    function viaImg(file) {
+      return new Promise(function (resolve, reject) {
+        var url = URL.createObjectURL(file), img = new Image();
+        img.onload = function () { URL.revokeObjectURL(url); resolve(img); };
+        img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('decode')); };
+        img.src = url;
+      });
+    }
+    function uid() {
+      var a = new Uint8Array(4);
+      crypto.getRandomValues(a);
+      return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+    }
+
+    function addFiles(files) {
+      var list = Array.prototype.slice.call(files), failed = [], status = $('photoStatus');
+      var chain = Promise.resolve();
+      list.forEach(function (file, i) {
+        chain = chain.then(function () {
+          if (photos.length >= MAX_PHOTOS) return;
+          status.textContent = 'Preparing photo ' + (i + 1) + ' of ' + list.length + '…';
+          return shrink(file).then(function (blob) {
+            photos.push({ uid: uid(), blob: blob, src: URL.createObjectURL(blob), url: null, uploadedFor: null });
+            renderPhotos();
+          }).catch(function () { failed.push(file.name); });
+        });
+      });
+      chain.then(function () {
+        status.textContent = failed.length
+          ? 'Could not read: ' + failed.join(', ') + '. Save those as JPG or PNG and add them again.'
+          : (photos.length >= MAX_PHOTOS ? 'That is the most photos a listing can have (' + MAX_PHOTOS + ').' : '');
+      });
+    }
+    field('photos').addEventListener('change', function () { addFiles(this.files); this.value = ''; });
+    var drop = $('drop');
+    ['dragenter', 'dragover'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('over'); }); });
+    ['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('over'); }); });
+    drop.addEventListener('drop', function (e) { addFiles(e.dataTransfer.files); });
+
+    function renderPhotos() {
+      var ul = $('photoList');
+      ul.textContent = '';
+      photos.forEach(function (p, i) {
+        var li = document.createElement('li');
+        var img = document.createElement('img');
+        img.src = p.src; img.alt = 'Photo ' + (i + 1);
+        li.appendChild(img);
+        if (i === 0) { var tag = document.createElement('span'); tag.className = 'cover-tag'; tag.textContent = 'Cover'; li.appendChild(tag); }
+        var tools = document.createElement('div');
+        tools.className = 'photo-tools';
+        [['Earlier', function () { move(i, i - 1); }, i === 0],
+         ['Later', function () { move(i, i + 1); }, i === photos.length - 1],
+         ['Cover', function () { move(i, 0); }, i === 0],
+         ['Remove', function () { URL.revokeObjectURL(p.src); photos.splice(i, 1); renderPhotos(); }, false]
+        ].forEach(function (t) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.textContent = t[0]; b.disabled = t[2];
+          b.setAttribute('aria-label', t[0] + ': photo ' + (i + 1));
+          b.addEventListener('click', t[1]);
+          tools.appendChild(b);
+        });
+        li.appendChild(tools);
+        ul.appendChild(li);
+      });
+    }
+    function move(from, to) {
+      photos.splice(to, 0, photos.splice(from, 1)[0]);
+      renderPhotos();
+    }
+
+    // ---------- build the listing ----------
+    function paragraphs(text) {
+      return text.split(/\n\s*\n/).map(function (p) { return p.replace(/\s+/g, ' ').trim(); }).filter(Boolean);
+    }
+    function featureLines(text) {
+      return text.split('\n').map(function (l) { return l.replace(/^[\s•*·-]+/, '').trim(); }).filter(Boolean);
+    }
+    function buildDescription(v) {
+      var place = esc(v.village) + ', ' + ISLANDS[v.island];
+      var out = ['<h2>' + esc(v.title) + ' — ' + place + '</h2>', '<p><strong>Location:</strong> ' + place + '</p>'];
+      var size = [];
+      if (v.type !== 'land' && (v.beds || v.baths)) size.push(v.beds + 'BD', v.baths + 'BT');
+      if (v.size) size.push(esc(v.size));
+      if (size.length) out.push('<p><strong>Property Size:</strong> ' + size.join(' | ') + '</p>');
+      if (v.mls) out.push('<p><strong>MLS:</strong> ' + esc(v.mls) + '</p>');
+      out.push('<h3>Property Overview:</h3>');
+      paragraphs(v.overview).forEach(function (p) { out.push('<p>' + esc(p) + '</p>'); });
+      var feats = featureLines(v.features);
+      if (feats.length) {
+        out.push('<h3>Key Features:</h3>', '<ul>');
+        feats.forEach(function (f) {
+          var m = /^([^:]{2,40}):\s+(.+)$/.exec(f);
+          out.push('<li>' + (m ? '<strong>' + esc(m[1]) + ':</strong> ' + esc(m[2]) : esc(f)) + '</li>');
+        });
+        out.push('</ul>');
+      }
+      return out.join('\n');
+    }
+
+    function readForm() {
+      var v = {}, problems = [];
+      DRAFT_FIELDS.forEach(function (n) { var el = field(n); v[n] = el.type === 'checkbox' ? el.checked : el.value.trim(); });
+      var bad = /[<>"]/;
+      if (v.title.length < 3) problems.push('Give the property a name.');
+      else if (bad.test(v.title)) problems.push('The name cannot contain < > or " characters.');
+      if (v.village.length < 2) problems.push('Enter the village or area.');
+      else if (bad.test(v.village)) problems.push('The village cannot contain < > or " characters.');
+      v.priceNumber = parseMoney(v.price);
+      if (!v.priceNumber) problems.push('Enter the price as a number, for example 425,000.');
+      if (v.type === 'land') { v.beds = 0; v.baths = 0; }
+      else {
+        v.beds = v.beds === '' ? 0 : Number(v.beds);
+        v.baths = v.baths === '' ? 0 : Number(v.baths);
+        if (!Number.isInteger(v.beds) || v.beds < 0 || v.beds > 30) problems.push('Bedrooms must be a whole number.');
+        if (!(v.baths >= 0 && v.baths <= 30) || (v.baths * 2) % 1) problems.push('Bathrooms must be a number like 2 or 2.5.');
+      }
+      v.acreageNumber = null;
+      if (v.acreage) {
+        v.acreageNumber = Number(v.acreage.replace(',', '.'));
+        if (!(v.acreageNumber > 0)) problems.push('Acres must be a number, for example 0.7.');
+      }
+      if (!paragraphs(v.overview).length) problems.push('Write a few sentences about the property.');
+      v.videoId = videoId(v.video);
+      if (v.videoId === null) problems.push('That YouTube link was not recognised. Copy it again from YouTube.');
+      if (!photos.length) problems.push('Add at least one photo.');
+
+      var id = slugify(v.title);
+      if (v.title.length >= 3 && !id) problems.push('The name needs some letters or numbers.');
+      if (id && listings) {
+        var taken = listings.properties.concat(listings.rentals).map(function (p) { return p.id; });
+        var base = id, n = 2;
+        while (taken.indexOf(id) !== -1) id = base + '-' + n++;
+      }
+      v.id = id;
+      return { values: v, problems: problems };
+    }
+
+    function toListing(v) {
+      var listing = {
+        id: v.id, title: v.title.replace(/\s+/g, ' '), village: v.village.replace(/\s+/g, ' '), island: v.island, type: v.type,
+        price: v.priceNumber, bedrooms: v.beds, bathrooms: v.baths, description: buildDescription(v),
+        images: [], isNew: v.new, onHomepage: v.home
+      };
+      if (v.acreageNumber) listing.acreage = v.acreageNumber;
+      if (v.videoId) listing.videoId = v.videoId;
+      return listing;
+    }
+
+    // ---------- preview ----------
+    $('addForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var box = $('addProblems');
+      (listings ? Promise.resolve() : loadListings().catch(function () {})).then(function () {
+        var r = readForm();
+        if (r.problems.length) {
+          box.innerHTML = 'A few things need fixing before the preview:<ul>' + r.problems.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul>';
+          box.hidden = false;
+          box.scrollIntoView({ block: 'center' });
+          return;
+        }
+        box.hidden = true;
+        pending = toListing(r.values);
+        renderPreview(pending);
+        show('preview');
+      });
+    });
+
+    function renderPreview(l) {
+      var house = l.type !== 'land' && l.type !== 'commercial';
+      var typeLabel = l.type.charAt(0).toUpperCase() + l.type.slice(1);
+      var feats = house
+        ? '<div class="feature-item"><span>' + l.bedrooms + ' Bed' + (l.bedrooms !== 1 ? 's' : '') + '</span></div>' +
+          '<div class="feature-item"><span>' + l.bathrooms + ' Bath' + (l.bathrooms !== 1 ? 's' : '') + '</span></div>' +
+          '<div class="feature-item"><span>' + typeLabel + '</span></div>'
+        : '<div class="feature-item"><span>' + typeLabel + '</span></div>';
+      var doc = '<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="stylesheet" href="/css/styles.min.css">' +
+        '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">' +
+        '<style>body{padding:16px;background:#fff}.property-card{max-width:400px;margin:0 auto 20px;display:block}' +
+        '.desc{background:var(--color-sand);padding:1.25rem;border-radius:12px;color:var(--color-text);line-height:1.8;font-size:.975rem}' +
+        '.desc h2{font-size:1.4rem;font-family:var(--font-display);color:var(--color-ocean-deep);margin-bottom:.75rem;line-height:1.3}' +
+        '.desc h3{font-size:1.15rem;font-family:var(--font-display);color:var(--color-ocean-deep);margin-top:1.5rem;margin-bottom:.5rem}' +
+        '.desc p{margin-bottom:.75rem}.desc ul{margin:0 0 .75rem 1.25rem}.desc li{margin-bottom:.35rem}' +
+        '.more{color:var(--color-text-light);margin:0 0 16px;font-size:.95rem;text-align:center}</style></head><body>' +
+        '<div class="property-card visible"><div class="property-image"><img src="' + esc(photos[0].src) + '" alt="">' +
+        (l.isNew ? '<span class="property-ribbon ribbon-new">New</span>' : '') +
+        (l.videoId ? '<span class="video-pill">Video tour</span>' : '') + '</div>' +
+        '<div class="property-content"><div class="property-price">' + money(l.price) + '</div>' +
+        '<h4 class="property-title">' + esc(l.title) + '</h4>' +
+        '<p class="property-location"><span class="property-village">' + ISLANDS[l.island] + '</span></p>' +
+        '<div class="property-features">' + feats + '</div></div></div>' +
+        '<p class="more">' + photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + (l.videoId ? ' and a video tour' : '') + '</p>' +
+        '<div class="desc">' + l.description + '</div></body></html>';
+      var frame = $('previewFrame');
+      frame.onload = function () {
+        var fit = function () { try { frame.style.height = frame.contentDocument.documentElement.scrollHeight + 'px'; } catch (e) {} };
+        fit(); setTimeout(fit, 400); setTimeout(fit, 1500);
+      };
+      frame.srcdoc = doc;
+    }
+
+    // ---------- progress screen ----------
+    function startProgress(title, labels) {
+      $('progressTitle').textContent = title;
+      $('progressLede').textContent = 'Keep this page open until it finishes.';
+      $('progressLede').hidden = false;
+      $('progressOutcome').textContent = '';
+      var ol = $('steps');
+      ol.textContent = '';
+      labels.forEach(function (text) { var li = document.createElement('li'); li.textContent = text; ol.appendChild(li); });
+      show('progress');
+      return {
+        step: function (i, text) {
+          Array.prototype.forEach.call(ol.children, function (li, n) { li.className = n < i ? 'done' : n === i ? 'doing' : ''; });
+          if (text) ol.children[i].textContent = text;
+        },
+        finish: function () { Array.prototype.forEach.call(ol.children, function (li) { li.className = 'done'; }); }
+      };
+    }
+    function outcome(html, buttons) {
+      $('progressLede').hidden = true;
+      var box = $('progressOutcome');
+      box.innerHTML = html;
+      buttons.forEach(function (b) {
+        var el = document.createElement(b.href ? 'a' : 'button');
+        el.className = 'btn' + (b.quiet ? ' quiet' : '');
+        el.textContent = b.text;
+        if (b.href) { el.href = b.href; el.target = '_blank'; el.rel = 'noopener'; } else { el.type = 'button'; el.addEventListener('click', b.run); }
+        box.appendChild(el);
+      });
+    }
+
+    // Send a change, then wait for the publisher and for the live website to show it.
+    function sendAndWait(change, progress, firstStep, isLive) {
+      progress.step(firstStep);
+      return api('/change', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(change) })
+        .then(function (res) { return res.json().then(function (body) { if (!res.ok) throw new Error(body.error || 'The change was not accepted.'); return body; }); })
+        .then(function (sent) {
+          if (sent.dry_run) return { test: true };
+          progress.step(firstStep + 1);
+          return pollStatus(sent.request_id).then(function () { return pollLive(isLive); });
+        });
+    }
+    function pollStatus(requestId) {
+      var started = Date.now();
+      function again() {
+        return api('/status?request_id=' + requestId).then(function (res) { return res.json(); }).catch(function () { return {}; }).then(function (s) {
+          if (s.state === 'success') return;
+          if (s.state === 'failed') { var e = new Error(s.reason || 'The website could not apply this change.'); e.refused = true; throw e; }
+          if (Date.now() - started > 8 * 60 * 1000) throw new Error('This is taking longer than usual.');
+          return wait(5000).then(again);
+        });
+      }
+      return wait(4000).then(again);
+    }
+    function pollLive(isLive) {
+      var started = Date.now();
+      function again() {
+        return loadListings().catch(function () { return null; }).then(function (data) {
+          if (data && isLive(data)) return {};
+          if (Date.now() - started > 10 * 60 * 1000) return { slow: true };
+          return wait(8000).then(again);
+        });
+      }
+      return again();
+    }
+    function explain(err) {
+      return err.refused
+        ? '<div class="problems"><strong>Not published.</strong> ' + esc(err.message) + '</div>'
+        : '<div class="problems"><strong>This did not finish.</strong> ' + esc(err.message || 'Check your internet connection.') + ' Nathanael gets an email when something fails on the website side.</div>';
+    }
+
+    // ---------- publish a new listing ----------
+    $('publishBtn').addEventListener('click', publish);
+    function publish() {
+      var l = pending;
+      var progress = startProgress('Publishing ' + l.title, ['Uploading photos', 'Sending the listing', 'Updating the website (a few minutes)']);
+      progress.step(0);
+      var bar = document.createElement('progress');
+      bar.max = photos.length; bar.value = 0;
+      $('steps').children[0].appendChild(bar);
+
+      var chain = Promise.resolve();
+      photos.forEach(function (p, i) {
+        chain = chain.then(function () {
+          if (p.url && p.uploadedFor === l.id) { bar.value = i + 1; return; }
+          return uploadPhoto(p, l.id, 0).then(function () { bar.value = i + 1; });
+        });
+      });
+      chain.then(function () {
+        l.images = photos.map(function (p) { return p.url; });
+        return sendAndWait({ action: 'add', kind: 'sale', listing: l }, progress, 1, function (data) {
+          return data.properties.some(function (p) { return p.id === l.id; });
+        });
+      }).then(function (result) {
+        progress.finish();
+        var link = '/properties/' + l.id + '/';
+        if (result.test) outcome('<div class="note"><strong>Test mode.</strong> Everything checked out, but nothing was published.</div>', [{ text: 'Back to start', quiet: true, run: function () { show('home'); } }]);
+        else {
+          outcome(result.slow
+            ? '<div class="note"><strong>Published.</strong> The website is still catching up. The listing should appear within a few more minutes.</div>'
+            : '<div class="note"><strong>Published.</strong> ' + esc(l.title) + ' is on the website.</div>',
+            [{ text: 'View the listing', href: link }, { text: 'Back to start', quiet: true, run: function () { show('home'); } }]);
+          resetForm();
+        }
+      }).catch(function (err) {
+        outcome(explain(err), [
+          { text: 'Try again', run: publish },
+          { text: 'Go back and edit', quiet: true, run: function () { show('add'); } }
+        ]);
+      });
+    }
+    function uploadPhoto(p, id, attempt) {
+      var name = id + '-' + p.uid + '.jpg';
+      return api('/upload/listings/' + id + '/' + name, { method: 'PUT', headers: { 'Content-Type': 'image/jpeg' }, body: p.blob })
+        .then(function (res) {
+          // 409 = this exact photo already arrived on an earlier try.
+          if (res.ok || res.status === 409) return res.json().then(function (body) { p.url = body.url || (PUBLIC_BASE + '/listings/' + id + '/' + name); p.uploadedFor = id; });
+          return res.json().catch(function () { return {}; }).then(function (body) { var e = new Error(body.error || 'A photo was not accepted.'); e.final = true; throw e; });
+        })
+        .catch(function (err) {
+          if (err.final || attempt >= 2) throw new Error(err.final ? err.message : 'A photo did not upload. Check your internet connection.');
+          return wait(2000 * (attempt + 1)).then(function () { return uploadPhoto(p, id, attempt + 1); });
+        });
+    }
+
+    // ---------- update existing listings ----------
+    function stateOf(p) {
+      if (p.hidden) return 'hidden';
+      if (p.status === 'sold') return 'sold';
+      if (p.detailStatus === 'under-contract') return 'contract';
+      return 'available';
+    }
+    var STATE_TEXT = { hidden: 'Hidden from the website', sold: 'Sold', contract: 'Under contract' };
+    var ACTIONS = {
+      available: ['price', 'contract', 'sold', 'hide'],
+      contract: ['available', 'sold', 'hide'],
+      sold: ['available', 'hide'],
+      hidden: ['unhide']
+    };
+    var ACTION_DEFS = {
+      price: { button: 'Change the price', title: 'Change the price', needsPrice: true, ok: 'Change price',
+        text: function (p) { return p.title + ' is listed at ' + p.priceFormatted + '.'; },
+        change: function (p, price) { return { action: 'set-price', id: p.id, price: price }; },
+        live: function (q, price) { return q.price === price; } },
+      contract: { button: 'Mark under contract', title: 'Mark under contract', ok: 'Mark under contract',
+        text: function (p) { return p.title + ' will show an “Under Contract” ribbon and no price.'; },
+        change: function (p) { return { action: 'set-status', id: p.id, status: 'under-contract' }; },
+        live: function (q) { return q.detailStatus === 'under-contract'; } },
+      sold: { button: 'Mark sold', title: 'Mark sold', ok: 'Mark sold',
+        text: function (p) { return p.title + ' will show a “Sold” ribbon and no price.'; },
+        change: function (p) { return { action: 'set-status', id: p.id, status: 'sold' }; },
+        live: function (q) { return q.status === 'sold'; } },
+      available: { button: 'Put back on the market', title: 'Put back on the market', needsPrice: true, ok: 'Put back on the market',
+        text: function (p) { return p.title + ' will be shown as available again at the price you enter.'; },
+        change: function (p, price) { return { action: 'set-status', id: p.id, status: 'available', price: price }; },
+        live: function (q, price) { return q.status === 'for-sale' && !q.detailStatus && q.price === price; } },
+      hide: { button: 'Hide from the website', title: 'Hide from the website', ok: 'Hide',
+        text: function (p) { return p.title + ' will be taken off the website. You can bring it back later from this page.'; },
+        change: function (p) { return { action: 'set-hidden', id: p.id, hidden: true }; },
+        live: function (q) { return q.hidden === true; } },
+      unhide: { button: 'Show on the website again', title: 'Show on the website again', ok: 'Show it',
+        text: function (p) { return p.title + ' will be visible on the website again.'; },
+        change: function (p) { return { action: 'set-hidden', id: p.id, hidden: false }; },
+        live: function (q) { return !q.hidden; } }
+    };
+
+    function renderListings() {
+      var wrap = $('listings'), q = $('search').value.trim().toLowerCase();
+      wrap.textContent = '';
+      if (!listings) { wrap.textContent = 'Could not load the listings. Check your internet connection.'; return; }
+      listings.properties.filter(function (p) { return !q || p.title.toLowerCase().indexOf(q) !== -1; }).forEach(function (p) {
+        var state = stateOf(p);
+        var box = document.createElement('div');
+        box.className = 'listing' + (state === 'hidden' ? ' is-hidden' : '');
+        var head = document.createElement('button');
+        head.type = 'button';
+        head.setAttribute('aria-expanded', 'false');
+        var cover = (p.images || [])[0];
+        var text = document.createElement('span');
+        var name = document.createElement('span'); name.className = 'name'; name.textContent = p.title;
+        var st = document.createElement('span'); st.className = 'state'; st.textContent = STATE_TEXT[state] || p.priceFormatted;
+        text.appendChild(name); text.appendChild(st);
+        if (cover) {
+          var img = document.createElement('img');
+          img.loading = 'lazy'; img.alt = ''; img.src = cover;
+          head.appendChild(img);
+        }
+        head.appendChild(text);
+        var actions = document.createElement('div');
+        actions.className = 'actions'; actions.hidden = true;
+        ACTIONS[state].forEach(function (key) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'btn quiet small'; b.textContent = ACTION_DEFS[key].button;
+          b.addEventListener('click', function () { askThenApply(p, ACTION_DEFS[key]); });
+          actions.appendChild(b);
+        });
+        head.addEventListener('click', function () {
+          actions.hidden = !actions.hidden;
+          head.setAttribute('aria-expanded', String(!actions.hidden));
+        });
+        box.appendChild(head); box.appendChild(actions);
+        wrap.appendChild(box);
+      });
+      if (!wrap.children.length) wrap.textContent = 'No property with that name.';
+    }
+    $('search').addEventListener('input', renderListings);
+
+    var dialogDone = null;
+    function askThenApply(p, def) {
+      $('confirmTitle').textContent = def.title;
+      $('confirmText').textContent = def.text(p);
+      $('confirmOk').textContent = def.ok;
+      $('confirmPriceWrap').hidden = !def.needsPrice;
+      $('confirmPrice').value = '';
+      $('confirmError').hidden = true;
+      dialogDone = function (price) {
+        var progress = startProgress(def.title, ['Sending the change', 'Updating the website (a few minutes)']);
+        sendAndWait(def.change(p, price), progress, 0, function (data) {
+          var q = data.properties.filter(function (x) { return x.id === p.id; })[0];
+          return q && def.live(q, price);
+        }).then(function (result) {
+          progress.finish();
+          outcome(result.test ? '<div class="note"><strong>Test mode.</strong> Nothing was changed.</div>'
+            : result.slow ? '<div class="note"><strong>Done.</strong> The website is still catching up and should show the change within a few more minutes.</div>'
+            : '<div class="note"><strong>Done.</strong> The website now shows the change.</div>',
+            [{ text: 'Update another property', run: function () { show('update'); } }, { text: 'Back to start', quiet: true, run: function () { show('home'); } }]);
+        }).catch(function (err) {
+          outcome(explain(err), [{ text: 'Back to the list', run: function () { show('update'); } }]);
+        });
+      };
+      $('confirm').showModal();
+    }
+    $('confirmForm').addEventListener('submit', function (e) {
+      if (e.submitter && e.submitter.value === 'cancel') return;
+      var price;
+      if (!$('confirmPriceWrap').hidden) {
+        price = parseMoney($('confirmPrice').value);
+        if (!price) { e.preventDefault(); $('confirmError').hidden = false; return; }
+      }
+      var run = dialogDone;
+      dialogDone = null;
+      setTimeout(function () { run(price); }, 0);
+    });
+
+    // ---------- start ----------
+    restoreDraft(); syncType(); syncVideo();
+    loadListings().catch(function () {});
+    if (!LOCAL && WORKER_URL.indexOf('REPLACE-ME') !== -1) {
+      show('gate');
+      $('gateError').textContent = 'This page is not connected yet. Nathanael needs to finish the setup.';
+      $('gateError').hidden = false;
+    } else if (stored(PASS_KEY)) {
+      api('/auth').then(function (res) { show(res.status === 204 ? 'home' : 'gate'); }).catch(function () { show('gate'); });
+    } else {
+      show('gate');
+    }
+  })();
+  </script>
+</body>
+</html>
