@@ -689,31 +689,29 @@
         .then(function (sent) {
           if (sent.dry_run) return { test: true };
           progress.step(firstStep + 1);
-          return pollStatus(sent.request_id).then(function () { return pollLive(isLive); });
+          return waitUntilLive(sent.request_id, isLive);
         });
     }
-    function pollStatus(requestId) {
-      var started = Date.now();
+    // The live website is the final word: once it shows the change, this is done, whatever
+    // the publisher's status says (or fails to say). The status only adds an early "refused".
+    function waitUntilLive(requestId, isLive) {
+      var started = Date.now(), published = false;
       function again() {
-        return api('/status?request_id=' + requestId).then(function (res) { return res.json(); }).catch(function () { return {}; }).then(function (s) {
-          if (s.state === 'success') return;
+        var status = published ? Promise.resolve({})
+          : api('/status?request_id=' + requestId).then(function (res) { return res.json(); }).catch(function () { return {}; });
+        return Promise.all([status, loadListings().catch(function () { return null; })]).then(function (r) {
+          var s = r[0], data = r[1];
+          if (data && isLive(data)) return {};
           if (s.state === 'failed') { var e = new Error(s.reason || 'The website could not apply this change.'); e.refused = true; throw e; }
-          if (Date.now() - started > 8 * 60 * 1000) throw new Error('This is taking longer than usual.');
-          return wait(5000).then(again);
+          if (s.state === 'success') published = true;
+          if (Date.now() - started > 12 * 60 * 1000) {
+            if (published) return { slow: true };
+            throw new Error('This is taking longer than usual. Check the website in a few minutes before trying again.');
+          }
+          return wait(6000).then(again);
         });
       }
       return wait(4000).then(again);
-    }
-    function pollLive(isLive) {
-      var started = Date.now();
-      function again() {
-        return loadListings().catch(function () { return null; }).then(function (data) {
-          if (data && isLive(data)) return {};
-          if (Date.now() - started > 10 * 60 * 1000) return { slow: true };
-          return wait(8000).then(again);
-        });
-      }
-      return again();
     }
     function explain(err) {
       return err.refused
