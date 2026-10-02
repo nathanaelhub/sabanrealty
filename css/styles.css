@@ -417,10 +417,16 @@ p {
   }
   
   .nav-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: calc(20px + env(safe-area-inset-top, 0px));
-    right: calc(20px + env(safe-area-inset-right, 0px));
+    top: calc(12px + env(safe-area-inset-top, 0px));
+    right: calc(12px + env(safe-area-inset-right, 0px));
+    width: 44px;
+    height: 44px;
     font-size: 2rem;
+    line-height: 1;
     color: var(--color-white);
     cursor: pointer;
   }}
@@ -1652,6 +1658,23 @@ p {
   .nav-dropdown-menu a:hover {
     background: transparent;
     color: var(--color-coral);
+  }
+
+  /* phones: "More" is tap-to-expand (.open set by main.min.js), not hover */
+  .nav-dropdown-menu {
+    display: none;
+  }
+
+  .nav-dropdown.open .nav-dropdown-menu {
+    display: block;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-toggle svg {
+    transform: none;
+  }
+
+  .nav-dropdown.open .nav-dropdown-toggle svg {
+    transform: rotate(180deg);
   }}
 
 /* ===================================================
