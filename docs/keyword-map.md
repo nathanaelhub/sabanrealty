@@ -44,3 +44,22 @@ Monthly clicks / impressions: Jul 50 / 1,143 · Aug 87 / 1,736 · Sep 76 / 1,235
 - Village or property-type pages: "windwardside saba" and "zions hill saba" have 1 impression each.
 - Land / building: no relevant land queries appear. GSC only shows queries the site already
   appears for, so this is "unknown", not "no demand". Keyword Planner would settle it.
+
+## 16-month view (2025-05-30 → 2026-09-29)
+
+Second export, same day. Totals: 935 clicks, 15,611 impressions, 280 listed queries. It spans the
+old www site (538 clicks) and the current site (402 clicks).
+
+- **Rentals are the #2 cluster**, far bigger than the 3-month view showed: "saba vacation rentals"
+  747 impr. (pos. 19, 0 clicks), "saba villa rentals" 217 (pos. 38), "saba rentals" 216 (pos. 11),
+  "saba cottages" 142 (pos. 51), "saba island rentals" 119, "saba island vacation rentals" 95,
+  "saba island apartments for rent" 45, "saba apartments for rent" 22 (pos. 4.9). The old `/rent`
+  page alone had 138 clicks from 3,193 impressions.
+- **Core terms** over 16 months: "saba real estate" 1,001 impr. (pos. 10.6, 58 clicks),
+  "saba island real estate" 794 (11.4), "saba island properties" 535 (9.3),
+  "saba caribbean real estate" 415 (16.8, 0 clicks), "real estate saba" 248 (14.5).
+- **Trend:** 40–85 clicks a month throughout. Average position slipped to 17–19 in Jun–Jul 2026
+  (the clean-URL migration) and was back to 10.0 in Sep 2026. Aug 2026 was the best month (87 clicks).
+- **Old-site URLs that now 404:** `/about-saba` (391 impr.), `/listings` (103), `/buy-detail?recordId=…`
+  (17 URLs), `/rental-detail?recordId=…` (5 URLs). `/rent`, `/about`, `/buy`, `/sell`, `/contact` resolve.
+- **Land:** only "saba land" (6 impr.). Still no evidence of demand for a land/building guide.
