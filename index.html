@@ -501,7 +501,7 @@
 
           card.innerHTML = `
             <div class="property-image">
-              <img src="${property.images[0]}" alt="${property.title}" loading="lazy">
+              <img src="${property.images[0].replace('.r2.dev/', '.r2.dev/thumbs/')}" onerror="this.onerror=null;this.src='${property.images[0]}'" alt="${property.title}" loading="lazy">
               ${statusOverlay}
               ${newOverlay}
               ${featuredOverlay}

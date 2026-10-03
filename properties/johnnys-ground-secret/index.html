@@ -707,7 +707,7 @@
             <div class="gallery-thumbs-strip" id="galleryThumbs">
               ${allImages.map((img, i) => `
                 <div class="gallery-thumb-item ${i === 0 ? 'active' : ''}" data-index="${i}" data-src="${img}">
-                  <img src="${img}" alt="${property.title} photo ${i + 1}" loading="lazy">
+                  <img src="${img.replace('.r2.dev/', '.r2.dev/thumbs/')}" onerror="this.onerror=null;this.src='${img}'" alt="${property.title} photo ${i + 1}" loading="lazy">
                 </div>
               `).join('')}
             </div>
@@ -1016,7 +1016,7 @@
         return `
           <a href="${link}" class="property-card" style="text-decoration:none;color:inherit;">
             <div class="property-image">
-              <img src="${p.images[0]}" alt="${p.title}" loading="lazy">
+              <img src="${p.images[0].replace('.r2.dev/', '.r2.dev/thumbs/')}" onerror="this.onerror=null;this.src='${p.images[0]}'" alt="${p.title}" loading="lazy">
             </div>
             <div class="property-content">
               <div class="property-price">${price}</div>

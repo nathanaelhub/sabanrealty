@@ -234,7 +234,7 @@
 
               card.innerHTML = `
                 <div class="property-image">
-                  <img src="${rental.images[0]}" alt="${rental.title}" loading="lazy">
+                  <img src="${rental.images[0].replace('.r2.dev/', '.r2.dev/thumbs/')}" onerror="this.onerror=null;this.src='${rental.images[0]}'" alt="${rental.title}" loading="lazy">
                   <span class="property-badge badge-rent">Vacation Rental</span>
                   ${rental.videos && rental.videos.length > 0
                     ? `<span class="video-pill">${rental.videos.length === 1 ? 'Video tour' : rental.videos.length + ' video tours'}</span>`
