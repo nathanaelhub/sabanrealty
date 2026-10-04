@@ -2537,7 +2537,7 @@ p {
 
 .almanac-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   border-top: 1px solid var(--color-sand-dark);
   border-bottom: 1px solid var(--color-sand-dark);
   margin-top: 0.5rem;
@@ -2546,7 +2546,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  padding: 2.25rem 1.75rem;
+  padding: 2.25rem 1.25rem;
   border-right: 1px solid var(--color-sand-dark);
 }
 .almanac-item:last-child { border-right: none; }
@@ -2591,9 +2591,9 @@ p {
 @media (max-width: 768px) {
   .almanac-grid { grid-template-columns: repeat(2, 1fr); }
   .almanac-item { padding: 1.5rem 1rem; }
-  .almanac-item:nth-child(2) { border-right: none; }
-  .almanac-item:nth-child(1),
-  .almanac-item:nth-child(2) { border-bottom: 1px solid var(--color-sand-dark); }}
+  .almanac-item:nth-child(even) { border-right: none; }
+  .almanac-item:nth-child(-n+4) { border-bottom: 1px solid var(--color-sand-dark); }
+  .almanac-item:last-child { grid-column: 1 / -1; }}
 
 /* Reserve coral for buttons. Pull it out of labels/accents. */
 .showcase-section-label { color: var(--color-gold); }
