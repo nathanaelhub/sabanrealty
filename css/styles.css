@@ -1040,46 +1040,75 @@ p {
 /* Sell — full-bleed, diagonal clip on left edge of image (mirror of rent) */
 .sell-process-section {
   background: var(--color-white);
+}
+
+/* the photo is shown whole (runway, crowd and mountain), with the steps in a row beneath */
+.sell-process-photo {
+  margin: 0 0 2.5rem;
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-lg);
 }
 
-.sell-process-grid {
+.sell-process-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sell-process-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: 44fr 56fr;
-  min-height: 540px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 
-.sell-process-content {
+.sell-process-steps li {
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sell-step-num {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: var(--color-coral);
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding: 4rem 3rem 4rem 4rem;
+  font-weight: 600;
 }
 
-.sell-process-image {
-  position: relative;
-  overflow: hidden;
-  clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%);
+.sell-process-steps h4 {
+  margin: 0 0 0.25rem;
 }
 
-.sell-process-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.sell-process-steps p {
+  margin: 0;
+  color: var(--color-text-light);
 }
 
 @media (max-width: 900px) {
-  .sell-process-grid {
+  .sell-process-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }}
+
+@media (max-width: 560px) {
+  .sell-process-photo {
+    margin-bottom: 2rem;
+  }
+  .sell-process-steps {
     grid-template-columns: 1fr;
-    min-height: auto;
+    gap: 1.5rem;
   }
-  .sell-process-image {
-    height: 300px;
-    clip-path: none;
-  }
-  .sell-process-content {
-    padding: 2.5rem 1.5rem;
+  .sell-process-steps li {
+    flex-direction: row;
+    gap: 1rem;
   }}
 
 /* Our Story — full-bleed split layout */
