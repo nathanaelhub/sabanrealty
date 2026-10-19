@@ -21,26 +21,34 @@ const CHROME = process.env.CHROME_BIN || [
 ].find(existsSync);
 if (!CHROME) { console.error("No Chrome, Brave, Edge or Chromium found; set CHROME_BIN."); process.exit(1); }
 const BASE = process.env.BASE_URL || "http://localhost:8899/";
-let PORT = 9390;
 const failures = [];
 const t = (name, ok, detail = "") => {
   console.log(`  ${ok ? "PASS" : "FAIL"}: ${name}${!ok && detail ? " — " + detail : ""}`);
   if (!ok) failures.push(name);
 };
 
-async function openPage(url) {
-  const port = PORT++;
-  const prof = `/tmp/site-test-prof-${port}`;
-  const chrome = spawn(CHROME, ["--headless=new", "--disable-gpu", "--no-first-run",
-    "--window-size=1280,1000", `--remote-debugging-port=${port}`, `--user-data-dir=${prof}`, url], { stdio: "ignore" });
-  let list = null;
+// One browser for the whole run; each page is a new tab. (A browser per page put a
+// Dock icon per page on screen with Brave, which does not hide headless instances.)
+const PORT = 9390;
+let browser = null;
+process.on("exit", () => browser?.kill());
+
+async function startBrowser() {
+  browser = spawn(CHROME, ["--headless=new", "--disable-gpu", "--no-first-run",
+    "--window-size=1280,1000", `--remote-debugging-port=${PORT}`, `--user-data-dir=/tmp/site-test-prof-${PORT}`,
+    "about:blank"], { stdio: "ignore" });
   // Brave and a cold first launch can take well over 10s to open the debugging port.
   for (let i = 0; i < 75; i++) {
-    try { list = await (await fetch(`http://127.0.0.1:${port}/json`)).json(); if (list?.length) break; } catch {}
+    try { if ((await fetch(`http://127.0.0.1:${PORT}/json/version`)).ok) return; } catch {}
     await new Promise(r => setTimeout(r, 400));
   }
-  if (!list?.length) { chrome.kill(); throw new Error(`${CHROME} did not open a debugging port for ${url}`); }
-  const target = list.find(x => x.type === "page") || list[0];
+  browser.kill();
+  throw new Error(`${CHROME} did not open a debugging port`);
+}
+
+async function openPage(url) {
+  if (!browser) await startBrowser();
+  const target = await (await fetch(`http://127.0.0.1:${PORT}/json/new?${encodeURI(url)}`, { method: "PUT" })).json();
   const ws = new WebSocket(target.webSocketDebuggerUrl);
   let id = 0; const pend = new Map();
   const send = (m, p = {}) => { const i = ++id; ws.send(JSON.stringify({ id: i, method: m, params: p })); return new Promise(r => pend.set(i, r)); };
@@ -61,7 +69,7 @@ async function openPage(url) {
     await new Promise(r => setTimeout(r, 300));
     return true;
   };
-  return { ev, waitFor, realClick, kill: () => chrome.kill() };
+  return { ev, waitFor, realClick, kill: () => { ws.close(); fetch(`http://127.0.0.1:${PORT}/json/close/${target.id}`).catch(() => {}); } };
 }
 
 const setSel = (id, val) => `(()=>{const s=document.getElementById('${id}');s.value='${val}';s.dispatchEvent(new Event('change',{bubbles:true}));})()`;
