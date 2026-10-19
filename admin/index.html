@@ -256,12 +256,12 @@
 
     <!-- 4. Preview -->
     <section id="view-preview" hidden>
-      <button class="back" type="button" data-go="add">Back to editing</button>
+      <button class="back" type="button" data-go="add" id="previewBack">Back to editing</button>
       <h1>Check it over</h1>
-      <p class="lede">This is how the listing will look. Nothing is on the website yet.</p>
+      <p class="lede" id="previewLede">This is how the listing will look. Nothing is on the website yet.</p>
       <iframe class="preview" id="previewFrame" title="Listing preview" scrolling="no"></iframe>
       <button class="btn" type="button" id="publishBtn">Publish to website</button>
-      <button class="btn quiet" type="button" data-go="add">Keep editing</button>
+      <button class="btn quiet" type="button" data-go="add" id="previewKeep">Keep editing</button>
     </section>
 
     <!-- 5. Progress (publish and updates) -->
@@ -280,6 +280,62 @@
       <label for="search" style="margin-top:0">Find by name</label>
       <input type="text" id="search" autocomplete="off">
       <div id="listings" aria-live="polite"></div>
+    </section>
+
+    <!-- 7. Edit details -->
+    <section id="view-edit" hidden>
+      <button class="back" type="button" data-go="update">Back to the list</button>
+      <h1 id="editHeading">Edit details</h1>
+      <p class="lede">Change what you need and leave the rest. Price, photos and status are changed elsewhere.</p>
+      <form id="editForm" novalidate>
+        <label for="e-title">Name of the property</label>
+        <input type="text" id="e-title" maxlength="80">
+        <div class="row">
+          <div>
+            <label for="e-village">Village or area</label>
+            <input type="text" id="e-village" maxlength="60" list="villages">
+          </div>
+          <div>
+            <label for="e-island">Island</label>
+            <select id="e-island"><option value="saba">Saba</option><option value="statia">St. Eustatius</option></select>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="e-type">Type</label>
+            <select id="e-type">
+              <option value="villa">Villa</option><option value="cottage">Cottage</option>
+              <option value="land">Land</option><option value="commercial">Commercial</option>
+            </select>
+          </div>
+          <div>
+            <label for="e-acreage">Acres (optional)</label>
+            <input type="text" id="e-acreage" inputmode="decimal">
+          </div>
+        </div>
+        <div class="row" id="editRoomsRow">
+          <div>
+            <label for="e-beds">Bedrooms</label>
+            <input type="number" id="e-beds" min="0" max="30" step="1" inputmode="numeric">
+          </div>
+          <div>
+            <label for="e-baths">Bathrooms</label>
+            <input type="number" id="e-baths" min="0" max="30" step="0.5" inputmode="decimal">
+          </div>
+        </div>
+        <label for="e-video">YouTube link (optional)</label>
+        <input type="url" id="e-video" placeholder="https://youtu.be/…">
+        <p class="hint">Clear this box to remove the video from the listing.</p>
+
+        <h2 id="e-desc-heading">Description</h2>
+        <textarea id="e-desc" rows="18" aria-labelledby="e-desc-heading" style="margin-top:12px"></textarea>
+        <p class="hint">A line starting with # is the main heading, ## a section heading, and - a bullet point. Put **two stars** around words to make them bold. Leave an empty line between paragraphs.</p>
+        <p class="note" id="editFeaturesNote" hidden>This listing also has a checklist of key features beside its description. That checklist can't be changed here yet.</p>
+
+        <div class="problems" id="editProblems" role="alert" hidden></div>
+        <button class="btn" type="submit">Preview changes</button>
+        <button class="btn quiet small" type="button" data-go="update">Cancel</button>
+      </form>
     </section>
   </main>
 
@@ -342,7 +398,7 @@
     function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
 
     function show(name) {
-      ['gate', 'home', 'add', 'preview', 'progress', 'update'].forEach(function (v) { $('view-' + v).hidden = v !== name; });
+      ['gate', 'home', 'add', 'preview', 'progress', 'update', 'edit'].forEach(function (v) { $('view-' + v).hidden = v !== name; });
       $('signOut').hidden = name === 'gate';
       window.scrollTo(0, 0);
       if (name === 'update') loadListings().then(renderListings);
@@ -613,12 +669,25 @@
         }
         box.hidden = true;
         pending = toListing(r.values);
-        renderPreview(pending);
+        renderPreview(pending, { cover: photos[0].src, price: money(pending.price), photos: photos.length, video: !!pending.videoId });
+        setPreviewMode('add');
         show('preview');
       });
     });
 
-    function renderPreview(l) {
+    // add: a new listing about to be published. edit: changes to an existing one.
+    var previewMode = 'add';
+    function setPreviewMode(mode) {
+      previewMode = mode;
+      var add = mode === 'add';
+      $('publishBtn').textContent = add ? 'Publish to website' : 'Save changes';
+      $('previewLede').textContent = add ? 'This is how the listing will look. Nothing is on the website yet.'
+        : 'This is how the listing will look with your changes. Nothing has changed on the website yet.';
+      ['previewBack', 'previewKeep'].forEach(function (b) { $(b).setAttribute('data-go', add ? 'add' : 'edit'); });
+    }
+
+    // l: listing fields; card: { cover, price, photos, video } for the card above the description.
+    function renderPreview(l, card) {
       var house = l.type !== 'land' && l.type !== 'commercial';
       var typeLabel = l.type.charAt(0).toUpperCase() + l.type.slice(1);
       var feats = house
@@ -634,14 +703,14 @@
         '.desc h3{font-size:1.15rem;font-family:var(--font-display);color:var(--color-ocean-deep);margin-top:1.5rem;margin-bottom:.5rem}' +
         '.desc p{margin-bottom:.75rem}.desc ul{margin:0 0 .75rem 1.25rem}.desc li{margin-bottom:.35rem}' +
         '.more{color:var(--color-text-light);margin:0 0 16px;font-size:.95rem;text-align:center}</style></head><body>' +
-        '<div class="property-card visible"><div class="property-image"><img src="' + esc(photos[0].src) + '" alt="">' +
+        '<div class="property-card visible"><div class="property-image"><img src="' + esc(card.cover) + '" alt="">' +
         (l.isNew ? '<span class="property-ribbon ribbon-new">New</span>' : '') +
-        (l.videoId ? '<span class="video-pill">Video tour</span>' : '') + '</div>' +
-        '<div class="property-content"><div class="property-price">' + money(l.price) + '</div>' +
+        (card.video ? '<span class="video-pill">Video tour</span>' : '') + '</div>' +
+        '<div class="property-content"><div class="property-price">' + esc(card.price) + '</div>' +
         '<h4 class="property-title">' + esc(l.title) + '</h4>' +
         '<p class="property-location"><span class="property-village">' + ISLANDS[l.island] + '</span></p>' +
         '<div class="property-features">' + feats + '</div></div></div>' +
-        '<p class="more">' + photos.length + ' photo' + (photos.length !== 1 ? 's' : '') + (l.videoId ? ' and a video tour' : '') + '</p>' +
+        '<p class="more">' + card.photos + ' photo' + (card.photos !== 1 ? 's' : '') + (card.video ? ' and a video tour' : '') + '</p>' +
         '<div class="desc">' + l.description + '</div></body></html>';
       var frame = $('previewFrame');
       frame.onload = function () {
@@ -721,7 +790,7 @@
     }
 
     // ---------- publish a new listing ----------
-    $('publishBtn').addEventListener('click', publish);
+    $('publishBtn').addEventListener('click', function () { previewMode === 'add' ? publish() : saveEdit(); });
     function publish() {
       var l = pending;
       var progress = startProgress('Publishing ' + l.title, ['Uploading photos', 'Sending the listing', 'Updating the website (a few minutes)']);
@@ -783,12 +852,13 @@
     }
     var STATE_TEXT = { hidden: 'Hidden from the website', sold: 'Sold', contract: 'Under contract' };
     var ACTIONS = {
-      available: ['price', 'contract', 'sold', 'hide'],
-      contract: ['available', 'sold', 'hide'],
-      sold: ['available', 'hide'],
-      hidden: ['unhide']
+      available: ['edit', 'price', 'contract', 'sold', 'hide'],
+      contract: ['edit', 'available', 'sold', 'hide'],
+      sold: ['edit', 'available', 'hide'],
+      hidden: ['edit', 'unhide']
     };
     var ACTION_DEFS = {
+      edit: { button: 'Edit details and description', open: function (p) { openEdit(p); } },
       price: { button: 'Change the price', title: 'Change the price', needsPrice: true, ok: 'Change price',
         text: function (p) { return p.title + ' is listed at ' + p.priceFormatted + '.'; },
         change: function (p, price) { return { action: 'set-price', id: p.id, price: price }; },
@@ -842,7 +912,10 @@
         ACTIONS[state].forEach(function (key) {
           var b = document.createElement('button');
           b.type = 'button'; b.className = 'btn quiet small'; b.textContent = ACTION_DEFS[key].button;
-          b.addEventListener('click', function () { askThenApply(p, ACTION_DEFS[key]); });
+          b.addEventListener('click', function () {
+            var def = ACTION_DEFS[key];
+            def.open ? def.open(p) : askThenApply(p, def);
+          });
           actions.appendChild(b);
         });
         head.addEventListener('click', function () {
@@ -892,6 +965,216 @@
       dialogDone = null;
       setTimeout(function () { run(price); }, 0);
     });
+
+    // ---------- edit details and description ----------
+    // Descriptions are stored as HTML (h2, h3, p, strong, ul/li). The editor shows them as plain
+    // text: "# " main heading, "## " section heading, "- " bullet, **bold**, blank line between paragraphs.
+    function inlineText(node) {
+      var out = '';
+      node.childNodes.forEach(function (n) {
+        if (n.nodeType === 3) out += n.textContent.replace(/\s+/g, ' ');
+        else if (n.nodeType === 1) {
+          var tag = n.tagName.toLowerCase();
+          if (tag === 'strong' || tag === 'b') { var inner = inlineText(n).trim(); if (inner) out += '**' + inner + '**'; }
+          else if (tag === 'br') out += ' ';
+          else out += inlineText(n);
+        }
+      });
+      return out;
+    }
+    function htmlToText(html) {
+      var body = new DOMParser().parseFromString('<body>' + html + '</body>', 'text/html').body;
+      var blocks = [];
+      body.childNodes.forEach(function (n) {
+        if (n.nodeType === 3) { var t = n.textContent.replace(/\s+/g, ' ').trim(); if (t) blocks.push(t); return; }
+        if (n.nodeType !== 1) return;
+        var tag = n.tagName.toLowerCase();
+        if (tag === 'h2') blocks.push('# ' + inlineText(n).trim());
+        else if (tag === 'h1' || tag === 'h3' || tag === 'h4') blocks.push('## ' + inlineText(n).trim());
+        else if (tag === 'ul' || tag === 'ol') {
+          var items = [];
+          n.querySelectorAll('li').forEach(function (li) {
+            var t = inlineText(li).trim();
+            if (!t) return;
+            // A few older listings use an unbulleted list item as a bold sub-heading.
+            if (/list-style\s*:\s*none/i.test(li.getAttribute('style') || '')) {
+              if (items.length) { blocks.push(items.join('\n')); items = []; }
+              blocks.push(t);
+            } else items.push('- ' + t);
+          });
+          if (items.length) blocks.push(items.join('\n'));
+        } else { var p = inlineText(n).trim(); if (p) blocks.push(p); }
+      });
+      return blocks.join('\n\n');
+    }
+    function inlineHtml(text) {
+      return esc(text.replace(/\s+/g, ' ').trim()).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+    function textToHtml(text) {
+      var out = [], para = [], list = [];
+      function flushPara() { if (para.length) out.push('<p>' + inlineHtml(para.join(' ')) + '</p>'); para = []; }
+      function flushList() {
+        if (list.length) out.push('<ul>\n' + list.map(function (l) { return '<li>' + inlineHtml(l) + '</li>'; }).join('\n') + '\n</ul>');
+        list = [];
+      }
+      text.replace(/\r/g, '').split('\n').forEach(function (raw) {
+        var line = raw.trim(), m;
+        if (!line) { flushPara(); flushList(); return; }
+        if ((m = /^##+\s*(.*)$/.exec(line))) { flushPara(); flushList(); if (m[1]) out.push('<h3>' + inlineHtml(m[1]) + '</h3>'); return; }
+        if ((m = /^#\s*(.*)$/.exec(line))) { flushPara(); flushList(); if (m[1]) out.push('<h2>' + inlineHtml(m[1]) + '</h2>'); return; }
+        if ((m = /^(?:-|\*(?!\*))\s+(.+)$/.exec(line))) { flushPara(); list.push(m[1]); return; }
+        flushList(); para.push(line);
+      });
+      flushPara(); flushList();
+      return out.join('\n');
+    }
+    // The words of a description, ignoring markup and how its blocks are separated.
+    function plainOf(html) {
+      return new DOMParser().parseFromString('<body>' + String(html).replace(/<[^>]*>/g, ' ') + '</body>', 'text/html')
+        .body.textContent.replace(/\s+/g, ' ').trim();
+    }
+    function splitLocation(location) {
+      var island = /st\.?\s*eustatius/i.test(location) ? 'statia' : 'saba';
+      var village = location.replace(/,\s*(saba(\s+island)?|st\.?\s*eustatius(\s*\(statia\))?)\s*$/i, '').trim();
+      return { village: village, island: island };
+    }
+
+    var editing = null;   // { p, original: {...}, changes: {...}, html }
+    function ef(name) { return $('e-' + name); }
+    function openEdit(p) {
+      var loc = splitLocation(p.location || '');
+      var original = {
+        title: p.title, village: loc.village, island: loc.island, type: p.type,
+        beds: String(p.bedrooms || 0), baths: String(p.bathrooms || 0),
+        acreage: p.acreage ? String(p.acreage) : '',
+        video: p.videos && p.videos[0] ? 'https://youtu.be/' + p.videos[0].id : '',
+        desc: htmlToText(p.description || '')
+      };
+      editing = { p: p, original: original };
+      ef('title').value = original.title; ef('village').value = original.village; ef('island').value = original.island;
+      ef('type').value = original.type; ef('beds').value = original.beds; ef('baths').value = original.baths;
+      ef('acreage').value = original.acreage; ef('video').value = original.video; ef('desc').value = original.desc;
+      $('editHeading').textContent = 'Edit ' + p.title;
+      $('editFeaturesNote').hidden = !(p.features && p.features.length);
+      $('editProblems').hidden = true;
+      syncEditType();
+      show('edit');
+    }
+    function syncEditType() { $('editRoomsRow').hidden = ef('type').value === 'land'; }
+    ef('type').addEventListener('change', syncEditType);
+    $('editForm').addEventListener('input', function () { $('editProblems').hidden = true; });
+
+    // Only fields that actually changed are sent, so untouched data is never rewritten.
+    function readEdit() {
+      var o = editing.original, p = editing.p, c = {}, problems = [], bad = /[<>"]/;
+      var v = {};
+      ['title', 'village', 'island', 'type', 'beds', 'baths', 'acreage', 'video'].forEach(function (n) { v[n] = ef(n).value.trim(); });
+      v.desc = ef('desc').value;
+
+      if (v.title !== o.title) {
+        if (v.title.length < 3) problems.push('Give the property a name.');
+        else if (bad.test(v.title)) problems.push('The name cannot contain < > or " characters.');
+        else c.title = v.title.replace(/\s+/g, ' ');
+      }
+      if (v.village !== o.village || v.island !== o.island) {
+        if (v.village.length < 2) problems.push('Enter the village or area.');
+        else if (bad.test(v.village)) problems.push('The village cannot contain < > or " characters.');
+        else { c.village = v.village.replace(/\s+/g, ' '); c.island = v.island; }
+      }
+      if (v.type !== o.type) c.type = v.type;
+      if (v.type === 'land') { v.beds = '0'; v.baths = '0'; }
+      if (v.beds !== o.beds) {
+        var beds = v.beds === '' ? 0 : Number(v.beds);
+        if (!Number.isInteger(beds) || beds < 0 || beds > 30) problems.push('Bedrooms must be a whole number.');
+        else if (beds !== (p.bedrooms || 0)) c.bedrooms = beds;
+      }
+      if (v.baths !== o.baths) {
+        var baths = v.baths === '' ? 0 : Number(v.baths);
+        if (!(baths >= 0 && baths <= 30) || (baths * 2) % 1) problems.push('Bathrooms must be a number like 2 or 2.5.');
+        else if (baths !== (p.bathrooms || 0)) c.bathrooms = baths;
+      }
+      if (v.acreage !== o.acreage) {
+        if (!v.acreage) c.acreage = null;
+        else {
+          var acres = Number(v.acreage.replace(',', '.'));
+          if (!(acres > 0)) problems.push('Acres must be a number, for example 0.7.');
+          else c.acreage = acres;
+        }
+      }
+      if (v.video !== o.video) {
+        if (!v.video) { if (o.video) c.videoId = null; }
+        else {
+          var id = videoId(v.video);
+          if (!id) problems.push('That YouTube link was not recognised. Copy it again from YouTube.');
+          else if (!(p.videos && p.videos[0] && p.videos[0].id === id)) c.videoId = id;
+        }
+      }
+      var html = p.description;
+      if (v.desc.trim() !== o.desc.trim()) {
+        html = textToHtml(v.desc);
+        if (!plainOf(html)) problems.push('The description cannot be empty.');
+        else c.description = html;
+      }
+      if (!problems.length && !Object.keys(c).length) problems.push('Nothing has been changed yet.');
+      return { changes: c, html: html, problems: problems };
+    }
+
+    $('editForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var r = readEdit(), box = $('editProblems');
+      if (r.problems.length) {
+        box.innerHTML = r.problems.length === 1 ? esc(r.problems[0])
+          : 'A few things need fixing:<ul>' + r.problems.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+        box.hidden = false;
+        box.scrollIntoView({ block: 'center' });
+        return;
+      }
+      editing.changes = r.changes;
+      var p = editing.p, c = r.changes;
+      var island = c.island || editing.original.island;
+      var hasVideo = 'videoId' in c ? !!c.videoId : !!(p.videos && p.videos.length);
+      renderPreview({
+        title: c.title || p.title, type: c.type || p.type, island: island, isNew: !!p['new'],
+        bedrooms: 'bedrooms' in c ? c.bedrooms : (c.type === 'land' ? 0 : p.bedrooms),
+        bathrooms: 'bathrooms' in c ? c.bathrooms : (c.type === 'land' ? 0 : p.bathrooms),
+        description: r.html
+      }, { cover: (p.images || [])[0] || '', price: p.priceFormatted, photos: (p.images || []).length, video: hasVideo });
+      setPreviewMode('edit');
+      show('preview');
+    });
+
+    function saveEdit() {
+      var p = editing.p, c = editing.changes;
+      var location = c.village ? c.village + ', ' + ISLANDS[c.island] : null;
+      var progress = startProgress('Saving changes to ' + p.title, ['Sending the changes', 'Updating the website (a few minutes)']);
+      sendAndWait({ action: 'edit-details', id: p.id, listing: c }, progress, 0, function (data) {
+        var q = data.properties.filter(function (x) { return x.id === p.id; })[0];
+        if (!q) return false;
+        if ('title' in c && q.title !== c.title) return false;
+        if (location && q.location !== location) return false;
+        if ('type' in c && q.type !== c.type) return false;
+        if ('bedrooms' in c && q.bedrooms !== c.bedrooms) return false;
+        if ('bathrooms' in c && q.bathrooms !== c.bathrooms) return false;
+        if ('acreage' in c && (c.acreage === null ? 'acreage' in q : q.acreage !== c.acreage)) return false;
+        if ('videoId' in c && (c.videoId === null ? !!q.videos : !(q.videos && q.videos[0].id === c.videoId))) return false;
+        if ('description' in c && plainOf(q.description) !== plainOf(c.description)) return false;
+        return true;
+      }).then(function (result) {
+        progress.finish();
+        outcome(result.test ? '<div class="note"><strong>Test mode.</strong> Nothing was changed.</div>'
+          : result.slow ? '<div class="note"><strong>Saved.</strong> The website is still catching up and should show the changes within a few more minutes.</div>'
+          : '<div class="note"><strong>Saved.</strong> The website now shows your changes.</div>',
+          (p.hidden ? [] : [{ text: 'View the listing', href: '/properties/' + p.id + '/' }])
+            .concat([{ text: 'Update another property', quiet: !p.hidden, run: function () { show('update'); } }]));
+      }).catch(function (err) {
+        outcome(explain(err), [
+          { text: 'Try again', run: saveEdit },
+          { text: 'Back to editing', quiet: true, run: function () { show('edit'); } }
+        ]);
+      });
+    }
+
+    if (LOCAL) window.__admin = { htmlToText: htmlToText, textToHtml: textToHtml, plainOf: plainOf };   // for local tests only
 
     // ---------- start ----------
     restoreDraft(); syncType(); syncVideo();

@@ -6,7 +6,9 @@ This guide documents the step-by-step process for adding new property listings t
 
 ## Admin page (no terminal needed)
 
-`https://sabanrealty.com/admin/` lets someone with the passphrase add a for-sale listing (photos, details, YouTube link) and make quick changes: price, under contract, sold, back on the market, hide, unhide. It goes live in a few minutes. Vacation rentals, and edits to an existing listing's photos or description, still use the manual steps below.
+`https://sabanrealty.com/admin/` lets someone with the passphrase add a for-sale listing (photos, details, YouTube link) and update existing ones: price, under contract, sold, back on the market, hide, unhide, and "Edit details and description" (name, location, type, bedrooms, bathrooms, acres, YouTube video and description). Under contract and sold remove the price automatically. Changes go live in a few minutes. Vacation rentals, photos of existing listings, and the separate `features` checklist some listings have still use the manual steps below.
+
+The description editor shows the stored HTML as plain text: `# ` main heading, `## ` section heading, `- ` bullet, `**bold**`, blank line between paragraphs. Only fields that were actually changed are sent, so an untouched description is never rewritten. The three unbulleted bold sub-heading items in older listings (view-villa, hidden-treasure-villa, lynch-beachfront-estate) become bold paragraphs if that description is edited.
 
 How it works:
 

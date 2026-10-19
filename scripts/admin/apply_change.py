@@ -12,6 +12,7 @@ Actions (for-sale listings only):
     set-price   {"action":"set-price","id":"...","price":425000}
     set-status  {"action":"set-status","id":"...","status":"available|under-contract|sold","price":N}
     set-hidden  {"action":"set-hidden","id":"...","hidden":true|false}
+    edit-details {"action":"edit-details","id":"...","listing":{only the fields to change}}
 
 Nothing in the payload is trusted: every field is validated here and the
 description is run through a tag allowlist (it is rendered with innerHTML).
@@ -39,6 +40,7 @@ ISLANDS = {"saba": "Saba", "statia": "St. Eustatius"}   # text the island filter
 ALLOWED_TAGS = ("h2", "h3", "p", "strong", "ul", "li", "br")
 ADD_FIELDS = {"id", "title", "village", "island", "type", "price", "bedrooms", "bathrooms",
               "acreage", "description", "images", "videoId", "isNew", "onHomepage"}
+EDIT_FIELDS = {"title", "village", "island", "type", "bedrooms", "bathrooms", "acreage", "videoId", "description"}
 MAX_IMAGES = 60
 
 
@@ -165,6 +167,52 @@ def _retitle_heading(p, label):
                               lambda m: f"{m.group(1)} - {label}{m.group(2)}", p["description"], count=1)
 
 
+def _location(village, island):
+    village = _plain_text(village, "village", 2, 60)
+    if island not in ISLANDS:
+        raise ChangeError("island must be saba or statia")
+    return f"{village}, {ISLANDS[island]}"
+
+
+def _type(value):
+    if value not in TYPES:
+        raise ChangeError(f"type must be one of {', '.join(TYPES)}")
+    return value
+
+
+def _bedrooms(value):
+    if not _is_int(value) or not 0 <= value <= 30:
+        raise ChangeError("bedrooms must be a whole number")
+    return value
+
+
+def _bathrooms(value):
+    if not _is_num(value) or not 0 <= value <= 30 or (value * 2) % 1:
+        raise ChangeError("bathrooms must be a number like 2 or 2.5")
+    return int(value) if float(value).is_integer() else float(value)
+
+
+def _acreage(value):
+    if not _is_num(value) or not 0 < value <= 10_000:
+        raise ChangeError("acreage must be a positive number")
+    return value
+
+
+def _description(value):
+    if not isinstance(value, str) or len(value) > 20_000:
+        raise ChangeError("description is missing or too long")
+    value = sanitize_description(value)
+    if not value:
+        raise ChangeError("description is empty")
+    return value
+
+
+def _video_id(value):
+    if not isinstance(value, str) or not re.fullmatch(r"[A-Za-z0-9_-]{11}", value):
+        raise ChangeError("video must be an 11-character YouTube id")
+    return value
+
+
 def _build_listing(data, listing, image_exists, fetch_upload_date):
     if not isinstance(listing, dict):
         raise ChangeError("listing is missing")
@@ -179,30 +227,15 @@ def _build_listing(data, listing, image_exists, fetch_upload_date):
         raise ChangeError(f"a listing with id '{pid}' already exists; change the title slightly")
 
     title = _plain_text(listing.get("title"), "title", 3, 80)
-    village = _plain_text(listing.get("village"), "village", 2, 60)
-    if listing.get("island") not in ISLANDS:
-        raise ChangeError("island must be saba or statia")
-    if listing.get("type") not in TYPES:
-        raise ChangeError(f"type must be one of {', '.join(TYPES)}")
+    location = _location(listing.get("village"), listing.get("island"))
+    ptype = _type(listing.get("type"))
     price = _price(listing.get("price"))
-
-    beds, baths = listing.get("bedrooms", 0), listing.get("bathrooms", 0)
-    if not _is_int(beds) or not 0 <= beds <= 30:
-        raise ChangeError("bedrooms must be a whole number")
-    if not _is_num(baths) or not 0 <= baths <= 30 or (baths * 2) % 1:
-        raise ChangeError("bathrooms must be a number like 2 or 2.5")
-    baths = int(baths) if float(baths).is_integer() else float(baths)
-
+    beds = _bedrooms(listing.get("bedrooms", 0))
+    baths = _bathrooms(listing.get("bathrooms", 0))
     acreage = listing.get("acreage")
-    if acreage is not None and (not _is_num(acreage) or not 0 < acreage <= 10_000):
-        raise ChangeError("acreage must be a positive number")
-
-    desc = listing.get("description")
-    if not isinstance(desc, str) or len(desc) > 20_000:
-        raise ChangeError("description is missing or too long")
-    desc = sanitize_description(desc)
-    if not desc:
-        raise ChangeError("description is empty")
+    if acreage is not None:
+        acreage = _acreage(acreage)
+    desc = _description(listing.get("description"))
 
     images = listing.get("images")
     if not isinstance(images, list) or not 1 <= len(images) <= MAX_IMAGES:
@@ -216,8 +249,8 @@ def _build_listing(data, listing, image_exists, fetch_upload_date):
             raise ChangeError(f"photo not found in storage (upload did not finish?): {u}")
 
     vid = listing.get("videoId")
-    if vid is not None and (not isinstance(vid, str) or not re.fullmatch(r"[A-Za-z0-9_-]{11}", vid)):
-        raise ChangeError("video must be an 11-character YouTube id")
+    if vid is not None:
+        vid = _video_id(vid)
     for flag in ("isNew", "onHomepage"):
         if not isinstance(listing.get(flag, False), bool):
             raise ChangeError(f"{flag} must be true or false")
@@ -229,11 +262,11 @@ def _build_listing(data, listing, image_exists, fetch_upload_date):
         entry["videos"] = [{"label": "Property Tour", "id": vid, "uploadDate": fetch_upload_date(vid)}]
     entry.update({
         "title": title,
-        "location": f"{village}, {ISLANDS[listing['island']]}",
+        "location": location,
         "price": price,
         "priceFormatted": format_price(price),
         "status": "for-sale",
-        "type": listing["type"],
+        "type": ptype,
         "bedrooms": beds,
         "bathrooms": baths,
     })
@@ -242,6 +275,78 @@ def _build_listing(data, listing, image_exists, fetch_upload_date):
     entry["description"] = desc
     entry["images"] = images
     return entry
+
+
+def _set_key(p, key, value, after=None, before=None):
+    """Set p[key], placing a new key where recent entries keep it (dicts keep insertion order)."""
+    if key in p:
+        p[key] = value
+        return
+    items = list(p.items())
+    pos = len(items)
+    if before in p:
+        pos = [k for k, _ in items].index(before)
+    elif after:
+        present = [k for k in after if k in p]
+        pos = [k for k, _ in items].index(present[-1]) + 1 if present else 0
+    items.insert(pos, (key, value))
+    p.clear()
+    p.update(items)
+
+
+def _edit_details(p, fields, fetch_upload_date):
+    """Change only the fields sent. Price and status stay with their own actions."""
+    if not isinstance(fields, dict):
+        raise ChangeError("listing is missing")
+    unknown = sorted(set(fields) - EDIT_FIELDS)
+    if unknown:
+        raise ChangeError(f"these can't be edited here: {', '.join(unknown)}")
+    if not fields:
+        raise ChangeError("nothing to change")
+    if ("village" in fields) != ("island" in fields):
+        raise ChangeError("send the village and island together")
+
+    changes = {}       # validate everything before touching the listing
+    if "title" in fields:
+        changes["title"] = _plain_text(fields["title"], "title", 3, 80)
+    if "village" in fields:
+        changes["location"] = _location(fields["village"], fields["island"])
+    if "type" in fields:
+        changes["type"] = _type(fields["type"])
+    if "bedrooms" in fields:
+        changes["bedrooms"] = _bedrooms(fields["bedrooms"])
+    if "bathrooms" in fields:
+        changes["bathrooms"] = _bathrooms(fields["bathrooms"])
+    if "acreage" in fields:
+        changes["acreage"] = None if fields["acreage"] is None else _acreage(fields["acreage"])
+    if "videoId" in fields:
+        changes["videoId"] = None if fields["videoId"] is None else _video_id(fields["videoId"])
+    if "description" in fields:
+        changes["description"] = _description(fields["description"])
+
+    for key in ("title", "location", "type", "bedrooms", "bathrooms", "description"):
+        if key in changes:
+            p[key] = changes[key]
+    if "acreage" in changes:
+        if changes["acreage"] is None:
+            p.pop("acreage", None)
+        else:
+            _set_key(p, "acreage", changes["acreage"], before="description")
+    if "videoId" in changes:
+        vid = changes["videoId"]
+        if vid is None:
+            p.pop("videos", None)
+        elif [v.get("id") for v in p.get("videos", [])] != [vid]:
+            _set_key(p, "videos", [{"label": "Property Tour", "id": vid, "uploadDate": fetch_upload_date(vid)}],
+                     after=("id", "new", "featured"))
+
+    names = {"village": "location", "island": None, "videoId": "video"}
+    changed = []
+    for k in ("description", "title", "village", "island", "type", "bedrooms", "bathrooms", "acreage", "videoId"):
+        name = names.get(k, k)
+        if k in fields and name and name not in changed:
+            changed.append(name)
+    return f"edit {p['title']} ({', '.join(changed)})"
 
 
 def _set_price(p, change):
@@ -347,9 +452,11 @@ def apply_change(root, change, today=None, image_exists=default_image_exists,
             new_index = _feature_on_homepage(index_html, p["id"])
         data["properties"].append(p)
         what = f"add {p['title']}"
-    elif action in ("set-price", "set-status", "set-hidden"):
+    elif action in ("set-price", "set-status", "set-hidden", "edit-details"):
         p = _find(data, change.get("id"))
-        if action == "set-price":
+        if action == "edit-details":
+            what = _edit_details(p, change.get("listing"), fetch_upload_date)
+        elif action == "set-price":
             what = _set_price(p, change)
         elif action == "set-status":
             what = _set_status(p, change)

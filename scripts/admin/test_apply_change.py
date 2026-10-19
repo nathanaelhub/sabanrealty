@@ -382,6 +382,127 @@ class HiddenTests(Base):
         self.assertIn(url_block("properties/beta-land/", TODAY, "0.8"), self.read("sitemap.xml"))
 
 
+class EditDetailsTests(Base):
+    def edit(self, pid="alpha-villa", **fields):
+        return self.apply({"action": "edit-details", "id": pid, "listing": fields})
+
+    def test_edit_description_replaces_it(self):
+        self.edit(description="<h2>Alpha Villa</h2>\n<p>New words.</p>")
+        self.assertEqual(self.prop("alpha-villa")["description"], "<h2>Alpha Villa</h2>\n<p>New words.</p>")
+
+    def test_edit_description_is_sanitized(self):
+        self.edit(description='<p onclick="x()">Hi</p><script>alert(1)</script>')
+        self.assertEqual(self.prop("alpha-villa")["description"], "<p>Hi</p>")
+
+    def test_edit_leaves_other_fields_and_listings_alone(self):
+        before, other = self.prop("alpha-villa"), self.prop("gamma-cottage")
+        self.edit(description="<p>New words.</p>")
+        after = self.prop("alpha-villa")
+        self.assertEqual({k: v for k, v in after.items() if k != "description"},
+                         {k: v for k, v in before.items() if k != "description"})
+        self.assertEqual(list(after.keys()), list(before.keys()))
+        self.assertEqual(self.prop("gamma-cottage"), other)
+
+    def test_edit_refreshes_page_and_sitemap_date(self):
+        self.edit(title="Alpha Villa Estate")
+        self.assertIn("<title>Alpha Villa Estate | Saban Realty</title>", self.read("properties/alpha-villa/index.html"))
+        self.assertIn(url_block("properties/alpha-villa/", TODAY, "0.8"), self.read("sitemap.xml"))
+
+    def test_edit_title_keeps_the_address(self):
+        out = self.edit(title="Alpha Villa Estate")
+        self.assertEqual(self.prop("alpha-villa")["title"], "Alpha Villa Estate")
+        self.assertEqual(out["url"], "https://sabanrealty.com/properties/alpha-villa/")
+
+    def test_edit_title_rejects_markup(self):
+        with self.assertRaises(ac.ChangeError):
+            self.edit(title='Alpha <b>"Villa"</b>')
+
+    def test_edit_location(self):
+        self.edit(village="Lodi", island="statia")
+        self.assertEqual(self.prop("alpha-villa")["location"], "Lodi, St. Eustatius")
+
+    def test_edit_location_needs_village_and_island_together(self):
+        with self.assertRaisesRegex(ac.ChangeError, "village"):
+            self.edit(island="statia")
+
+    def test_edit_rooms(self):
+        self.edit(bedrooms=4, bathrooms=3.5)
+        p = self.prop("alpha-villa")
+        self.assertEqual((p["bedrooms"], p["bathrooms"]), (4, 3.5))
+
+    def test_edit_rejects_odd_bathrooms(self):
+        with self.assertRaises(ac.ChangeError):
+            self.edit(bathrooms=2.3)
+
+    def test_edit_type(self):
+        self.edit(type="land", bedrooms=0, bathrooms=0)
+        self.assertEqual(self.prop("alpha-villa")["type"], "land")
+        with self.assertRaises(ac.ChangeError):
+            self.edit(type="castle")
+
+    def test_edit_adds_acreage_before_description(self):
+        self.edit(acreage=0.66)
+        keys = list(self.prop("alpha-villa").keys())
+        self.assertEqual(self.prop("alpha-villa")["acreage"], 0.66)
+        self.assertEqual(keys.index("acreage") + 1, keys.index("description"))
+
+    def test_edit_removes_acreage_with_null(self):
+        self.edit(acreage=0.66)
+        self.edit(acreage=None)
+        self.assertNotIn("acreage", self.prop("alpha-villa"))
+
+    def test_edit_adds_video_after_ribbon_flag(self):
+        self.edit(videoId="H2hvZM2YD9o")
+        p = self.prop("alpha-villa")
+        self.assertEqual(p["videos"], [{"label": "Property Tour", "id": "H2hvZM2YD9o",
+                                        "uploadDate": "2026-09-30T12:00:00+00:00"}])
+        self.assertEqual(list(p.keys())[:3], ["id", "new", "videos"])
+        self.assertIn("VideoObject", self.read("properties/alpha-villa/index.html"))
+
+    def test_edit_same_video_keeps_its_date_without_looking_it_up(self):
+        self.edit(videoId="H2hvZM2YD9o")
+        def no_lookup(vid):
+            raise AssertionError("should not fetch")
+        self.apply({"action": "edit-details", "id": "alpha-villa", "listing": {"videoId": "H2hvZM2YD9o"}},
+                   fetch_upload_date=no_lookup)
+        self.assertEqual(self.prop("alpha-villa")["videos"][0]["uploadDate"], "2026-09-30T12:00:00+00:00")
+
+    def test_edit_removes_video_with_null(self):
+        self.edit(videoId="H2hvZM2YD9o")
+        self.edit(videoId=None)
+        self.assertNotIn("videos", self.prop("alpha-villa"))
+
+    def test_edit_rejects_bad_video_id(self):
+        with self.assertRaises(ac.ChangeError):
+            self.edit(videoId="nope")
+
+    def test_edit_rejects_fields_it_does_not_own(self):
+        for field, value in (("price", 1), ("images", []), ("id", "x"), ("hidden", True), ("status", "sold")):
+            with self.assertRaisesRegex(ac.ChangeError, field):
+                self.edit(**{field: value})
+
+    def test_edit_rejects_nothing_to_change(self):
+        with self.assertRaisesRegex(ac.ChangeError, "nothing"):
+            self.edit()
+
+    def test_edit_rejects_rentals_and_unknown_ids(self):
+        with self.assertRaises(ac.ChangeError):
+            self.edit(pid="rho-rental", title="Rho")
+        with self.assertRaises(ac.ChangeError):
+            self.edit(pid="nope", title="Nope")
+
+    def test_failed_edit_writes_nothing(self):
+        before = self.read("data/listings.json")
+        with self.assertRaises(ac.ChangeError):
+            self.edit(title="Alpha Villa Estate", bedrooms=-1)
+        self.assertEqual(self.read("data/listings.json"), before)
+        self.assertEqual(self.read("sitemap.xml"), SITEMAP)
+
+    def test_edit_summary_names_what_changed(self):
+        out = self.edit(description="<p>New words.</p>", bedrooms=4)
+        self.assertEqual(out["commit_message"], "Admin: edit Alpha Villa (description, bedrooms)")
+
+
 class SummaryTests(Base):
     def test_add_summary_names_listing_and_url(self):
         out = self.apply(add_change())
