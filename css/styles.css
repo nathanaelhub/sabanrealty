@@ -1351,6 +1351,16 @@ p {
   margin-top: var(--space-lg);
 }
 
+.google-review-link {
+  margin-top: var(--space-md);
+  font-size: 0.95rem;
+}
+
+.google-review-link a {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 .contact-form {
   background: var(--color-white);
   padding: var(--space-xl);
