@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
  * Browser interaction tests for the Saban Realty site (headless Chrome via CDP).
+ * Uses Google Chrome, else Brave / Edge / Chromium; CHROME_BIN overrides.
  * Requires a local server on :8899 (the skill/run.sh starts one), or set BASE_URL.
  *
  *   node scripts/site-test/browser-test.mjs
@@ -10,9 +11,15 @@
  * listings are added/sold. Exit 0 = all pass.
  */
 import { spawn } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
-const CHROME = process.env.CHROME_BIN || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const CHROME = process.env.CHROME_BIN || [
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+  "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+  "/Applications/Chromium.app/Contents/MacOS/Chromium",
+].find(existsSync);
+if (!CHROME) { console.error("No Chrome, Brave, Edge or Chromium found; set CHROME_BIN."); process.exit(1); }
 const BASE = process.env.BASE_URL || "http://localhost:8899/";
 let PORT = 9390;
 const failures = [];
@@ -27,10 +34,12 @@ async function openPage(url) {
   const chrome = spawn(CHROME, ["--headless=new", "--disable-gpu", "--no-first-run",
     "--window-size=1280,1000", `--remote-debugging-port=${port}`, `--user-data-dir=${prof}`, url], { stdio: "ignore" });
   let list = null;
-  for (let i = 0; i < 30; i++) {
+  // Brave and a cold first launch can take well over 10s to open the debugging port.
+  for (let i = 0; i < 75; i++) {
     try { list = await (await fetch(`http://127.0.0.1:${port}/json`)).json(); if (list?.length) break; } catch {}
     await new Promise(r => setTimeout(r, 400));
   }
+  if (!list?.length) { chrome.kill(); throw new Error(`${CHROME} did not open a debugging port for ${url}`); }
   const target = list.find(x => x.type === "page") || list[0];
   const ws = new WebSocket(target.webSocketDebuggerUrl);
   let id = 0; const pend = new Map();
