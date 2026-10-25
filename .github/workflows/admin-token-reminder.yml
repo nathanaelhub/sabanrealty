@@ -26,7 +26,8 @@ jobs:
           BODY="@nathanaelhub The token the admin page uses to publish expires in $DAYS day(s), on $EXPIRES. After that, nothing published from sabanrealty.com/admin/ will go live.
 
           To renew: GitHub → Settings → Developer settings → Fine-grained tokens → regenerate the admin token (this repo only; Contents read/write, Actions read), then run \`npx wrangler secret put GITHUB_TOKEN\` in scripts/admin-worker. Close this issue when done."
-          NUM=$(gh issue list -R "$GITHUB_REPOSITORY" --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number')
+          # Exact title match on the open list (issue search lags behind new issues).
+          NUM=$(gh issue list -R "$GITHUB_REPOSITORY" --state open -L 100 --json number,title | jq -r --arg t "$TITLE" 'map(select(.title == $t))[0].number // empty')
           if [ -n "$NUM" ]; then
             gh issue comment "$NUM" -R "$GITHUB_REPOSITORY" --body "@nathanaelhub Reminder: $DAYS day(s) left (expires $EXPIRES)."
           else
