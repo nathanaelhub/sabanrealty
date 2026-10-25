@@ -71,11 +71,22 @@ jobs:
           git push || { git pull --rebase origin main && git push; }
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
-      # Pushes made with the workflow token may not start the Pages build on their own.
-      - name: Request Pages build
+      # The push normally starts the Pages build by itself (it did on the first real publish).
+      # Ask for one only if none shows up, since a second request just ends up as an "errored" build.
+      - name: Make sure Pages builds
         if: steps.push.outputs.sha
         continue-on-error: true
-        run: gh api -X POST "repos/$GITHUB_REPOSITORY/pages/builds"
+        env:
+          SHA: ${{ steps.push.outputs.sha }}
+        run: |
+          for i in 1 2 3 4 5 6; do
+            sleep 10
+            if gh api "repos/$GITHUB_REPOSITORY/pages/builds?per_page=5" --jq ".[] | select(.commit == \"$SHA\") | .status" | grep -q .; then
+              echo "Pages build started by the push."
+              exit 0
+            fi
+          done
+          gh api -X POST "repos/$GITHUB_REPOSITORY/pages/builds"
 
       # The mention is what emails Nathanael that something was published.
       - name: Notify

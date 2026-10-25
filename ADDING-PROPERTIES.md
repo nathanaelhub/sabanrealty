@@ -12,8 +12,8 @@ The description editor shows the stored HTML as plain text: `# ` main heading, `
 
 How it works:
 
-1. `admin/index.html` shrinks each photo in the browser (max 1600 px JPEG, EXIF removed) and builds the description HTML.
-2. The Cloudflare Worker in `scripts/admin-worker/` checks the passphrase, stores photos in R2 under `listings/<id>/` (it never overwrites a file), and sends the change to GitHub.
+1. `admin/index.html` shrinks each photo in the browser (max 1600 px JPEG, EXIF removed), also makes the 900 px card copy the listing cards load, and builds the description HTML.
+2. The Cloudflare Worker in `scripts/admin-worker/` checks the passphrase, stores photos in R2 under `listings/<id>/` and their card copies under `thumbs/listings/<id>/` (it never overwrites a file, and only takes a card copy for a photo that is already there), and sends the change to GitHub.
 3. `.github/workflows/admin-publish.yml` runs `scripts/admin/apply_change.py`, which validates the change, edits `data/listings.json`, regenerates the listing pages and updates `sitemap.xml`. It then runs the static site checks, commits as "Admin: …", pushes, and mentions @nathanaelhub in a commit comment.
 
 One-time setup:
@@ -31,7 +31,7 @@ Then put the Worker address in `WORKER_URL` near the top of the script in `admin
 Upkeep:
 
 - **Change the passphrase:** `npx wrangler secret put ADMIN_PASSPHRASE`. Every device has to enter the new one.
-- **GitHub token expiry:** fine-grained tokens expire. When publishing starts failing with "Could not reach the website publisher", create a new token and run `npx wrangler secret put GITHUB_TOKEN`.
+- **GitHub token expiry:** fine-grained tokens expire. The Worker checks the expiry date every day (cron in `wrangler.toml`) and 14, 7, 3 and 1 days before, `.github/workflows/admin-token-reminder.yml` opens an issue mentioning @nathanaelhub. The admin home screen also shows a warning in the last 14 days, or when the token stops working. To renew, regenerate the token (same permissions) and run `npx wrangler secret put GITHUB_TOKEN`, then close the issue.
 - **A publish failed:** GitHub emails the failed "Admin publish" run. The admin page shows the reason when the change was refused (for example, hiding a listing that is on the homepage).
 - **Undo a mistaken listing:** hide it from the admin page, then remove the entry by hand and delete its photos with `node scripts/r2-manage.js delete-folder listings/<id>`.
 - **Test without publishing:** run the "Admin publish" workflow by hand with a JSON payload; it defaults to a dry run that prints the diff. Locally: `python3 scripts/admin/apply_change.py --payload change.json --skip-image-check`, and `python3 -m unittest scripts/admin/test_apply_change.py`.

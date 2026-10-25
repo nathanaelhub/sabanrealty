@@ -1,17 +1,25 @@
 // Backend for the admin page (admin/index.html).
 //
-// It does three things for anyone holding the passphrase, and nothing else:
-//   PUT  /upload/listings/<id>/<file>.jpg   store one photo in R2 (never overwrites)
-//   POST /change                            hand a listing change to GitHub Actions
-//   GET  /status?request_id=...             report how that change is going
+// It does these things for anyone holding the passphrase, and nothing else:
+//   PUT  /upload/listings/<id>/<file>.jpg         store one photo in R2 (never overwrites)
+//   PUT  /upload/thumbs/listings/<id>/<file>.jpg  store the small card copy of a photo already uploaded
+//   POST /change                                  hand a listing change to GitHub Actions
+//   GET  /status?request_id=...                   report how that change is going
+//   GET  /health                                  say whether publishing still works (GitHub token)
+//
+// Once a day (cron in wrangler.toml) it also checks the GitHub token and, 14/7/3/1 days before
+// it expires, asks the admin-token-reminder workflow to open an issue that emails Nathanael.
 //
 // It does not edit the site. The GitHub Action (scripts/admin/apply_change.py)
 // validates every change again before anything is committed.
 
 const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
+const MAX_THUMB_BYTES = 1024 * 1024;
+const WARN_DAYS = 14;
+const REMIND_ON_DAYS = [14, 7, 3, 1];
 const MAX_CHANGE_BYTES = 60 * 1024; // GitHub caps client_payload at ~64 KB
 const MIN_PASSPHRASE_LENGTH = 16;
-const UPLOAD_PATH = /^\/upload\/(listings\/([a-z0-9]+(?:-[a-z0-9]+)*)\/([a-z0-9-]+\.jpg))$/;
+const UPLOAD_PATH = /^\/upload\/((thumbs\/)?(listings\/([a-z0-9]+(?:-[a-z0-9]+)*)\/([a-z0-9-]+\.jpg)))$/;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 
 export default {
@@ -27,6 +35,10 @@ export default {
     }
     for (const [k, v] of Object.entries(cors)) response.headers.set(k, v);
     return response;
+  },
+
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(remindIfExpiring(env));
   },
 };
 
@@ -79,21 +91,26 @@ async function route(request, env) {
   if (method === 'PUT' && url.pathname.startsWith('/upload/')) return upload(request, env, url);
   if (method === 'POST' && url.pathname === '/change') return change(request, env);
   if (method === 'GET' && url.pathname === '/status') return status(env, url);
+  if (method === 'GET' && url.pathname === '/health') return json(await tokenHealth(env));
   return json({ error: 'Not found.' }, 404);
 }
 
 async function upload(request, env, url) {
   const m = UPLOAD_PATH.exec(url.pathname);
   // Files must be named after their listing, so one listing can't write into another's folder name.
-  if (!m || !m[3].startsWith(`${m[2]}-`)) return json({ error: 'Bad photo name.' }, 400);
+  if (!m || !m[5].startsWith(`${m[4]}-`)) return json({ error: 'Bad photo name.' }, 400);
   const key = m[1];
+  const isThumb = Boolean(m[2]);
+  const maxBytes = isThumb ? MAX_THUMB_BYTES : MAX_PHOTO_BYTES;
   const photoUrl = `${env.PUBLIC_BASE}/${key}`;
 
-  if (Number(request.headers.get('Content-Length') || 0) > MAX_PHOTO_BYTES) {
+  if (Number(request.headers.get('Content-Length') || 0) > maxBytes) {
     return json({ error: 'Photo is too large.' }, 413);
   }
+  // A card copy is only accepted for a photo that is already there.
+  if (isThumb && !(await env.BUCKET.head(m[3]))) return json({ error: 'Upload the photo first.' }, 409);
   const body = await request.arrayBuffer();
-  if (body.byteLength > MAX_PHOTO_BYTES) return json({ error: 'Photo is too large.' }, 413);
+  if (body.byteLength > maxBytes) return json({ error: 'Photo is too large.' }, 413);
   const head = new Uint8Array(body.slice(0, 3));
   if (head[0] !== 0xff || head[1] !== 0xd8 || head[2] !== 0xff) {
     return json({ error: 'Only JPEG photos are accepted.' }, 415);
@@ -177,4 +194,43 @@ async function failureReason(env, runId) {
     console.error(err);
   }
   return null;
+}
+
+// GitHub sends a fine-grained token's expiry on every API response.
+// ok: true while the token works; daysLeft is null for a token that never expires.
+async function tokenHealth(env) {
+  if (env.DRY_RUN === '1') return { ok: true, daysLeft: null, dry_run: true };
+  let res;
+  try {
+    res = await github(env, '');
+  } catch {
+    return { ok: null };
+  }
+  if (res.status === 401) return { ok: false, daysLeft: 0 };
+  if (!res.ok) return { ok: null };
+  const header = res.headers.get('github-authentication-token-expiration');
+  const expires = parseExpiry(header);
+  if (Number.isNaN(expires)) return { ok: true, daysLeft: null };
+  const daysLeft = Math.max(0, Math.floor((expires - Date.now()) / 86400000));
+  return { ok: true, daysLeft, warn: daysLeft <= WARN_DAYS, expires: new Date(expires).toISOString().slice(0, 10) };
+}
+
+// e.g. "2026-12-01 00:00:00 UTC" or "2026-12-01 00:00:00 -0800"
+function parseExpiry(header) {
+  const m = /^(\d{4}-\d{2}-\d{2})[ T](\d{2}:\d{2}:\d{2})\s*(UTC|Z|[+-]\d{2}:?\d{2})?$/.exec((header || '').trim());
+  if (!m) return NaN;
+  let zone = m[3] || 'Z';
+  if (zone === 'UTC') zone = 'Z';
+  else if (/^[+-]\d{4}$/.test(zone)) zone = `${zone.slice(0, 3)}:${zone.slice(3)}`;
+  return Date.parse(`${m[1]}T${m[2]}${zone}`);
+}
+
+async function remindIfExpiring(env) {
+  const health = await tokenHealth(env);
+  if (!health.ok || !REMIND_ON_DAYS.includes(health.daysLeft)) return;
+  const res = await github(env, '/dispatches', {
+    method: 'POST',
+    body: JSON.stringify({ event_type: 'admin-token-expiring', client_payload: { days_left: health.daysLeft, expires: health.expires } }),
+  });
+  if (res.status !== 204) console.error('reminder dispatch failed', res.status, await res.text());
 }

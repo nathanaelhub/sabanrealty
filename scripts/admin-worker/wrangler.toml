@@ -7,6 +7,10 @@ main = "src/index.js"
 compatibility_date = "2026-09-01"
 workers_dev = true
 
+# Daily check of the GitHub token's expiry (see remindIfExpiring in src/index.js).
+[triggers]
+crons = ["0 13 * * *"]
+
 [[r2_buckets]]
 binding = "BUCKET"
 bucket_name = "sabanreality"
