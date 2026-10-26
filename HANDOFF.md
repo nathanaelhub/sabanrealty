@@ -53,7 +53,7 @@ CSS: edit `css/styles.css`, then regenerate `css/styles.min.css` (Python one-lin
 - `.claude/` (gitignored): project skills (`add-listing`, `add-blog-post`, `site-test`, `site-conventions`) and agents. Copy it by hand.
 - Admin Worker `sabanrealty-admin` (`scripts/admin-worker`, deployed with wrangler; R2 bucket binding `sabanreality`). Secrets and vars: `ADMIN_PASSPHRASE`, `GITHUB_TOKEN`, `ALLOWED_ORIGINS`, `REPO`, `WORKFLOW`, `PUBLIC_BASE`, `DRY_RUN`. The GitHub workflow `.github/workflows/admin-publish.yml` uses the built-in token.
 - Cloudflare R2 bucket (public at `pub-78b56158b83942189fa28a4d5939bb79.r2.dev`, rate-limited; use the S3 API for bulk work). DNS is on Google Cloud DNS.
-- Sister repo `~/GitHub/ig-auto`: Instagram scheduler. It needs the `IG_ACCESS_TOKEN` and `IG_USER_ID` GitHub secrets; the token lasts about 60 days (skill `ig-token-refresh`).
+- Sister repo `~/GitHub/ig-auto`: Instagram scheduler. It needs the `IG_ACCESS_TOKEN` and `IG_USER_ID` GitHub secrets. **As of 16 Oct the token is a permanent Meta system-user token that never expires** — the old 60-day `ig-token-refresh` routine is now only a fallback if it is ever revoked. See part 2 below for details.
 - `~/Desktop/Desktop/R_E_V/`: all marketing assets (Listings, Social Posts, Videos, SEO, Statia Day 2026 Campaign, Google Business Profile).
 - `~/Documents/sabanrealty-photo-originals-2026-10-03/`: original listing photos (backup).
 - Claude memory: `~/.claude/projects/-Users-nathanaeljohnson-GitHub-sabanrealty/memory/` holds project notes. Copy it to keep context.
@@ -178,6 +178,13 @@ then enforcing the client's standing content rules across everything already sch
   footage from Fort Oranje, the Oranjestad waterfront and The Quill trailhead. Needed before
   10 Nov or those two get cut. Ask Jeff who is on-island with a camera.
 - Longer-standing: pick a Facebook thumbnail aspect ratio.
+- **Saba Snack "Price Reduced" post — built, not scheduled.** After the price cut
+  ($320,000 → $220,000; site live, sabanrealty PR #17), a social card with a coral "PRICE
+  REDUCED" top band was made at Dad's request, in both **horizontal and vertical** versions,
+  saved in `~/Downloads/` (`Saba Snack — Price Reduced $220K (horizontal).jpg` and
+  `(vertical).jpg`). It is **not** queued on Instagram and no Facebook channel was chosen
+  (auto cross-post vs. manual). Needs the user's go-ahead + that FB decision, then upload to
+  R2 and `add_post.py`.
 
 ## Exact next steps
 1. **Decide on the four magazine images** (the 27 Oct one is immediate). If yes: identify
@@ -200,15 +207,28 @@ python3 -c "import json;d=json.load(open('schedule.json'));print(sum(1 for e in 
 cd "~/Desktop/Desktop/R_E_V/Statia Day 2026 Campaign" && python3 make-pdf.py   # rebuild the plan PDF
 ```
 The publisher is a GitHub Actions cron (`.github/workflows/ig-publish.yml`, `0 14 * * *`,
-i.e. **daily**) that posts any `schedule.json` entry whose `datetime` has passed. A
-workflow run succeeding is **not** proof a post went out — check the entry has `posted:
-true` and a `media_id`. Instagram sometimes returns a transient 400 on `media_publish`;
-re-running the workflow has always worked.
+i.e. **daily**) that posts any `schedule.json` entry whose `datetime` has passed.
+**Fixed 19 Oct (PR #58, commit 91eb004):** `run_due.py` used to catch every publish error
+and exit 0, so the job went green while nothing posted — which hid a week-long outage after
+the old token expired on 9 Oct. It now writes successes first (so they are never re-posted),
+then exits non-zero with a summary if anything failed, and the workflow's portal + commit
+steps are `if: always()`. So a **green run now really does mean every due post went out**,
+and any failure turns the run red and emails an alert. Instagram can still return a transient
+400 on `media_publish`; that entry stays unposted and retries on the next daily run (or a
+manual re-run). The cron often lands a few hours after 14:00 UTC — that scheduler lag is
+normal, not a fault.
 
 ## Outside the repo (in addition to part 1)
 - `~/GitHub/ig-auto` — the Instagram scheduler, its own git repo, pushed and clean.
-  GitHub secrets: `IG_ACCESS_TOKEN`, `IG_USER_ID`. The token lasts ~60 days — the
-  `ig-token-refresh` skill rolls it forward.
+  GitHub secrets: `IG_ACCESS_TOKEN`, `IG_USER_ID`. **The token is now a permanent Meta
+  system-user token (installed 16 Oct, `expires_at: 0` — never expires)**, so the old
+  ~60-day `ig-token-refresh` routine is only a fallback if it is ever revoked. One known
+  gap: this token lacks `instagram_manage_insights`, so the separate analytics job
+  (`ig-insights.yml` / `insights.py`) will fail — now visibly, thanks to the fail-loudly fix
+  above — until Jeff adds that sixth permission to the system user in Meta Business settings
+  and a fresh token is written to `.env` + the GitHub secret. Publishing is unaffected. The
+  token also lives in `ig-auto/.env` (gitignored): `IG_APP_ID`, `IG_APP_SECRET`,
+  `IG_ACCESS_TOKEN`, `IG_USER_ID`, `IG_GRAPH_VERSION` — move it to the new computer by hand.
 - `~/Desktop/Desktop/R_E_V/` — all video and campaign assets, **not under version control
   and not backed up anywhere else**. The renders, the campaign folder and the source photos
   only exist here. Copy this folder to the new computer before wiping the old one.
