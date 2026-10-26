@@ -345,7 +345,7 @@ it and delete the skill.**
 
 ---
 
-# Handoff, part 3: the "private viewing" sweep through the reels (26 Oct 2026)
+# Handoff, part 4: the "private viewing" sweep through the reels (26 Oct 2026)
 
 Part 2 said four magazine images needed regenerating. That was the visible edge of a
 much larger problem, found while answering "should we fix those first?".
