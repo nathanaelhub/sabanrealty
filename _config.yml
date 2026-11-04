@@ -6,3 +6,4 @@ exclude:
   - scripts/
   - docs/
   - ADDING-PROPERTIES.md
+  - handoff/
