@@ -1,6 +1,6 @@
 # Handoff notes
 
-Written for the move to a new computer on 26 Oct 2026. Each session wrote its own part, and everything here is a snapshot from that date, so check the live site and the repos before acting on it.
+Written for the move to a new computer on 26 Oct 2026. Updated: 2026-11-06 (part 1 now covers 4–6 Nov). Each session wrote its own part, and everything here is a snapshot from that date, so check the live site and the repos before acting on it.
 
 | File | Covers |
 |---|---|
