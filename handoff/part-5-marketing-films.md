@@ -56,8 +56,12 @@ price or size on listing reels, H.264 yuv420p faststart 30 fps about -15 LUFS.
 
 ## Next steps
 1. On the new computer: install Node, ffmpeg (with loudnorm), Python 3 with numpy, and
-   Playwright Chromium; clone reelkit; copy the private `reels/` and `out/` folders and the
-   reelkit `.env` across; reinstall lemo-opuscar (`~/lemo-opuscar`, `npm install`).
+   Playwright Chromium; clone reelkit; reinstall lemo-opuscar (`~/lemo-opuscar`, `npm install`).
+   The private material is archived in iCloud Drive as
+   `reelkit-private-2026-11-06.zip` (1.4 GB, 443 files, integrity tested): unzip it inside
+   the reelkit folder to restore `reels/_saban/`, `reels/saban-*/`, `out/`, `taste/` and the
+   airplane-food `voice.mp3`, then add the `.git/info/exclude` lines `reels/_saban/` and
+   `reels/saban-*/` again. The `.env` is **not** in the archive: recreate it by hand.
 2. Ask the user for the "One Window" verdict (remind them to watch with sound: Claude can't
    hear the audio). If they like it, cut 9:16 and 1:1 versions; if not, take the next angle
    in the same urban-sketch style.
