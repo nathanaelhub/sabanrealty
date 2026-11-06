@@ -7,3 +7,4 @@ exclude:
   - docs/
   - ADDING-PROPERTIES.md
   - handoff/
+  - videos/
