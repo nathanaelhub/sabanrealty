@@ -1,0 +1,19 @@
+{
+  "id": "L1_mill", "width": 1920, "height": 1080, "fps": 30, "bpm": 72,
+  "photos": {
+    "hero":   "the-mill/photo_3.jpg",
+    "tower":  "the-mill/photo_17.jpg",
+    "stair":  "the-mill/photo_9.jpg",
+    "view":   "the-mill/photo_1.jpg",
+    "setting":"the-mill/photo_2.jpg"
+  },
+  "shots": [
+    { "name": "title",    "beats": 4, "chord": ["D2","A3","D4","F#4","A4"],  "text_beat": 2 },
+    { "name": "hero",     "beats": 8, "chord": ["D2","A3","D4","F#4","B4"],  "text_beat": 3 },
+    { "name": "feature1", "beats": 5, "chord": ["G2","B3","D4","F#4","A4"],  "text_beat": 2 },
+    { "name": "feature2", "beats": 5, "chord": ["B2","F#3","D4","F#4","A4"], "text_beat": 2 },
+    { "name": "feature3", "beats": 5, "chord": ["E2","G3","D4","F#4","B4"],  "text_beat": 2 },
+    { "name": "price",    "beats": 5, "chord": ["A2","G3","D4","E4","A4"],   "text_beat": 2 },
+    { "name": "end",      "beats": 4, "chord": ["D2","A3","D4","F#4","A4","D5"], "text_beat": 0 }
+  ]
+}

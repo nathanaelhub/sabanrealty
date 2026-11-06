@@ -1,0 +1,28 @@
+{
+  "id": "L1_sample", "width": 1920, "height": 1080, "fps": 30, "bpm": 72, "dom": true,
+  "shots": [
+    { "name": "title",   "beats": 3, "chord": ["D2","A3","D4","F#4","A4"] },
+    { "name": "row",     "beats": 2, "chord": ["G2","B3","D4","F#4","A4"] },
+    { "name": "gallery", "beats": 5, "chord": ["B2","F#3","D4","F#4","A4"] },
+    { "name": "end",     "beats": 5, "chord": ["D2","A3","D4","F#4","A4","D5"] }
+  ],
+  "at": {
+    "title1": 0.25, "title2": 1, "shrink": 2.6, "row": 3.25, "cursorIn": 3.5, "hover": 4.5, "click": 5,
+    "info": 5.5, "check1": 6, "thumb2": 7, "thumb3": 8.25, "out": 10, "site": 10.25
+  },
+  "cards": [
+    { "img": "cats-eye-cottage/01-100004062-3DSCN1515.JPG", "price": "$425,000", "name": "CatsEye Cottage", "loc": "Windwardside, Saba", "spec": "2 beds · 2 baths" },
+    { "img": "house-on-the-path/1outside IMG_0010_E.jpg", "price": "$525,000", "name": "House on the Path", "loc": "Windwardside, Saba", "spec": "2 beds · 2 baths" },
+    { "img": "the-mill/photo_3.jpg", "price": "$775,000", "name": "The Mill at Zion's Hill", "loc": "Zion's Hill, Saba", "spec": "1 bed · 1 bath" },
+    { "img": "iguana-rock/100003955-4IguanaRockNikon1.jpeg", "price": "$890,000", "name": "Iguana Rock House", "loc": "Windwardside, Saba", "spec": "2 beds · 2 baths" },
+    { "img": "view-villa/100003862-aviewvilla.jpeg", "price": "$980,000", "name": "View Villa", "loc": "Windwardside, Saba", "spec": "3 beds · 3 baths" }
+  ],
+  "gallery": [
+    { "img": "the-mill/photo_3.jpg",  "pos": "50% 50%" },
+    { "img": "the-mill/photo_9.jpg",  "pos": "50% 50%" },
+    { "img": "the-mill/photo_1.jpg",  "pos": "22% 50%" },
+    { "img": "the-mill/photo_11.jpg", "pos": "50% 50%" },
+    { "img": "the-mill/photo_20.jpg", "pos": "50% 50%" }
+  ],
+  "checks": ["The only windmill home on Saba", "A floating staircase to the bedroom", "Panoramic views of the Caribbean Sea"]
+}

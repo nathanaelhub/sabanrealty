@@ -1,0 +1,18 @@
+{
+  "id": "V1_catseye", "width": 1080, "height": 1920, "fps": 30, "bpm": 120,
+  "photos": {
+    "view":     "cats-eye-cottage/10-100004062-10Screenshot1000.jpg",
+    "exterior": "cats-eye-cottage/04-100004062-4IMG_1043resize.jpg",
+    "interior": "cats-eye-cottage/05-100004062-5IMG_1035resize.jpg",
+    "detail":   "cats-eye-cottage/07-100004062-7IMG_1040resize.jpg",
+    "closing":  "cats-eye-cottage/01-100004062-3DSCN1515.JPG"
+  },
+  "shots": [
+    { "name": "view",     "beats": 6, "chord": ["A2","E4","A4","C#5"] },
+    { "name": "exterior", "beats": 4, "chord": ["F#2","F#4","A4","C#5"] },
+    { "name": "interior", "beats": 4, "chord": ["D3","F#4","A4","D5"] },
+    { "name": "detail",   "beats": 4, "chord": ["E3","E4","G#4","B4"] },
+    { "name": "name",     "beats": 6, "chord": ["D3","F#4","A4","E5"] },
+    { "name": "end",      "beats": 6, "chord": ["A2","E4","A4","C#5","E5"] }
+  ]
+}

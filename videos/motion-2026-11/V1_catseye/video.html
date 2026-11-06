@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><title>CatsEye Cottage</title>
+<style>/*@fonts*/
+html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c"></canvas>
+<script>
+/*@timeline*/
+/*@brand*/
+// App UI zones: all text stays between y=220 and y=1520. Offsets are in beats from the start of the shot.
+const LOCK_Y = 286, LEFT = 86;
+const HOOK_END = 4 * beat;   // the hook is read over a still frame, then the camera moves
+
+const SHOT = {
+  view(t) {
+    photo('view', cam({ s: 1, x: .6, y: .5 }, { s: 1.04, x: .61, y: .49 }, (t - HOOK_END) / (2 * beat)));
+    brandBar(LEFT, LOCK_Y);
+    const a = 1 - clamp((t - HOOK_END + .25) / .25);   // fully on screen from frame 0
+    if (a <= 0) return;
+    const g = ctx.createLinearGradient(0, 300, 0, 1100);
+    g.addColorStop(0, 'rgba(10,37,64,0)'); g.addColorStop(.5, 'rgba(10,37,64,.42)'); g.addColorStop(1, 'rgba(10,37,64,0)');
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = g; ctx.fillRect(0, 300, W, 800); ctx.restore();
+    const o = { font: SERIF, size: 148, align: 'center', alpha: a, shadow: 16 };
+    text('Would you', W / 2, 590, o); text('wake up', W / 2, 750, o); text('here?', W / 2, 910, { ...o, color: GOLD });
+  },
+  exterior(t, s) { photo('exterior', cam({ s: 1, x: .64, y: .5 }, { s: 1.05, x: .65, y: .49 }, t / s.dur)); brandBar(LEFT, LOCK_Y); },
+  interior(t, s) { photo('interior', cam({ s: 1.06, x: .37, y: .52 }, { s: 1.06, x: .41, y: .52 }, t / s.dur)); brandBar(LEFT, LOCK_Y); },
+  detail(t, s)   { photo('detail',   cam({ s: 1.06, x: .55, y: .5 }, { s: 1, x: .55, y: .5 }, t / s.dur)); brandBar(LEFT, LOCK_Y); },
+  name(t) {
+    photo('closing', { s: 1.12, x: .57, y: .55 });
+    brandBar(LEFT, LOCK_Y);
+    rise(1010, 1920);
+    const a = enter(t, 0), b = enter(t, beat), c = enter(t, 3 * beat);
+    text('CatsEye Cottage', LEFT, 1250 + a.dy, { font: SERIF, size: 96, alpha: a.a });
+    text('Windwardside, Saba', LEFT, 1306 + a.dy, { font: SANS, size: 38, weight: 500, spacing: 1, alpha: a.a });
+    text('$425,000', LEFT, 1416 + b.dy, { font: SERIF, size: 96, color: GOLD, alpha: b.a });
+    text('Link in bio', LEFT, 1496 + c.dy, { font: SANS, size: 46, weight: 600, alpha: c.a });
+  },
+};
+window.renderFrame = t => {
+  const s = shotAt(t), local = t - s.start;
+  if (s.name === 'end') endCard(); else SHOT[s.name](local, s);
+};
+</script></body></html>

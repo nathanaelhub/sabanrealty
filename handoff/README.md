@@ -11,6 +11,9 @@ Written for the move to a new computer on 26 Oct 2026. Updated: 2026-11-06 (part
 | `part-2-video-instagram-campaign.md` | Villa Frangipani reel, Statia Day campaign, ig-auto |
 | `part-3-voiceover-desktop-bridge.md` | Free-draft voiceover and the Claude Desktop bridge (read its warning first) |
 | `part-4-private-viewing-sweep.md` | The "private viewing" fixes in scheduled reels, and what is still held |
+| `part-5-marketing-films.md` | Marketing films, reelkit and lemo-opuscar (1 to 6 Nov 2026) |
+
+Updated: 6 Nov 2026 (part 5 added).
 | `part-5-bath-counts-blog-style-frames.md` | Bath count fixes and why they were wrong, stale blog prices, six style-frame posts awaiting approval (updated 6 Nov 2026) |
 
 These lived in one `HANDOFF.md` until 4 Nov 2026. The repo is public, so `handoff/` is excluded from the published site in `_config.yml`, but anything pushed can still be read on GitHub.

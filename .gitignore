@@ -11,3 +11,9 @@ node_modules/
 
 # Python
 __pycache__/
+
+# Motion video working files (sources in videos/motion-2026-11 stay; heavy output does not)
+videos/motion-2026-11/assets/
+videos/motion-2026-11/build/
+videos/motion-2026-11/output/
+videos/motion-2026-11/.venv/

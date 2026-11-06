@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset="utf-8"><title>The Mill at Zion's Hill</title>
+<style>/*@fonts*/
+html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c"></canvas>
+<script>
+/*@timeline*/
+/*@brand*/
+// All copy comes from data/listings.json for the-mill. Offsets are in beats from the start of the shot.
+const NAME = "The Mill at Zion's Hill", PLACE = "Zion's Hill, Saba";
+const RIGHT = 1840, BOTTOM = 1000;
+
+const SHOT = {
+  title(t, s) {
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+    const p = easeInOut(t / (2 * beat)), y = 640, x0 = W / 2 - 960 * p;
+    ctx.fillStyle = GOLD; ctx.fillRect(x0, y, 1920 * p, 3);
+    const e = enter(t, 2 * beat);
+    text(NAME, W / 2, y - 60 + e.dy, { font: SERIF, size: 112, align: 'center', alpha: e.a });
+  },
+  hero(t, s) {
+    // Push in completes as the panel lands; both are still for the read.
+    photo('hero', cam({ s: 1, x: .5, y: .46 }, { s: 1.08, x: .535, y: .5 }, t / (4 * beat)));
+    brandBar(90, 104);
+    const t0 = 3 * beat, slide = easeInOut((t - t0) / beat);
+    if (slide <= 0) return;
+    const nm = { font: SERIF, size: 70 }, w = measure(NAME, nm) + 110, h = 208;
+    const x = RIGHT - w + 70 * (1 - slide), y = BOTTOM - h;
+    glass(x, y, w, h, slide);
+    ctx.save(); ctx.globalAlpha = slide;
+    text(NAME, x + 55, y + 98, nm);
+    ctx.fillStyle = GOLD; ctx.fillRect(x + 55, y + 122, 72, 3);
+    text(PLACE, x + 55, y + 168, { font: SANS, size: 32, weight: 500, spacing: 1.5 });
+    ctx.restore();
+  },
+  feature1(t) { feature(t, 'tower', { s: 1.07, x: .47, y: .36 }, { s: 1.07, x: .53, y: .36 }, 'The only windmill home on Saba'); },
+  feature2(t) { feature(t, 'stair', { s: 1.07, x: .53, y: .5 }, { s: 1.07, x: .47, y: .5 }, 'A floating staircase to the bedroom'); },
+  feature3(t) { feature(t, 'view', { s: 1.07, x: .47, y: .46 }, { s: 1.07, x: .53, y: .46 }, 'Panoramic views of the Caribbean Sea'); },
+  price(t) {
+    // Pull out to show the setting, then the price lands over a still frame.
+    photo('setting', cam({ s: 1.08, x: .465, y: .46 }, { s: 1, x: .5, y: .44 }, t / (3 * beat)));
+    brandBar(90, 104);
+    const e = enter(t, 2 * beat); if (e.a <= 0) return;
+    const w = 620, h = 246, x = RIGHT - w, y = BOTTOM - h + e.dy;
+    glass(x, y, w, h, e.a);
+    ctx.save(); ctx.globalAlpha = e.a;
+    text('$775,000', x + 55, y + 112, { font: SERIF, size: 96, color: GOLD });
+    text('1 Bed  ·  1 Bath  ·  0.42 Acres', x + 55, y + 178, { font: SANS, size: 32, weight: 500 });
+    ctx.restore();
+  },
+};
+function feature(t, key, from, to, line) {
+  photo(key, cam(from, to, t / (3 * beat)));
+  brandBar(90, 104);
+  const e = enter(t, 2 * beat); if (e.a <= 0) return;
+  const o = { font: SANS, size: 42, weight: 500 }, w = measure(line, o) + 100, h = 112;
+  const x = RIGHT - w, y = BOTTOM - h + e.dy;
+  glass(x, y, w, h, e.a);
+  ctx.save(); ctx.globalAlpha = e.a; text(line, x + 50, y + 71, o); ctx.restore();
+}
+window.renderFrame = t => {
+  const s = shotAt(t), local = t - s.start;
+  if (s.name === 'end') endCard(); else SHOT[s.name](local, s);
+};
+</script></body></html>

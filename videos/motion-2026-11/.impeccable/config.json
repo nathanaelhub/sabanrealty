@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "L1_sample/video.html"
+        ],
+        "createdAt": "2026-11-02T20:12:47.580Z",
+        "reason": "Claude: rendered video frame, not a UI; overflow only crops photos to their rounded frames and there are no popovers to escape"
+      }
+    ]
+  }
+}
