@@ -79,7 +79,7 @@ has confirmed it. This is also saved in auto-memory as `bathroom-counts-unverifi
    - The request came from session `sabanrealty-c1`.
 5. **Not this session's work:** `.gitignore` (motion-video ignores) and `videos/motion-2026-11/`
    (520 MB on disk) are uncommitted from the motion-videos session. They were left alone.
-6. **Local `main`** is 8 commits ahead of origin (handoff notes only) and 3 behind. Pull with
+6. **Local `main`** is 12 commits ahead of origin (handoff notes and the motion-video sources) and 3 behind. Pull with
    rebase before pushing.
 
 ## Next steps
