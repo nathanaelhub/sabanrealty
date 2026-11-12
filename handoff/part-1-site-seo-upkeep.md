@@ -1,6 +1,6 @@
 # Handoff: sabanrealty.com (session 1 Oct – 6 Nov 2026)
 
-Updated: 2026-11-06. Covers 4–6 Nov too: the Statia Day blog post, and fixes and reordering of the Instagram queue.
+Updated: 2026-11-12 (Instagram questions marked settled). Covers 4–6 Nov too: the Statia Day blog post, and fixes and reordering of the Instagram queue.
 
 ## What this is
 sabanrealty.com is a static real-estate site for RE/MAX Saba / Statia (Saban Realty): plain HTML, CSS and JS, hosted on GitHub Pages from `main` of `nathanaelhub/sabanrealty`. Every push to `main` deploys in 1–2 minutes. Listing data is in `data/listings.json`, and photos are on Cloudflare R2.
@@ -25,23 +25,23 @@ This session covered SEO and site upkeep, plus marketing assets kept outside the
 - Google Business Profile: `https://www.google.com/search?kgmid=/g/11zy17s84f` is in every JSON-LD `sameAs`, and there's a "Review us on Google" line on `/contact/`.
 - Site tests: `scripts/site-test/browser-test.mjs` uses Chrome, else Brave, Edge or Chromium (`CHROME_BIN` overrides). It runs one browser per run with a tab per page. Google Chrome is not installed on the old Mac; Brave passes everything.
 - **Statia Day blog post (4 Nov):** live at `/blog/statia-day-first-salute/` (sabanrealty PR #22, issue #21). Checked against Royal House, statiagovernment.com, 721news and USNI Proceedings. Corrected the meaning of the 11-gun reply and the 1781 aftermath, added the real nightly programme, and removed claims with no source. It missed the planned 2 Nov because nothing was set to publish it.
-- **Handoff split (4 Nov):** the old root `HANDOFF.md` is now `handoff/`, one file per session. `handoff/` is excluded from the published site in `_config.yml`. These commits are only on the old Mac's local `main` and were never pushed.
+- **Handoff split (4 Nov):** the old root `HANDOFF.md` is now `handoff/`, one file per session. `handoff/` is excluded from the published site in `_config.yml`. These commits are now on `origin/main` (confirmed 12 Nov).
 - **Instagram queue (ig-auto PRs #62 and #63, 4 Nov):** Statia is "eight square miles" (11 and 16 Nov); 14 Nov is Culture Night in the caption and a new `statia-culture-night-v2.jpg`; "Caribbean Netherlands" replaces "Dutch Caribbean" in queued captions, all 27 queued hashtag sets and 3 images (`the-quiet-island-v2.jpg`, `anslyn-estate-reel-cover-v2.jpg`, `saba-unspoiled-lifestyle-v2.jpg`). `make_thumbnail.py`'s default running head now says CARIBBEAN NETHERLANDS. The campaign caption files in R_E_V were updated the same way.
 - **Reel order (4 Nov):** the queue runs 3 picture posts then a reel, which is the user's standing rule. Reels: Villa Frangipani 9 Nov (moved from 5 Nov), The Pool 13 Nov, Anslyn 18 Nov, Iguana Rock 25 Nov, View Villa 4 Dec. Statia posts tied to dates kept their dates (10, 14, 15, 16 Nov). As of 6 Nov, posting is on schedule: Treasured Horseshoe reel (4 Nov) and By the Numbers: 1 Road (5 Nov) went out.
 - Marketing files in `~/Desktop/Desktop/R_E_V/`: Business Profile photos and covers (`Google Business Profile/`), banners (`Social Posts/Banners/`, editable HTML in `_source/`; Facebook and YouTube both read "RE/MAX Saba / Statia"), and a Facebook thumbnail in `Videos/`.
 
 ## In progress / unfinished
-- **Instagram, waiting on the user** (focus is Instagram only; the user said Facebook is fine, so leave it):
-  - **14 Dec reel slot is empty.** It is meant for the Troy Villa aerial reel, held at 31 Dec because its end card says "private viewing". Plan, pending the user's OK: rebuild Troy Villa, or else schedule the finished Villa Frangipani short reel "The Kitchen". If neither happens, the last two pictures (16 and 18 Dec) run with no reel after 4 Dec.
-  - **"The Pool" reel (13 Nov) ends on a photo with no contact card**, which breaks the dad's rule. Plan, pending OK: add the card.
+- **Instagram** (focus is Instagram only; the user said Facebook is fine, so leave it):
+  - **Settled (12 Nov check):** the 14 Dec slot and The Pool questions were closed by ig-auto PRs #64–67. #64 (7 Nov) put the First Salute engraving film in The Pool's 13 Nov slot (The Pool is no longer queued), added an Art Deco "250 Years" reel on 18 Nov, and moved the Anslyn Estate reel from 18 Nov to the empty 14 Dec slot. #65–67 (9–10 Nov) added Statia Day reels on 9, 10, 11, 12 and 13 Nov. The Statia Day week (9–18 Nov) runs extra reels on purpose; from 19 Nov the order is back to 3 pictures then a reel (reels 25 Nov, 4 Dec, 14 Dec). Troy Villa stays held at 31 Dec ("private viewing" end card).
   - `#CaribbeanNetherlands` may reach fewer people than `#DutchCaribbean`; the user can ask to switch back.
-- **Unpushed local commits:** the old Mac's `main` was 8 commits ahead (the handoff split) and 3 behind. The repo is public, so don't push `handoff/` without the user's OK; a private copy is safer. That checkout also has another session's uncommitted `.gitignore` edit and `videos/` folder.
+  - The publish cron is set for 14:00 UTC but GitHub usually starts it between 18:30 and 21:00 UTC, so a post still "queued" mid-afternoon UTC is normal.
+- **Local commits (resolved):** the handoff split is pushed; the new Mac's `main` matched `origin/main` on 12 Nov. The repo is public, so still ask before pushing anything new under `handoff/`.
 - Campaign PDFs in `R_E_V/Statia Day 2026 Campaign/` still show the old text and dates; `ig-auto/schedule.json` is the live order.
 - **Google review link**: the Contact link opens the profile. The direct "Ask for reviews" link from the Business Profile hasn't been provided yet; when it is, replace the kgmid URL in `contact/index.html`. Add rating schema once reviews exist.
 - Not yet checked: the Dutch page text by a native speaker; banners on the live Facebook and YouTube pages; two dead image URLs on the hidden `statia-poolhouse` listing.
 
 ## Exact next steps
-1. Ask the user to answer the two Instagram questions above (14 Dec slot, The Pool contact card), then do them. Keep 3 pictures then a reel, and check the order with a script before merging any schedule change.
+1. ~~Ask the user about the 14 Dec slot and The Pool contact card~~ — done via ig-auto PRs #64–67 (see above). For any further schedule change, keep 3 pictures then a reel and check the order with a script before merging.
 2. When the user sends the "Ask for reviews" link, swap it into `contact/index.html`.
 3. Mid-November: compare a fresh Search Console export with the October data in `docs/keyword-map.md` (exports are in `R_E_V/SEO/Search Console/`).
 4. December blog post: suggested "Living on Saba" guide. Use the `add-blog-post` skill; keep the date the same in all four places.
