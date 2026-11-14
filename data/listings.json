@@ -149,6 +149,13 @@
     },
     {
       "id": "villa-frangipani-statia",
+      "videos": [
+        {
+          "label": "Property Tour",
+          "id": "DSE8fUxoDgI",
+          "uploadDate": "2026-11-03T03:57:30-08:00"
+        }
+      ],
       "new": true,
       "title": "Villa Frangipani",
       "location": "Knippenga Estate, Golden Rock, St. Eustatius",
@@ -886,6 +893,13 @@
     },
     {
       "id": "troy-hill-residence",
+      "videos": [
+        {
+          "label": "Property Tour",
+          "id": "j9gcTMP8xWc",
+          "uploadDate": "2026-11-02T17:31:54-08:00"
+        }
+      ],
       "new": true,
       "title": "Troy Hill Residence",
       "location": "Troy Hill, The Bottom, Saba",
